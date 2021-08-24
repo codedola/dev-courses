@@ -101,3 +101,12 @@ export function actGetListCourseByCategoryAsync(maDanhMuc) {
         }
     };
 }
+
+export function actGetInfoCourseByIDAsync(id) {
+    return async function (dispatch) {
+        try {
+            const response = await CourseService.GetInfoCourseByID(id);
+            console.log("response GetInfoCourseByID", response);
+        } catch (error) {}
+    };
+}

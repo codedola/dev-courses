@@ -23,7 +23,13 @@ export const TabsStyled = styled(Tabs)`
 export const CarouselStyled = styled(Carousel)`
     .react-multi-carousel-track {
         .react-multi-carousel-item {
-            padding: 12px;
+            padding: 8px;
+            @media only screen and (max-width: 1024px) {
+                padding: 2px;
+            }
+            @media only screen and (max-width: 768px) {
+                padding: 0px;
+            }
         }
     }
 `;

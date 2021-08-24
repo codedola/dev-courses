@@ -34,4 +34,11 @@ export const CourseService = {
             },
         });
     },
+    GetInfoCourseByID(maKhoaHoc) {
+        return api.call().get("/QuanLyKhoaHoc/LayThongTinKhoaHoc", {
+            params: {
+                maKhoaHoc,
+            },
+        });
+    },
 };

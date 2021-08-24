@@ -32,10 +32,11 @@ export const CardStyled = styled(Card)`
         border: unset;
     }
     .ant-card-cover {
+        cursor: auto;
         img {
             min-width: 0;
             height: 160px;
-            object-fit: cover;
+            object-fit: fill;
         }
     }
 
@@ -43,11 +44,11 @@ export const CardStyled = styled(Card)`
         padding: 8px 8px 12px 8px;
         cursor: auto;
         .title {
-            line-clamp: 1;
-            -webkit-box-orient: vertical;
+            width: 100%;
+            white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            white-space: normal;
+
             font-weight: 700;
             letter-spacing: -0.4px;
             cursor: pointer;

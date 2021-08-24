@@ -11,6 +11,7 @@ import { Row, Col, Button, Divider } from "antd";
 import BackToTop from "../components/BackTop";
 import CourseItemSkeleton from "../components/Courses/CourseItemSkeleton";
 import TabListCourseCategory from "../components/TabListCourseCategory";
+import PopularTopics from "../components/PopularTopics";
 export default function Homepage() {
     const dispatch = useDispatch();
     const [loading, setLoading] = useState(false);
@@ -46,8 +47,15 @@ export default function Homepage() {
 
             <Divider />
 
+            <PopularTopics />
+
+            <Divider />
+
             <RowListCoursePaging
-                gutter={[24, 24]}
+                gutter={[
+                    { xs: 8, sm: 8, md: 16, lg: 24 },
+                    { xs: 8, sm: 8, md: 16, lg: 24 },
+                ]}
                 style={{ marginLeft: 0, marginRight: 0 }}
             >
                 {listCourses.length !== 0
@@ -60,6 +68,7 @@ export default function Homepage() {
                       })
                     : null}
             </RowListCoursePaging>
+
             {loading ? (
                 <RowListCoursePaging gutter={[24, 32]}>
                     <Col xs={12} md={8} lg={6}>

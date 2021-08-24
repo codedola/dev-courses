@@ -15,7 +15,7 @@ export const HomeContainer = styled.div`
 export const RowTabsListCourse = styled(Row)`
     background-color: #ffffff;
     padding: 30px 8px;
-    border-radius: 12px;
+    border-radius: 8px;
     box-shadow: rgb(60 64 67 / 10%) 0px 1px 2px 0px,
         rgb(60 64 67 / 15%) 0px 2px 6px 2px;
 `;
@@ -23,7 +23,7 @@ export const RowTabsListCourse = styled(Row)`
 export const RowListCoursePaging = styled(Row)`
     background-color: #ffffff;
     padding: 30px 8px;
-    border-radius: 12px;
+    border-radius: 8px;
     margin-left: 0;
     margin-right: 0;
     box-shadow: rgb(60 64 67 / 10%) 0px 1px 2px 0px,

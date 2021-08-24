@@ -7,16 +7,20 @@ import { CarouselStyled } from "../StyledComponent/TabListCourse.Styled";
 import { actGetListCourseByCategoryAsync } from "../../store/course/actions";
 
 const responsive = {
-    desktop: {
-        breakpoint: { max: 3000, min: 1024 },
+    superLargeDesktop: {
+        breakpoint: { max: 3000, min: 1200 },
         items: 4,
     },
-    tablet: {
-        breakpoint: { max: 1024, min: 768 },
+    desktop: {
+        breakpoint: { max: 1200, min: 768 },
         items: 3,
     },
+    tablet: {
+        breakpoint: { max: 768, min: 375 },
+        items: 2,
+    },
     mobile: {
-        breakpoint: { max: 768, min: 0 },
+        breakpoint: { max: 375, min: 0 },
         items: 1,
     },
 };

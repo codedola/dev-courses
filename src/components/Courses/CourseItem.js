@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Rate, Tag, Button, Tooltip } from "antd";
 import { EyeOutlined, PicRightOutlined, EditOutlined } from "@ant-design/icons";
 import {
@@ -6,13 +6,25 @@ import {
     WapperCardItem,
     ActionCard,
 } from "../StyledComponent/Card.Styled";
+import CourseInfoModal from "./CourseInfoModal";
 export default function CourseItem({ course }) {
+    const [isModalVisible, setIsModalVisible] = useState(false);
     const { tenKhoaHoc, hinhAnh, biDanh, nguoiTao, danhMucKhoaHoc, luotXem } =
         course;
 
+    const showModal = () => {
+        setIsModalVisible(true);
+    };
+
+    const handleCancel = () => {
+        setIsModalVisible(false);
+    };
     return (
         <WapperCardItem>
-            <CardStyled hoverable cover={<img alt={biDanh} src={hinhAnh} />}>
+            <CardStyled
+                hoverable
+                cover={<img alt={biDanh} src={hinhAnh} actions={[]} />}
+            >
                 {/* Information */}
                 <h3 className='title'>{tenKhoaHoc}</h3>
                 <p className='author'>{nguoiTao?.hoTen || "Anonymous"}</p>
@@ -29,26 +41,21 @@ export default function CourseItem({ course }) {
                     </div>
                 </div>
                 {/* Category */}
-                <Tag color='orange'>
+                <Tag color='orange' style={{ fontWeight: 600 }}>
                     {danhMucKhoaHoc?.tenDanhMucKhoaHoc || "Coding"}
                 </Tag>
 
                 {/* action */}
                 <ActionCard>
-                    <Button
-                        type='primary'
-                        className='add-cart'
-                        danger
-                        block
-                        size='large'
-                    >
-                        <EditOutlined /> Ghi danh
+                    <Button type='primary' className='add-cart' danger block>
+                        <EditOutlined />
+                        <span>Ghi danh</span>
                     </Button>
                     <Tooltip placement='topRight' title={"Xem chi tiết"}>
                         <Button
                             type='default'
                             shape='circle'
-                            size='large'
+                            onClick={showModal}
                             className='view-more'
                         >
                             <PicRightOutlined />
@@ -56,6 +63,12 @@ export default function CourseItem({ course }) {
                     </Tooltip>
                 </ActionCard>
             </CardStyled>
+
+            <CourseInfoModal
+                course={course}
+                isModalVisible={isModalVisible}
+                handleCancel={handleCancel}
+            />
         </WapperCardItem>
     );
 }
