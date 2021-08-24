@@ -5,11 +5,14 @@ import { useDispatch } from "react-redux";
 import {
     ContainerApp,
     WapperApp,
+    ContentApp,
 } from "./components/StyledComponent/App.Styled";
 
 import { actGetListCategoriesAsync } from "./store/category/actions";
 import Homepage from "./pages/Homepage";
 import HeaderApp from "./components/Header";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 function App() {
     const dispatch = useDispatch();
@@ -24,12 +27,19 @@ function App() {
         <WapperApp>
             <ContainerApp>
                 <HeaderApp />
-
-                <Switch>
-                    <Route path='/' exact>
-                        <Homepage />
-                    </Route>
-                </Switch>
+                <ContentApp>
+                    <Switch>
+                        <Route path='/register' exact>
+                            <Register />
+                        </Route>
+                        <Route path='/login' exact>
+                            <Login />
+                        </Route>
+                        <Route path='/' exact>
+                            <Homepage />
+                        </Route>
+                    </Switch>
+                </ContentApp>
             </ContainerApp>
         </WapperApp>
     );

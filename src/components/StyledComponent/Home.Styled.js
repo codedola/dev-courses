@@ -2,14 +2,15 @@ import styled from "styled-components";
 import { Row } from "antd";
 export const HomeContainer = styled.div`
     margin-top: 30px;
-    width: 100%;
-    padding-left: 15px;
+    /* width: 100%; */
+
+    /* padding-left: 15px;
     padding-right: 15px;
     margin-right: auto;
     margin-left: auto;
     @media only screen and (min-width: 768px) {
         max-width: 1200px;
-    }
+    } */
 `;
 
 export const RowTabsListCourse = styled(Row)`

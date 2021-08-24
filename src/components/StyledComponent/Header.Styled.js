@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import { Space } from "antd";
 export const ContainerHeader = styled.header`
     position: relative;
     z-index: 1001;
@@ -26,16 +26,17 @@ export const WapperHeaderTop = styled.div`
     z-index: 2;
     -webkit-box-align: center;
     align-items: center;
+    flex-wrap: wrap;
 
     .headerTop__right {
         display: flex;
-        flex: 1 1 0%;
+        flex-grow: 1;
         -webkit-box-align: center;
         align-items: center;
         .header_logo {
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: 600;
-            margin-right: 30px;
+            margin-right: 12px;
             a {
                 text-decoration: none;
                 color: #484848;
@@ -43,20 +44,23 @@ export const WapperHeaderTop = styled.div`
         }
 
         .header__search {
-            padding: 8px 10px;
-            background-color: #f3f3f3;
+            flex-grow: 1;
+            padding: 8px 12px;
+            background-color: #fff;
             display: flex;
-            justify-content: space-around;
+            justify-content: flex-start;
             align-items: center;
-            border-radius: 34px;
-            padding: 6px 24px;
+            border-radius: 60px;
+            overflow: hidden;
+            border: 1px solid #ccccccbf;
             input {
+                flex-grow: 1;
                 border: unset;
-                font-size: 1.2rem;
+                font-size: 1rem;
                 color: #484848;
                 border-radius: 10px;
 
-                background-color: #f3f3f3;
+                background-color: #fff;
                 &:active,
                 &:focus-visible {
                     outline: unset;
@@ -66,6 +70,29 @@ export const WapperHeaderTop = styled.div`
             .anticon {
                 font-size: 1.4rem;
                 color: gray;
+                margin-right: 16px;
+            }
+        }
+    }
+`;
+
+export const SpaceStyled = styled(Space)`
+    flex-grow: 1;
+    justify-content: flex-end;
+    .ant-space-item {
+        /* margin-left: 20px; */
+        cursor: pointer;
+        .cart {
+            .anticon {
+                font-size: 28px;
+                color: #6f6f6f;
+            }
+        }
+
+        .login {
+            .anticon {
+                font-size: 28px;
+                color: #6f6f6f;
             }
         }
     }
