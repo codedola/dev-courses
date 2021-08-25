@@ -21,24 +21,31 @@ export default function Header() {
                     </div>
 
                     <SpaceStyled
-                        size='large'
+                        size='small'
                         split={<Divider type='vertical' />}
                     >
-                        <div className='cart'>
-                            <Tooltip
-                                placement='bottomRight'
-                                title='Khóa học ghi danh'
-                            >
+                        <Tooltip
+                            placement='bottomRight'
+                            title='Khóa học ghi danh'
+                            mouseEnterDelay={0}
+                            mouseLeaveDelay={0}
+                        >
+                            <div className='cart'>
                                 <Badge count={0} showZero overflowCount={10}>
                                     <ShoppingCartOutlined />
                                 </Badge>
-                            </Tooltip>
-                        </div>
-                        <Link to='/login' className='login'>
-                            <Tooltip placement='bottomRight' title='Đăng nhập'>
+                            </div>
+                        </Tooltip>
+                        <Tooltip
+                            placement='bottomRight'
+                            title='Đăng nhập'
+                            mouseEnterDelay={0}
+                            mouseLeaveDelay={0}
+                        >
+                            <Link to='/login' className='login'>
                                 <LoginOutlined />
-                            </Tooltip>
-                        </Link>
+                            </Link>
+                        </Tooltip>
                     </SpaceStyled>
                 </WapperHeaderTop>
             </HeaderTop>

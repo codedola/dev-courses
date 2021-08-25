@@ -80,9 +80,14 @@ export const SpaceStyled = styled(Space)`
     flex-grow: 1;
     justify-content: flex-end;
     .ant-space-item {
-        /* margin-left: 20px; */
         cursor: pointer;
         .cart {
+            padding: 10px 30px;
+            &:hover {
+                background-color: rgb(0 0 0 / 3%);
+                border-radius: 10px;
+            }
+
             .anticon {
                 font-size: 28px;
                 color: #6f6f6f;
@@ -90,6 +95,13 @@ export const SpaceStyled = styled(Space)`
         }
 
         .login {
+            display: block;
+            padding: 10px 30px;
+            &:hover {
+                background-color: rgb(0 0 0 / 3%);
+                border-radius: 10px;
+            }
+
             .anticon {
                 font-size: 28px;
                 color: #6f6f6f;

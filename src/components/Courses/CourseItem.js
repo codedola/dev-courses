@@ -51,7 +51,12 @@ export default function CourseItem({ course }) {
                         <EditOutlined />
                         <span>Ghi danh</span>
                     </Button>
-                    <Tooltip placement='topRight' title={"Xem chi tiết"}>
+                    <Tooltip
+                        placement='topRight'
+                        title='Xem chi tiết'
+                        mouseEnterDelay={0}
+                        mouseLeaveDelay={0}
+                    >
                         <Button
                             type='default'
                             shape='circle'

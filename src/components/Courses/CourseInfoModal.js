@@ -14,9 +14,9 @@ export default function CourseInfoModal({
         biDanh,
         nguoiTao,
         ngayTao,
-        soLuongHocVien,
-        danhMucKhoaHoc,
-        luotXem,
+        // soLuongHocVien,
+        // danhMucKhoaHoc,
+        // luotXem,
     } = course;
     return (
         <ModalCourseInfo
