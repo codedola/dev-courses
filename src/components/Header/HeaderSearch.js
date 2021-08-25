@@ -5,7 +5,7 @@ export default function HeaderSearch() {
     return (
         <div className='header__search'>
             <SearchOutlined />
-            <input type='text' placeholder='Tìm kiếm...' />
+            <input type='text' placeholder='Tìm kiếm khóa học...' />
         </div>
     );
 }

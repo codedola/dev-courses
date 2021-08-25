@@ -3,10 +3,17 @@ import { Tabs } from "antd";
 import Carousel from "react-multi-carousel";
 
 export const TabsStyled = styled(Tabs)`
+    .ant-tabs-nav {
+        .ant-tabs-nav-wrap {
+            .ant-tabs-nav-list {
+                .ant-tabs-tab {
+                    transition: unset;
+                }
+            }
+        }
+    }
     .ant-tabs-content-holder {
         min-height: 370px;
-        /* border: 1px solid #dadada; */
-        /* border-radius: 2px; */
     }
     @media only screen and (min-width: 768px) {
     }

@@ -10,7 +10,7 @@ import {
 import {
     FormStyled,
     FormItemStyled,
-    ButtonSytled,
+    ButtonRegister,
 } from "../StyledComponent/Login.Styled";
 import { Link } from "react-router-dom";
 
@@ -47,14 +47,14 @@ export default function RegisterForm() {
                         justifyContent: "space-between",
                     }}
                 >
-                    <ButtonSytled
+                    <ButtonRegister
                         type='primary'
                         size='large'
                         htmlType='submit'
                         block
                     >
                         Đăng ký
-                    </ButtonSytled>
+                    </ButtonRegister>
                     <Link to='/login'>Đăng nhập</Link>
                 </Space>
             </FormItemStyled>

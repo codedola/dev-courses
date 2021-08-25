@@ -46,13 +46,13 @@ export const WapperHeaderTop = styled.div`
         .header__search {
             flex-grow: 1;
             padding: 8px 12px;
-            background-color: #fff;
+            background-color: #f0f2f5;
             display: flex;
             justify-content: flex-start;
             align-items: center;
             border-radius: 60px;
             overflow: hidden;
-            border: 1px solid #ccccccbf;
+            /* border: 1px solid #ccccccbf; */
             input {
                 flex-grow: 1;
                 border: unset;
@@ -60,7 +60,7 @@ export const WapperHeaderTop = styled.div`
                 color: #484848;
                 border-radius: 10px;
 
-                background-color: #fff;
+                background-color: #f0f2f5;
                 &:active,
                 &:focus-visible {
                     outline: unset;
