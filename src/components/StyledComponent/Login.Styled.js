@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Row, Form } from "antd";
+import { Row, Form, Button } from "antd";
 
 // helper
 export const SpacingStyled = styled.div`
@@ -22,4 +22,17 @@ export const FormStyled = styled(Form)`
             margin-right: 2px;
         }
     }
+`;
+
+export const FormItemStyled = styled(Form.Item)`
+    .ant-input-affix-wrapper {
+        padding: 12px 10px;
+        border-radius: 10px;
+    }
+`;
+
+export const ButtonSytled = styled(Button)`
+    line-height: 1rem;
+    border-radius: 10px;
+    padding: 12px 32px;
 `;
