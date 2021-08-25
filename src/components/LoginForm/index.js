@@ -7,24 +7,42 @@ import {
     ButtonSytled,
 } from "../StyledComponent/Login.Styled";
 import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { showMessageErrorForm } from "../shared/MessageValidateForm";
 export default function LoginForm() {
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm();
     const onFinish = (values) => {
         console.log("Success:", values);
     };
     return (
-        <FormStyled name='basic' size='large' onFinish={onFinish}>
-            <FormItemStyled name='taiKhoan'>
-                <Input prefix={<UserOutlined />} placeholder='Nhập tài khoản' />
-            </FormItemStyled>
-
-            <FormItemStyled name='matKhau'>
-                <Input.Password
-                    prefix={<LockOutlined />}
-                    placeholder='Nhập mật khẩu'
+        <FormStyled name='basic' size='large' onFinish={handleSubmit(onFinish)}>
+            <FormItemStyled
+                name='taiKhoan'
+                extra={showMessageErrorForm(errors, "taiKhoan")}
+            >
+                <Input
+                    prefix={<UserOutlined />}
+                    placeholder='Nhập tài khoản'
+                    {...register("taiKhoan", { required: true })}
                 />
             </FormItemStyled>
 
-            <FormItemStyled>
+            <FormItemStyled
+                name='matKhau'
+                extra={showMessageErrorForm(errors, "matKhau")}
+            >
+                <Input.Password
+                    prefix={<LockOutlined />}
+                    placeholder='Nhập mật khẩu'
+                    {...register("matKhau", { required: true })}
+                />
+            </FormItemStyled>
+
+            <FormItemStyled style={{ marginTop: 10 }}>
                 <Space
                     style={{
                         display: "flex",

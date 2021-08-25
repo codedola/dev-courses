@@ -25,8 +25,12 @@ export const FormStyled = styled(Form)`
 `;
 
 export const FormItemStyled = styled(Form.Item)`
+    margin-bottom: 8px;
+    .ant-form-item-extra {
+        padding-left: 2px;
+    }
     .ant-input-affix-wrapper {
-        padding: 12px 10px;
+        padding: 10px;
         border-radius: 10px;
         background: #f5f6f7;
         border-color: #dbdbdb;
@@ -38,7 +42,8 @@ export const FormItemStyled = styled(Form.Item)`
         &:focus,
         &:active {
             /* box-shadow: 0 0 0 2px rgb(24 144 255 / 20%); */
-            border-color: transparent;
+
+            border-color: #dbdbdb;
             outline: #dbdbdb;
         }
     }

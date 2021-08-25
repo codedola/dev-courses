@@ -1,6 +1,6 @@
 import React from "react";
 import { ModalCourseInfo } from "../StyledComponent/Course.Styled";
-import { Tag, Space, Divider, Alert } from "antd";
+import { Tag, Space, Divider } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 export default function CourseInfoModal({
     course,
