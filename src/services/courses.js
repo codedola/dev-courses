@@ -13,7 +13,7 @@ export const CourseService = {
             params: {
                 page,
                 pageSize,
-                MaNhom: "GP01",
+                MaNhom: "GP01", //GP02
                 ...restParams,
             },
         });

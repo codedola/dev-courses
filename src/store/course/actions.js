@@ -80,7 +80,6 @@ export function actGetListCourseByCategoryAsync(maDanhMuc) {
                 maDanhMuc,
             });
 
-            console.log("Get list course by category", response);
             if (response.status === 200) {
                 dispatch(
                     actGetListCourseCategories({
@@ -105,8 +104,7 @@ export function actGetListCourseByCategoryAsync(maDanhMuc) {
 export function actGetInfoCourseByIDAsync(id) {
     return async function (dispatch) {
         try {
-            const response = await CourseService.GetInfoCourseByID(id);
-            console.log("response GetInfoCourseByID", response);
+            // const response = await CourseService.GetInfoCourseByID(id);
         } catch (error) {}
     };
 }

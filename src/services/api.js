@@ -9,7 +9,7 @@ const api = {
             baseURL: BASE_URL,
             headers: {
                 accept: "application/json",
-                // "Content-Type": "application/json",
+                "Content-Type": "application/json",
             },
         });
     },
@@ -20,7 +20,7 @@ const api = {
             baseURL: BASE_URL,
             headers: {
                 accept: "application/json",
-                // "Content-Type": "application/json",
+                "Content-Type": "application/json",
                 Authorization: `Bearer ${token}`,
                 ...headers,
             },

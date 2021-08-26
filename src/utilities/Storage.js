@@ -9,7 +9,7 @@ const Storage = {
         const token = localStorage.getItem(KEY_TOKEN);
         try {
             const parseObj = parseJwt(token);
-            if (parseObj && parseObj.id) {
+            if (parseObj) {
                 return token;
             } else {
                 localStorage.removeItem(KEY_TOKEN);

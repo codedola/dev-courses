@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Tabs } from "antd";
-import { TabsStyled } from "../StyledComponent/TabListCourse.Styled";
+import { TabsStyled } from "../Styled/TabListCourse.Styled";
 import CourseListCategories from "../Courses/CourseListCategories";
 const { TabPane } = Tabs;
 

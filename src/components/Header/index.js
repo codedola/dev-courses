@@ -4,13 +4,17 @@ import {
     ContainerHeader,
     HeaderTop,
     WapperHeaderTop,
-} from "../StyledComponent/Header.Styled";
+} from "../Styled/Header.Styled";
 import { Divider, Badge, Tooltip } from "antd";
-import { LoginOutlined, ShoppingCartOutlined } from "@ant-design/icons";
+import { LoginOutlined, ShopOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import HeaderLogo from "./HeaderLogo";
 import HeaderSearch from "./HeaderSearch";
+import HeaderUser from "./HeaderUser";
+
 export default function Header() {
+    const currentUser = useSelector((state) => state.Auths.currentUser);
     return (
         <ContainerHeader>
             <HeaderTop>
@@ -32,20 +36,24 @@ export default function Header() {
                         >
                             <div className='cart'>
                                 <Badge count={0} showZero overflowCount={10}>
-                                    <ShoppingCartOutlined />
+                                    <ShopOutlined />
                                 </Badge>
                             </div>
                         </Tooltip>
-                        <Tooltip
-                            placement='bottomRight'
-                            title='Đăng nhập'
-                            mouseEnterDelay={0}
-                            mouseLeaveDelay={0}
-                        >
-                            <Link to='/login' className='login'>
-                                <LoginOutlined />
-                            </Link>
-                        </Tooltip>
+                        {!currentUser ? (
+                            <Tooltip
+                                placement='bottomRight'
+                                title='Đăng nhập'
+                                mouseEnterDelay={0}
+                                mouseLeaveDelay={0}
+                            >
+                                <Link to='/login' className='login'>
+                                    <LoginOutlined />
+                                </Link>
+                            </Tooltip>
+                        ) : (
+                            <HeaderUser />
+                        )}
                     </SpaceStyled>
                 </WapperHeaderTop>
             </HeaderTop>

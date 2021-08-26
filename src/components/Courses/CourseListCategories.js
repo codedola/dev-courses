@@ -3,7 +3,7 @@ import { Row, Col, Empty } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import CourseItem from "./CourseItem";
 import "react-multi-carousel/lib/styles.css";
-import { CarouselStyled } from "../StyledComponent/TabListCourse.Styled";
+import { CarouselStyled } from "../Styled/TabListCourse.Styled";
 import { actGetListCourseByCategoryAsync } from "../../store/course/actions";
 
 const responsive = {

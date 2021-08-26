@@ -6,9 +6,10 @@ import {
     ContainerApp,
     WapperApp,
     ContentApp,
-} from "./components/StyledComponent/App.Styled";
+} from "./components/Styled/App.Styled";
 
 import { actGetListCategoriesAsync } from "./store/category/actions";
+import { actCheckLoginAsync } from "./store/auth/actions";
 import Homepage from "./pages/Homepage";
 import HeaderApp from "./components/Header";
 import Login from "./pages/Login";
@@ -16,6 +17,13 @@ import Register from "./pages/Register";
 
 function App() {
     const dispatch = useDispatch();
+
+    useEffect(
+        function () {
+            dispatch(actCheckLoginAsync());
+        },
+        [dispatch]
+    );
 
     useEffect(
         function () {

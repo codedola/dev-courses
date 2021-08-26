@@ -15,7 +15,6 @@ export function actGetListCategoriesAsync() {
     return async function (dispatch) {
         try {
             const response = await CategoriesService.GetList();
-            console.log("response list categories", response);
             if (response.status === 200) {
                 const list = response.data;
                 dispatch(actGetListCategories(list));

@@ -11,7 +11,7 @@ import {
     FormStyled,
     FormItemStyled,
     ButtonRegister,
-} from "../StyledComponent/Login.Styled";
+} from "../Styled/Login.Styled";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import {
@@ -20,7 +20,10 @@ import {
     showMessageErrorForm,
 } from "../shared/MessageValidateForm";
 
-export default function RegisterForm({ handleSubmitRegister }) {
+export default function RegisterForm({
+    handleSubmitRegister,
+    loading = false,
+}) {
     const {
         register,
         handleSubmit,
@@ -107,6 +110,7 @@ export default function RegisterForm({ handleSubmitRegister }) {
                         size='large'
                         htmlType='submit'
                         block
+                        loading={loading}
                     >
                         Đăng ký
                     </ButtonRegister>

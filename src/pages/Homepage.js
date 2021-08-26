@@ -4,7 +4,7 @@ import {
     HomeContainer,
     RowTabsListCourse,
     RowListCoursePaging,
-} from "../components/StyledComponent/Home.Styled";
+} from "../components/Styled/Home.Styled";
 import CourseItem from "../components/Courses/CourseItem";
 import { actGetListCourseAsync } from "../store/course/actions";
 import { Row, Col, Button, Divider } from "antd";

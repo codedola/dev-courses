@@ -1,6 +1,6 @@
 import React from "react";
 import { Skeleton } from "antd";
-import { CardStyled, WapperCardItem } from "../StyledComponent/Card.Styled";
+import { CardStyled, WapperCardItem } from "../Styled/Card.Styled";
 
 export default function CourseItemSkeleton() {
     return (

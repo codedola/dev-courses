@@ -8,12 +8,16 @@ export const AuthServices = {
             hoTen,
             soDT,
             email,
-            maNhom: "GP01",
+            maLoaiNguoiDung: "GV",
+            maNhom: "GP01", //GP02
         });
     },
     Login({ taiKhoan, matKhau }) {
         return api
             .call()
             .post("/QuanLyNguoiDung/DangNhap", { taiKhoan, matKhau });
+    },
+    getInfoCurrentUser() {
+        return api.callWithAuth().post("/QuanLyNguoiDung/ThongTinNguoiDung");
     },
 };

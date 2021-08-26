@@ -5,18 +5,20 @@ import {
     FormStyled,
     FormItemStyled,
     ButtonSytled,
-} from "../StyledComponent/Login.Styled";
+} from "../Styled/Login.Styled";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { showMessageErrorForm } from "../shared/MessageValidateForm";
-export default function LoginForm() {
+export default function LoginForm({ handleSubmitLogin, loading }) {
     const {
         register,
         handleSubmit,
         formState: { errors },
     } = useForm();
     const onFinish = (values) => {
-        console.log("Success:", values);
+        if (handleSubmitLogin && typeof handleSubmitLogin === "function") {
+            handleSubmitLogin(values);
+        }
     };
     return (
         <FormStyled name='basic' size='large' onFinish={handleSubmit(onFinish)}>
@@ -55,7 +57,7 @@ export default function LoginForm() {
                         htmlType='submit'
                         block
                     >
-                        Đăng nhập
+                        {loading ? "Loading..." : "Đăng nhập"}
                     </ButtonSytled>
                     <Link to='/register'>Đăng ký</Link>
                 </Space>

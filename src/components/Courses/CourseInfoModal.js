@@ -1,5 +1,5 @@
 import React from "react";
-import { ModalCourseInfo } from "../StyledComponent/Course.Styled";
+import { ModalCourseInfo } from "../Styled/Course.Styled";
 import { Tag, Space, Divider } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 export default function CourseInfoModal({
@@ -25,6 +25,7 @@ export default function CourseInfoModal({
             visible={isModalVisible}
             footer={null}
             onCancel={handleCancel}
+            zIndex={2000}
         >
             <div className='Information'>
                 <div className='author' style={{ marginBottom: 10 }}>

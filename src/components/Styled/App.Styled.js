@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Affix } from "antd";
+import { Affix, Spin } from "antd";
 
 export const ContentApp = styled.div`
     width: 100%;
@@ -22,5 +22,18 @@ export const ContainerApp = styled.div`
 export const AffixStyled = styled(Affix)`
     .ant-affix {
         z-index: 1001;
+    }
+`;
+
+export const SpacingStyled = styled.div`
+    padding-top: ${(props) => props.sizeSpacing || "20px"};
+    padding-bottom: ${(props) => props.sizeSpacing || "20px"};
+`;
+
+export const SpinStyled = styled(Spin)`
+    .ant-spin-dot {
+        .ant-spin-dot-item {
+            background-color: #929292;
+        }
     }
 `;

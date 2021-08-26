@@ -1,12 +1,9 @@
 import React, { useState } from "react";
-import { Rate, Tag, Button, Tooltip } from "antd";
-import { EyeOutlined, PicRightOutlined, EditOutlined } from "@ant-design/icons";
-import {
-    CardStyled,
-    WapperCardItem,
-    ActionCard,
-} from "../StyledComponent/Card.Styled";
+import { Rate, Tag } from "antd";
+import { EyeOutlined } from "@ant-design/icons";
+import { CardStyled, WapperCardItem } from "../Styled/Card.Styled";
 import CourseInfoModal from "./CourseInfoModal";
+import CourseItemAction from "./CourseItemAction";
 export default function CourseItem({ course }) {
     const [isModalVisible, setIsModalVisible] = useState(false);
     const { tenKhoaHoc, hinhAnh, biDanh, nguoiTao, danhMucKhoaHoc, luotXem } =
@@ -21,10 +18,7 @@ export default function CourseItem({ course }) {
     };
     return (
         <WapperCardItem>
-            <CardStyled
-                hoverable
-                cover={<img alt={biDanh} src={hinhAnh} actions={[]} />}
-            >
+            <CardStyled hoverable cover={<img alt={biDanh} src={hinhAnh} />}>
                 {/* Information */}
                 <h3 className='title'>{tenKhoaHoc}</h3>
                 <p className='author'>{nguoiTao?.hoTen || "Anonymous"}</p>
@@ -46,29 +40,8 @@ export default function CourseItem({ course }) {
                 </Tag>
 
                 {/* action */}
-                <ActionCard>
-                    <Button type='primary' className='add-cart' danger block>
-                        <EditOutlined />
-                        <span>Ghi danh</span>
-                    </Button>
-                    <Tooltip
-                        placement='topRight'
-                        title='Xem chi tiết'
-                        mouseEnterDelay={0}
-                        mouseLeaveDelay={0}
-                    >
-                        <Button
-                            type='default'
-                            shape='circle'
-                            onClick={showModal}
-                            className='view-more'
-                        >
-                            <PicRightOutlined />
-                        </Button>
-                    </Tooltip>
-                </ActionCard>
+                <CourseItemAction showModal={showModal} />
             </CardStyled>
-
             <CourseInfoModal
                 course={course}
                 isModalVisible={isModalVisible}

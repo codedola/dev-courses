@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import { Space } from "antd";
+import { Space, List, Popover } from "antd";
+
 export const ContainerHeader = styled.header`
     position: relative;
     z-index: 1001;
@@ -107,5 +108,71 @@ export const SpaceStyled = styled(Space)`
                 color: #6f6f6f;
             }
         }
+
+        .avatar {
+            margin-left: 16px;
+            padding: 4px 16px 4px 8px;
+            /* background-color: rgb(0 0 0 / 3%); */
+            border-radius: 40px;
+            color: #08979c;
+            background: #e6fffb;
+            border-color: #87e8de;
+            .ant-avatar {
+                margin-right: 6px;
+            }
+            .user_name {
+                font-weight: 600;
+            }
+        }
+    }
+`;
+
+// Header User
+export const PopoverWapperUserHeader = styled(Popover)``;
+export const ListUserHeader = styled(List)`
+    min-width: 180px;
+    .ant-list-item {
+        font-size: 16px;
+        color: #444444;
+        border-bottom: unset;
+
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        a {
+            color: #444444;
+            display: flex;
+            align-items: center;
+        }
+        .anticon {
+            font-size: 18px;
+            margin-right: 10px;
+        }
+        &.courses,
+        &.setting {
+            padding: 0px;
+            a {
+                padding: 8px 16px;
+                flex-grow: 1;
+            }
+        }
+
+        &.logout {
+            cursor: pointer;
+        }
+        &:hover {
+            background-color: rgb(0 0 0 / 5%);
+            border-radius: 10px;
+        }
+        &.logout:hover {
+            color: #f5222d;
+            background: #fff1f0;
+        }
+        /* &.courses:hover {
+            background: #e2ffc5;
+            a {
+                color: #52c41a;
+            }
+        } */
     }
 `;
