@@ -1,5 +1,34 @@
 import styled from "styled-components";
-import { Space, List, Popover } from "antd";
+import { Space, List, Popover, Input } from "antd";
+
+const { Search } = Input;
+export const SearchStyled = styled(Search)`
+    .ant-input-wrapper.ant-input-group {
+        .ant-input-affix-wrapper {
+            border-top-left-radius: 8px;
+            border-bottom-left-radius: 8px;
+            border-color: #cfcfcf;
+            &:hover,
+            &:focus-visible,
+            &:focus {
+                border-color: #acacac;
+                outline: transparent;
+                box-shadow: none;
+            }
+        }
+
+        .ant-input-group-addon {
+            .ant-btn.ant-input-search-button {
+                background: #acacac;
+                border-top-right-radius: 8px;
+                border-bottom-right-radius: 8px;
+                border: unset;
+                /* color: #08979c; */
+                /* background: #e6fffb; */
+            }
+        }
+    }
+`;
 
 export const ContainerHeader = styled.header`
     position: relative;
@@ -44,35 +73,8 @@ export const WapperHeaderTop = styled.div`
             }
         }
 
-        .header__search {
+        .header_search {
             flex-grow: 1;
-            padding: 8px 12px;
-            background-color: #f0f2f5;
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-            border-radius: 60px;
-            overflow: hidden;
-            /* border: 1px solid #ccccccbf; */
-            input {
-                flex-grow: 1;
-                border: unset;
-                font-size: 1rem;
-                color: #484848;
-                border-radius: 10px;
-
-                background-color: #f0f2f5;
-                &:active,
-                &:focus-visible {
-                    outline: unset;
-                }
-            }
-
-            .anticon {
-                font-size: 1.4rem;
-                color: gray;
-                margin-right: 16px;
-            }
         }
     }
 `;
@@ -168,11 +170,5 @@ export const ListUserHeader = styled(List)`
             color: #f5222d;
             background: #fff1f0;
         }
-        /* &.courses:hover {
-            background: #e2ffc5;
-            a {
-                color: #52c41a;
-            }
-        } */
     }
 `;

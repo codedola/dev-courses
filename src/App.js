@@ -14,6 +14,7 @@ import Homepage from "./pages/Homepage";
 import HeaderApp from "./components/Header";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import SearchCourse from "./pages/SearchCourse";
 
 function App() {
     const dispatch = useDispatch();
@@ -37,6 +38,9 @@ function App() {
                 <HeaderApp />
                 <ContentApp>
                     <Switch>
+                        <Route path='/search' exact>
+                            <SearchCourse />
+                        </Route>
                         <Route path='/register' exact>
                             <Register />
                         </Route>

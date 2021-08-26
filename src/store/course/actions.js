@@ -1,16 +1,14 @@
 import { CourseService } from "../../services/courses";
 
 export const ACT_GET_LIST_COURSE = "ACT_GET_LIST_COURSE";
+export const ACT_GET_LIST_COURSE_SEARCH = "ACT_GET_LIST_COURSE_SEARCH";
 export const ACT_GET_LIST_COURSE_CATEGORIES = "ACT_GET_LIST_COURSE_CATEGORIES";
-export function actGetListCourse({
-    count,
-    currentPage,
-    list,
-    totalCount,
-    totalPages,
-}) {
+export function actGetListCourse(
+    { count, currentPage, list, totalCount, totalPages },
+    typeAction = ACT_GET_LIST_COURSE
+) {
     return {
-        type: ACT_GET_LIST_COURSE,
+        type: typeAction,
         payload: {
             list,
             count,
@@ -101,10 +99,65 @@ export function actGetListCourseByCategoryAsync(maDanhMuc) {
     };
 }
 
-export function actGetInfoCourseByIDAsync(id) {
+export function actGetListCourseBySearchAsync({
+    page = 1,
+    pageSize = 4,
+    tenKhoaHoc = "",
+} = {}) {
     return async function (dispatch) {
         try {
-            // const response = await CourseService.GetInfoCourseByID(id);
-        } catch (error) {}
+            const response = await CourseService.GetListCourseSearch({
+                page,
+                pageSize,
+                tenKhoaHoc,
+            });
+
+            console.log("response search text", response);
+            if (response.status === 200) {
+                const {
+                    currentPage,
+                    count,
+                    totalPages,
+                    totalCount,
+                    items: list,
+                } = response.data;
+
+                dispatch(
+                    actGetListCourse(
+                        {
+                            list,
+                            count,
+                            currentPage,
+                            totalCount,
+                            totalPages,
+                        },
+                        ACT_GET_LIST_COURSE_SEARCH
+                    )
+                );
+
+                return {
+                    ok: true,
+                };
+            }
+        } catch (error) {
+            if (error.response.status === 500) {
+                dispatch(
+                    actGetListCourse(
+                        {
+                            list: [],
+                            count: 0,
+                            currentPage: 1,
+                            totalCount: 0,
+                            totalPages: 1,
+                        },
+                        ACT_GET_LIST_COURSE_SEARCH
+                    )
+                );
+            }
+            return {
+                ok: false,
+                message: error?.response?.data,
+            };
+        }
     };
 }

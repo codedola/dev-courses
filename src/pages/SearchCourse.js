@@ -1,49 +1,43 @@
 import React, { useEffect } from "react";
+import queryString from "query-string";
+import { useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { Col, Result } from "antd";
+import CourseItem from "../components/Courses/CourseItem";
+import LoadingPaging from "../components/Home/LoadingPaging";
 import {
     HomeContainer,
-    RowTabsListCourse,
     RowListCoursePaging,
 } from "../components/Styled/Home.Styled";
-import CourseItem from "../components/Courses/CourseItem";
-import { actGetListCourseAsync } from "../store/course/actions";
-import { Col, Divider } from "antd";
-import BackToTop from "../components/BackTop";
-import TabListCourseCategory from "../components/TabListCourseCategory";
-import PopularTopics from "../components/PopularTopics";
-import LoadingPaging from "../components/Home/LoadingPaging";
+import { actGetListCourseBySearchAsync } from "../store/course/actions";
 import usePagingCourse from "../utilities/hook/usePagingCourse";
-export default function Homepage() {
+export default function SearchCourse() {
+    const location = useLocation();
     const dispatch = useDispatch();
+    const searchText = queryString.parse(location.search)?.q;
     const {
         listCourses,
         totalPages,
         currentPage,
         loading,
+        totalCount,
         renderButtonLoadMore,
-    } = usePagingCourse({ actAsync: actGetListCourseAsync });
+    } = usePagingCourse({ actAsync: actGetListCourseBySearchAsync });
 
     useEffect(
         function () {
-            dispatch(actGetListCourseAsync());
+            if (searchText) {
+                dispatch(
+                    actGetListCourseBySearchAsync({
+                        tenKhoaHoc: searchText,
+                    })
+                );
+            }
         },
-        [dispatch]
+        [searchText, dispatch]
     );
-
     return (
         <HomeContainer>
-            <RowTabsListCourse>
-                <Col span={24} style={{ padding: "0 8px" }}>
-                    <TabListCourseCategory />
-                </Col>
-            </RowTabsListCourse>
-
-            <Divider />
-
-            <PopularTopics />
-
-            <Divider />
-
             <RowListCoursePaging
                 gutter={[
                     { xs: 8, sm: 8, md: 16, lg: 24 },
@@ -51,6 +45,17 @@ export default function Homepage() {
                 ]}
                 style={{ marginLeft: 0, marginRight: 0 }}
             >
+                <Col span={24}>
+                    <Result
+                        style={{ padding: 0 }}
+                        status={listCourses.length === 0 ? "500" : "success"}
+                        title={
+                            listCourses.length !== 0
+                                ? `Có ${totalCount} kết quả với "${searchText}"`
+                                : `Không tìm thấy khóa học "${searchText}"`
+                        }
+                    />
+                </Col>
                 {listCourses.length !== 0
                     ? listCourses.map(function (course, index) {
                           return (
@@ -61,12 +66,8 @@ export default function Homepage() {
                       })
                     : null}
             </RowListCoursePaging>
-
             {loading ? <LoadingPaging /> : null}
-
             {currentPage !== totalPages ? renderButtonLoadMore() : null}
-
-            <BackToTop />
         </HomeContainer>
     );
 }
