@@ -189,8 +189,22 @@ export const EmptyMyCourse = styled(Empty)`
     }
 `;
 export const ListMyCoursesHeader = styled(List)`
-    max-width: 320px;
+    max-width: 360px;
+    max-height: 480px;
+    overflow-y: scroll;
+    &::-webkit-scrollbar-track {
+        /* box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); */
+        background-color: transparent;
+    }
 
+    &::-webkit-scrollbar {
+        width: 6px;
+        background-color: #f5f5f5;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: transparent;
+    }
     .ant-list-item {
         justify-content: flex-start;
         flex-wrap: nowrap;

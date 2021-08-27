@@ -19,14 +19,19 @@ export default function CourseItemAction({ showModal, isRegister, course }) {
             history.push("/login");
             return;
         }
-        const { nguoiTao, maKhoaHoc, tenKhoaHoc } = course;
-        const taiKhoan = nguoiTao.taiKhoan;
+        const { maKhoaHoc, tenKhoaHoc } = course;
+        const taiKhoan = currentUser.taiKhoan;
         dispatch(
             actRegisterCourseAsync({ taiKhoan, maKhoaHoc, tenKhoaHoc })
         ).then(function (res) {
             if (res.ok) {
                 showNotification({
                     type: typeNotify.success,
+                    message: res.message,
+                });
+            } else {
+                showNotification({
+                    type: typeNotify.warning,
                     message: res.message,
                 });
             }
@@ -37,7 +42,7 @@ export default function CourseItemAction({ showModal, isRegister, course }) {
             {isRegister ? (
                 <Button type='primary' className='add-cart register' block>
                     <CheckCircleOutlined />
-                    <span>Đã đăng ký</span>
+                    <span>Đã ghi danh</span>
                 </Button>
             ) : (
                 <Button
@@ -48,7 +53,7 @@ export default function CourseItemAction({ showModal, isRegister, course }) {
                     onClick={handleRegisterCourse}
                 >
                     <EditOutlined />
-                    <span>Đăng ký</span>
+                    <span>Ghi danh</span>
                 </Button>
             )}
 

@@ -17,7 +17,7 @@ export const typePlacement = {
 export function showNotification({
     type = typeNotify.success,
     message = "Notification Title",
-    description = "Hello World !",
+    description = "",
     placement = typePlacement.topRight,
     duration = 2,
 } = {}) {
