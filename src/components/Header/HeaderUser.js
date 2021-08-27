@@ -1,7 +1,6 @@
 import React from "react";
 import { List, Avatar } from "antd";
 import {
-    // UserOutlined,
     LogoutOutlined,
     ReadOutlined,
     SettingOutlined,
@@ -49,12 +48,7 @@ export default function HeaderUser() {
             trigger='hover'
         >
             <div className='avatar'>
-                <Avatar
-                    size='default'
-                    alt='user_avatar'
-                    // icon={<UserOutlined />}
-                    src={AvatarDefault}
-                />
+                <Avatar size='default' alt='user_avatar' src={AvatarDefault} />
                 <span className='user_name'>{currentUser.taiKhoan}</span>
             </div>
         </PopoverWapperUserHeader>

@@ -19,14 +19,6 @@ export const ModalCourseInfo = styled(Modal)`
     }
 
     .ant-modal-close {
-        /* background-color: #000000ab;
-        border-radius: 50%;
-        right: -40px;
-        top: -10px;
-        @media only screen and (max-width: 768px) {
-            right: -10px;
-            top: -10px;
-        } */
         .ant-modal-close-x {
             font-size: 20px;
             width: 56px;
@@ -36,6 +28,48 @@ export const ModalCourseInfo = styled(Modal)`
             .anticon {
                 vertical-align: middle;
                 color: #c1c1c1;
+            }
+        }
+    }
+
+    .Information {
+        .state {
+            .state_space {
+                .rate {
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: center;
+                    flex-wrap: wrap-reverse;
+                    cursor: auto;
+                    .star {
+                        display: flex;
+                        align-items: baseline;
+                        .num_star {
+                            margin-right: 6px;
+                            font-weight: 600;
+                            color: #b4690e;
+                            font-size: 1rem;
+                        }
+                        ul {
+                            display: flex;
+                            justify-content: flex-start;
+                            .ant-rate-star {
+                                margin-right: 2px;
+                            }
+                            .ant-rate-star-half,
+                            .ant-rate-star-full {
+                                color: #e59819;
+                            }
+                            li {
+                                font-size: 18px;
+                            }
+                        }
+                    }
+
+                    .students {
+                        font-size: 14px;
+                    }
+                }
             }
         }
     }

@@ -18,6 +18,7 @@ export default function Login() {
     const history = useHistory();
     const [loading, setLoading] = useState(false);
     function handleSubmitLogin(formData) {
+        if (loading) return;
         const { taiKhoan, matKhau } = formData;
         setLoading(true);
         dispatch(actLoginAsync({ taiKhoan, matKhau })).then(function (res) {

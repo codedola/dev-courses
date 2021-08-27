@@ -8,7 +8,6 @@ import {
 const initialAuth = {
     accessToken: "",
     currentUser: null,
-    countMyCourses: 0,
 };
 
 export default function authReducers(stateAuth = initialAuth, action) {
@@ -44,12 +43,20 @@ export default function authReducers(stateAuth = initialAuth, action) {
                 ...stateAuth,
                 accessToken: "",
                 currentUser: null,
+                countMyCourses: 0,
             };
         }
         case INCREASE_MY_COURSES: {
+            const { maKhoaHoc, tenKhoaHoc } = action.payload;
             return {
                 ...stateAuth,
-                countMyCourses: stateAuth.countMyCourses + 1,
+                currentUser: {
+                    ...stateAuth.currentUser,
+                    chiTietKhoaHocGhiDanh: [
+                        ...stateAuth.currentUser.chiTietKhoaHocGhiDanh,
+                        { maKhoaHoc, tenKhoaHoc },
+                    ],
+                },
             };
         }
 

@@ -29,6 +29,7 @@ export default function CourseItem({ course }) {
     const handleCancel = () => {
         setIsModalVisible(false);
     };
+
     return (
         <WapperCardItem>
             <CardStyled hoverable cover={<img alt={biDanh} src={hinhAnh} />}>
@@ -48,6 +49,7 @@ export default function CourseItem({ course }) {
                     </div>
                 </div>
                 {/* Category */}
+
                 <Tag color='orange' style={{ fontWeight: 600 }}>
                     {danhMucKhoaHoc?.tenDanhMucKhoaHoc || "Coding"}
                 </Tag>
@@ -56,8 +58,10 @@ export default function CourseItem({ course }) {
                 <CourseItemAction
                     showModal={showModal}
                     isRegister={checkRegister}
+                    course={course}
                 />
             </CardStyled>
+
             <CourseInfoModal
                 course={course}
                 isModalVisible={isModalVisible}

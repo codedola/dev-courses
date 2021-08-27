@@ -20,6 +20,7 @@ export default function Register() {
     const [loading, setLoading] = useState(false);
 
     function handleSubmitRegister(formData) {
+        if (loading) return;
         setLoading(true);
         const { taiKhoan, matKhau, hoTen, soDT, email } = formData;
         dispatch(

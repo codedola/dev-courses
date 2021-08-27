@@ -1,9 +1,11 @@
 import {
     ACT_GET_LIST_COURSE,
+    ACT_GET_LIST_ALL,
     ACT_GET_LIST_COURSE_CATEGORIES,
     ACT_GET_LIST_COURSE_SEARCH,
 } from "./actions";
 const intialState = {
+    hashListCourseAll: {},
     PagingCourse: {
         list: [],
         count: 0,
@@ -16,6 +18,22 @@ const intialState = {
 
 export default function courseReducer(stateCourse = intialState, action) {
     switch (action.type) {
+        case ACT_GET_LIST_ALL: {
+            const hashCourse = action.payload.list.reduce(function (
+                hash,
+                course
+            ) {
+                return {
+                    ...hash,
+                    [course.maKhoaHoc]: course,
+                };
+            },
+            {});
+            return {
+                ...stateCourse,
+                hashListCourseAll: hashCourse,
+            };
+        }
         case ACT_GET_LIST_COURSE: {
             const {
                 list: listCourse,

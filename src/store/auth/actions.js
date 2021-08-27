@@ -7,9 +7,13 @@ export const SAVE_TOKEN = "SAVE_TOKEN";
 export const SAVE_INFO_CURRENT_USER = "SAVE_INFO_CURRENT_USER";
 export const INCREASE_MY_COURSES = "INCREASE_MY_COURSES";
 //
-export function actIncreaseCourse() {
+export function actIncreaseCourse({ maKhoaHoc, tenKhoaHoc }) {
     return {
         type: INCREASE_MY_COURSES,
+        payload: {
+            maKhoaHoc,
+            tenKhoaHoc,
+        },
     };
 }
 export function actGetCurrentUser(user) {

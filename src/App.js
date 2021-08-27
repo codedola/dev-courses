@@ -9,6 +9,8 @@ import {
 } from "./components/Styled/App.Styled";
 
 import { actGetListCategoriesAsync } from "./store/category/actions";
+import { actGetListCourseAllAsync } from "./store/course/actions";
+import {} from "./store/course/actions";
 import { actCheckLoginAsync } from "./store/auth/actions";
 import Homepage from "./pages/Homepage";
 import HeaderApp from "./components/Header";
@@ -28,7 +30,14 @@ function App() {
 
     useEffect(
         function () {
-            dispatch(actGetListCategoriesAsync());
+            async function runPromiseAll() {
+                console.log("hello world");
+                await Promise.all([
+                    dispatch(actGetListCategoriesAsync()),
+                    dispatch(actGetListCourseAllAsync()),
+                ]);
+            }
+            runPromiseAll();
         },
         [dispatch]
     );

@@ -19,7 +19,7 @@ const api = {
         return axios.create({
             baseURL: BASE_URL,
             headers: {
-                accept: "application/json",
+                // accept: "application/json",
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${token}`,
                 ...headers,

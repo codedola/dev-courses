@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Space, List, Popover, Input } from "antd";
+import { Space, List, Popover, Input, Empty } from "antd";
 
 const { Search } = Input;
 export const SearchStyled = styled(Search)`
@@ -170,6 +170,94 @@ export const ListUserHeader = styled(List)`
         &.logout:hover {
             color: #f5222d;
             background: #fff1f0;
+        }
+    }
+`;
+
+// Header My Course
+export const EmptyMyCourse = styled(Empty)`
+    .ant-empty-image {
+        width: 300px;
+        height: 80px;
+        .ant-empty-img-simple {
+            width: 50%;
+            height: 100%;
+        }
+    }
+    .ant-empty-description {
+        font-size: 18px;
+    }
+`;
+export const ListMyCoursesHeader = styled(List)`
+    max-width: 320px;
+
+    .ant-list-item {
+        justify-content: flex-start;
+        flex-wrap: nowrap;
+
+        margin-bottom: 8px;
+        cursor: pointer;
+        border-radius: 4px;
+        padding-left: 8px;
+        padding-right: 8px;
+        &:hover {
+            background: #e6fffb;
+        }
+        &.load_more {
+            background: #f0f0f0;
+            text-align: center;
+            padding: 0px;
+
+            a {
+                display: block;
+                width: 100%;
+                height: 100%;
+                padding: 8px 0px;
+                color: gray;
+                font-size: 14px;
+            }
+            &:hover {
+                background: #e7e7e7;
+            }
+        }
+        .ant-image {
+            margin-right: 10px;
+            display: flex;
+            .ant-image-img {
+                height: 60px;
+                width: 100px;
+                object-fit: cover;
+            }
+        }
+        .course_info {
+            display: flex;
+            flex-direction: column;
+            .title {
+                margin-bottom: 0;
+                font-size: 14px;
+                color: #4e4e4e;
+                font-weight: 600;
+
+                /*  */
+                display: -webkit-box !important;
+                -webkit-line-clamp: 1;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: normal;
+            }
+            .description {
+                margin-bottom: 0;
+                font-size: 14px;
+                color: #9c9c9c;
+                /*  */
+                display: -webkit-box !important;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: normal;
+            }
         }
     }
 `;

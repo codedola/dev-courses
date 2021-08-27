@@ -41,4 +41,14 @@ export const CourseService = {
             },
         });
     },
+    RegisterCourse({ maKhoaHoc, taiKhoan }) {
+        return api
+            .callWithAuth()
+            .post("/QuanLyKhoaHoc/DangKyKhoaHoc", { maKhoaHoc, taiKhoan });
+    },
 };
+
+/**
+ * "maKhoaHoc": "ITEC2118",
+  "taiKhoan": "nguyenvana"
+ */

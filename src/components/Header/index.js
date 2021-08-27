@@ -5,17 +5,16 @@ import {
     HeaderTop,
     WapperHeaderTop,
 } from "../Styled/Header.Styled";
-import { Divider, Badge, Tooltip } from "antd";
-import { LoginOutlined, CarOutlined } from "@ant-design/icons";
+import { Divider, Tooltip } from "antd";
+import { LoginOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import HeaderLogo from "./HeaderLogo";
 import HeaderSearch from "./HeaderSearch";
 import HeaderUser from "./HeaderUser";
-
+import HeaderMyCourse from "./HeaderMyCourse";
 export default function Header() {
     const currentUser = useSelector((state) => state.Auths.currentUser);
-    const countMyCourses = useSelector((state) => state.Auths.countMyCourses);
 
     return (
         <ContainerHeader>
@@ -30,18 +29,7 @@ export default function Header() {
                         size='small'
                         split={<Divider type='vertical' />}
                     >
-                        <Tooltip
-                            placement='bottomRight'
-                            title='Khóa học của bạn'
-                            mouseEnterDelay={0}
-                            mouseLeaveDelay={0}
-                        >
-                            <Link to='/my-courses' className='cart'>
-                                <Badge count={countMyCourses} showZero>
-                                    <CarOutlined />
-                                </Badge>
-                            </Link>
-                        </Tooltip>
+                        <HeaderMyCourse />
                         {!currentUser ? (
                             <Tooltip
                                 placement='bottomRight'

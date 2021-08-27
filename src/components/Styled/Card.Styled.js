@@ -100,6 +100,9 @@ export const CardStyled = styled(Card)`
                     .ant-rate-star-full {
                         color: #e59819;
                     }
+                    li {
+                        font-size: 18px;
+                    }
                 }
             }
 

@@ -1,6 +1,6 @@
 import React from "react";
 import { ModalCourseInfo } from "../Styled/Course.Styled";
-import { Tag, Space, Divider } from "antd";
+import { Tag, Space, Divider, Rate } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 export default function CourseInfoModal({
     course,
@@ -14,7 +14,7 @@ export default function CourseInfoModal({
         biDanh,
         nguoiTao,
         ngayTao,
-        // soLuongHocVien,
+        soLuongHocVien,
         // danhMucKhoaHoc,
         // luotXem,
     } = course;
@@ -39,7 +39,7 @@ export default function CourseInfoModal({
                 </div>
 
                 <div className='state'>
-                    <Space direction='vertical'>
+                    <Space direction='vertical' className='state_space'>
                         <Space className='state_created'>
                             <Tag color='#e59819'>BestSeller</Tag>
                             <span style={{ color: "green" }}>
@@ -50,9 +50,22 @@ export default function CourseInfoModal({
                             split={<Divider type='vertical' />}
                             className='state_detail'
                         >
-                            <span>50 giờ thực hành</span>
+                            <span>120 total hours</span>
                             <span>All Levels</span>
                             <span>Subtitles</span>
+                        </Space>
+                        <Space className='rate'>
+                            <div className='star'>
+                                <span className='num_star'>4.5</span>
+                                <Rate disabled allowHalf defaultValue={4.5} />
+                            </div>
+                            <div className='students'>
+                                (
+                                {soLuongHocVien === 0
+                                    ? "473,613"
+                                    : soLuongHocVien}
+                                students)
+                            </div>
                         </Space>
                     </Space>
                 </div>
