@@ -1,21 +1,42 @@
 import React from "react";
 import { Card } from "antd";
 import { CardPopularTopics } from "./PopularTopics.Styled";
+import { useHistory } from "react-router-dom";
 const gridStyle = {
     width: "25%",
     textAlign: "center",
 };
+const listTopics = [
+    "JavaScript",
+    "NodeJS",
+    "React",
+    "Python",
+    "NextJS",
+    "PHP",
+    "SQL",
+    "FullStack",
+];
 export default function PopularTopics() {
+    const history = useHistory();
+
+    const onSearchPopularTopic = (text) => {
+        return function () {
+            history.push("/search?q=" + text.toLowerCase());
+        };
+    };
     return (
         <CardPopularTopics bordered={false} title='Popular Topics'>
-            <Card.Grid style={gridStyle}>JavaScript</Card.Grid>
-            <Card.Grid style={gridStyle}>NodeJS</Card.Grid>
-            <Card.Grid style={gridStyle}>ReactJS</Card.Grid>
-            <Card.Grid style={gridStyle}>FrondEnd</Card.Grid>
-            <Card.Grid style={gridStyle}>NextJS</Card.Grid>
-            <Card.Grid style={gridStyle}>Android</Card.Grid>
-            <Card.Grid style={gridStyle}>SQL</Card.Grid>
-            <Card.Grid style={gridStyle}>FullStack</Card.Grid>
+            {listTopics.map(function (topic, index) {
+                return (
+                    <Card.Grid
+                        style={gridStyle}
+                        onClick={onSearchPopularTopic(topic)}
+                        key={index}
+                    >
+                        {topic}
+                    </Card.Grid>
+                );
+            })}
         </CardPopularTopics>
     );
 }

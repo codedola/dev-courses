@@ -1,8 +1,14 @@
 import Storage from "../../utilities/Storage";
-import { LOG_OUT, SAVE_TOKEN, SAVE_INFO_CURRENT_USER } from "./actions";
+import {
+    LOG_OUT,
+    SAVE_TOKEN,
+    SAVE_INFO_CURRENT_USER,
+    INCREASE_MY_COURSES,
+} from "./actions";
 const initialAuth = {
     accessToken: "",
     currentUser: null,
+    countMyCourses: 0,
 };
 
 export default function authReducers(stateAuth = initialAuth, action) {
@@ -29,6 +35,7 @@ export default function authReducers(stateAuth = initialAuth, action) {
             return {
                 ...stateAuth,
                 currentUser: user,
+                countMyCourses: user?.chiTietKhoaHocGhiDanh?.length || 0,
             };
         }
         case LOG_OUT: {
@@ -37,6 +44,12 @@ export default function authReducers(stateAuth = initialAuth, action) {
                 ...stateAuth,
                 accessToken: "",
                 currentUser: null,
+            };
+        }
+        case INCREASE_MY_COURSES: {
+            return {
+                ...stateAuth,
+                countMyCourses: stateAuth.countMyCourses + 1,
             };
         }
 

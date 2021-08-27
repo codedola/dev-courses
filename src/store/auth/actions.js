@@ -5,8 +5,13 @@ export const LOG_OUT = "LOG_OUT";
 export const GET_CURRENT_USER = "GET_CURRENT_USER";
 export const SAVE_TOKEN = "SAVE_TOKEN";
 export const SAVE_INFO_CURRENT_USER = "SAVE_INFO_CURRENT_USER";
-
+export const INCREASE_MY_COURSES = "INCREASE_MY_COURSES";
 //
+export function actIncreaseCourse() {
+    return {
+        type: INCREASE_MY_COURSES,
+    };
+}
 export function actGetCurrentUser(user) {
     return {
         type: GET_CURRENT_USER,

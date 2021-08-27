@@ -2,17 +2,14 @@ import React, { useEffect, useState } from "react";
 import queryString from "query-string";
 import { useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { Col, Affix } from "antd";
-import CourseItem from "../components/Courses/CourseItem";
+import { Affix, Result, Row } from "antd";
 import LoadingPaging from "../components/Home/LoadingPaging";
-import {
-    HomeContainer,
-    RowListCoursePaging,
-} from "../components/Styled/Home.Styled";
-import { ResultStyled } from "../components/Styled/Search.Styled";
+import { HomeContainer } from "../components/Styled/Home.Styled";
+import { ColResult } from "../components/Styled/Search.Styled";
 import { SpinStyled } from "../components/Styled/App.Styled";
 import { actGetListCourseBySearchAsync } from "../store/course/actions";
 import usePagingCourse from "../utilities/hook/usePagingCourse";
+import ListCourses from "../components/Home/ListCourses";
 export default function SearchCourse() {
     const location = useLocation();
     const dispatch = useDispatch();
@@ -44,18 +41,12 @@ export default function SearchCourse() {
         [searchText, dispatch]
     );
     return (
-        <HomeContainer>
+        <HomeContainer style={{ marginTop: 10 }}>
             <SpinStyled spinning={loadingFirst} size='large'>
-                <RowListCoursePaging
-                    gutter={[
-                        { xs: 8, sm: 8, md: 16, lg: 24 },
-                        { xs: 8, sm: 8, md: 16, lg: 24 },
-                    ]}
-                    style={{ marginLeft: 0, marginRight: 0 }}
-                >
-                    <Col span={24}>
+                <Row style={{ paddingBottom: 10 }}>
+                    <ColResult span={24}>
                         <Affix>
-                            <ResultStyled
+                            <Result
                                 status={
                                     listCourses.length === 0 ? "500" : "success"
                                 }
@@ -66,18 +57,10 @@ export default function SearchCourse() {
                                 }
                             />
                         </Affix>
-                    </Col>
+                    </ColResult>
+                </Row>
 
-                    {listCourses.length !== 0
-                        ? listCourses.map(function (course, index) {
-                              return (
-                                  <Col xs={12} md={8} lg={6} key={index}>
-                                      <CourseItem course={course} />
-                                  </Col>
-                              );
-                          })
-                        : null}
-                </RowListCoursePaging>
+                <ListCourses listCourses={listCourses} />
             </SpinStyled>
             {loading ? <LoadingPaging /> : null}
             {currentPage !== totalPages ? renderButtonLoadMore() : null}

@@ -3,15 +3,14 @@ import { useDispatch } from "react-redux";
 import {
     HomeContainer,
     RowTabsListCourse,
-    RowListCoursePaging,
 } from "../components/Styled/Home.Styled";
-import CourseItem from "../components/Courses/CourseItem";
 import { actGetListCourseAsync } from "../store/course/actions";
 import { Col, Divider } from "antd";
 import BackToTop from "../components/BackTop";
 import TabListCourseCategory from "../components/TabListCourseCategory";
 import PopularTopics from "../components/PopularTopics";
 import LoadingPaging from "../components/Home/LoadingPaging";
+import ListCourses from "../components/Home/ListCourses";
 import usePagingCourse from "../utilities/hook/usePagingCourse";
 export default function Homepage() {
     const dispatch = useDispatch();
@@ -44,23 +43,7 @@ export default function Homepage() {
 
             <Divider />
 
-            <RowListCoursePaging
-                gutter={[
-                    { xs: 8, sm: 8, md: 16, lg: 24 },
-                    { xs: 8, sm: 8, md: 16, lg: 24 },
-                ]}
-                style={{ marginLeft: 0, marginRight: 0 }}
-            >
-                {listCourses.length !== 0
-                    ? listCourses.map(function (course, index) {
-                          return (
-                              <Col xs={12} md={8} lg={6} key={index}>
-                                  <CourseItem course={course} />
-                              </Col>
-                          );
-                      })
-                    : null}
-            </RowListCoursePaging>
+            <ListCourses listCourses={listCourses} />
 
             {loading ? <LoadingPaging /> : null}
 

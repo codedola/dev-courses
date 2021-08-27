@@ -85,6 +85,7 @@ export const SpaceStyled = styled(Space)`
     .ant-space-item {
         cursor: pointer;
         .cart {
+            display: block;
             padding: 10px 30px;
             &:hover {
                 background-color: rgb(0 0 0 / 3%);

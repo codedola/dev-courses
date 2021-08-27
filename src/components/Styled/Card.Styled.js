@@ -14,6 +14,12 @@ export const ActionCard = styled.div`
         border-radius: 6px;
     }
 
+    .add-cart.register {
+        background: #52c41a;
+        border-color: #52c41a;
+        cursor: auto;
+    }
+
     .view-more {
         margin-left: 8px;
     }

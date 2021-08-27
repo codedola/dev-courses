@@ -1,14 +1,26 @@
 import React from "react";
 import { Button, Tooltip } from "antd";
-import { EditOutlined, PicRightOutlined } from "@ant-design/icons";
+import {
+    EditOutlined,
+    PicRightOutlined,
+    CheckCircleOutlined,
+} from "@ant-design/icons";
 import { ActionCard } from "../Styled/Card.Styled";
-export default function CourseItemAction({ showModal }) {
+export default function CourseItemAction({ showModal, isRegister }) {
     return (
         <ActionCard>
-            <Button type='primary' className='add-cart' danger block>
-                <EditOutlined />
-                <span>Ghi danh</span>
-            </Button>
+            {isRegister ? (
+                <Button type='primary' className='add-cart register' block>
+                    <CheckCircleOutlined />
+                    <span>Đã đăng ký</span>
+                </Button>
+            ) : (
+                <Button type='primary' className='add-cart' danger block>
+                    <EditOutlined />
+                    <span>Đăng ký</span>
+                </Button>
+            )}
+
             <Tooltip
                 placement='topRight'
                 title='Xem chi tiết'

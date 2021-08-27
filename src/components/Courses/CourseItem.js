@@ -1,11 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { Rate, Tag } from "antd";
 import { EyeOutlined } from "@ant-design/icons";
 import { CardStyled, WapperCardItem } from "../Styled/Card.Styled";
 import CourseInfoModal from "./CourseInfoModal";
 import CourseItemAction from "./CourseItemAction";
+import { useSelector } from "react-redux";
 export default function CourseItem({ course }) {
     const [isModalVisible, setIsModalVisible] = useState(false);
+
+    const currentUser = useSelector((state) => state.Auths.currentUser);
+    const listCourseRegister = currentUser?.chiTietKhoaHocGhiDanh;
+
+    const checkRegister = useMemo(() => {
+        const courseRegister = listCourseRegister?.find(
+            (item) => item.maKhoaHoc === course.maKhoaHoc
+        );
+        return Boolean(courseRegister);
+    }, [course, listCourseRegister]);
+
+    //
     const { tenKhoaHoc, hinhAnh, biDanh, nguoiTao, danhMucKhoaHoc, luotXem } =
         course;
 
@@ -40,7 +53,10 @@ export default function CourseItem({ course }) {
                 </Tag>
 
                 {/* action */}
-                <CourseItemAction showModal={showModal} />
+                <CourseItemAction
+                    showModal={showModal}
+                    isRegister={checkRegister}
+                />
             </CardStyled>
             <CourseInfoModal
                 course={course}

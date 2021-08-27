@@ -1,11 +1,12 @@
 import React from "react";
 import { List, Avatar } from "antd";
 import {
-    UserOutlined,
+    // UserOutlined,
     LogoutOutlined,
     ReadOutlined,
     SettingOutlined,
 } from "@ant-design/icons";
+import AvatarDefault from "../../assets/images/avata_default.png";
 import {
     ListUserHeader,
     PopoverWapperUserHeader,
@@ -51,7 +52,8 @@ export default function HeaderUser() {
                 <Avatar
                     size='default'
                     alt='user_avatar'
-                    icon={<UserOutlined />}
+                    // icon={<UserOutlined />}
+                    src={AvatarDefault}
                 />
                 <span className='user_name'>{currentUser.taiKhoan}</span>
             </div>
