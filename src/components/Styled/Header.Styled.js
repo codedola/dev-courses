@@ -69,7 +69,7 @@ export const WapperHeaderTop = styled.div`
             margin-right: 12px;
             a {
                 text-decoration: none;
-                color: #484848;
+                color: #747474;
             }
         }
 

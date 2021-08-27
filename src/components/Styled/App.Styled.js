@@ -31,6 +31,7 @@ export const SpacingStyled = styled.div`
 `;
 
 export const SpinStyled = styled(Spin)`
+    transition-duration: 0s;
     .ant-spin-dot {
         .ant-spin-dot-item {
             background-color: #929292;
