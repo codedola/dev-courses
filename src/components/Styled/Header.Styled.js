@@ -181,15 +181,15 @@ export const EmptyMyCourse = styled(Empty)`
         height: 80px;
         .ant-empty-img-simple {
             width: 50%;
-            height: 100%;
+            height: 80%;
         }
     }
     .ant-empty-description {
-        font-size: 18px;
+        font-size: 16px;
     }
 `;
 export const ListMyCoursesHeader = styled(List)`
-    max-width: 360px;
+    max-width: 368px;
     max-height: 480px;
     overflow-y: scroll;
     &::-webkit-scrollbar-track {
@@ -198,7 +198,7 @@ export const ListMyCoursesHeader = styled(List)`
     }
 
     &::-webkit-scrollbar {
-        width: 6px;
+        width: 4px;
         background-color: #f5f5f5;
     }
 
@@ -208,14 +208,15 @@ export const ListMyCoursesHeader = styled(List)`
     .ant-list-item {
         justify-content: flex-start;
         flex-wrap: nowrap;
+        position: relative;
 
         margin-bottom: 8px;
-        cursor: pointer;
+
         border-radius: 4px;
         padding-left: 8px;
         padding-right: 8px;
         &:hover {
-            background: #e6fffb;
+            /* background: #f6f6f6; */
         }
         /* Tool - Search - Sort */
         &.tool {
@@ -243,32 +244,18 @@ export const ListMyCoursesHeader = styled(List)`
                 background: #00000005;
                 font-size: 18px;
                 &:hover {
-                    background: #e6fffb;
+                    background: rgb(251 251 251);
                 }
             }
         }
         &.tool:hover {
             background: unset;
         }
-
-        /* End Tool */
-        &.load_more {
-            background: #f0f0f0;
-            text-align: center;
-            padding: 0px;
-
-            a {
-                display: block;
-                width: 100%;
-                height: 100%;
-                padding: 8px 0px;
-                color: gray;
-                font-size: 14px;
-            }
-            &:hover {
-                background: #e7e7e7;
-            }
+        &.empty:hover {
+            background: unset;
         }
+
+        /* Content Course Regsiter */
         .ant-image {
             margin-right: 10px;
             display: flex;
@@ -281,12 +268,14 @@ export const ListMyCoursesHeader = styled(List)`
         .course_info {
             display: flex;
             flex-direction: column;
+            /* padding-right: 2px; */
             .title {
                 margin-bottom: 0;
                 font-size: 14px;
                 color: #4e4e4e;
                 font-weight: 600;
-
+                padding-right: 6px;
+                cursor: pointer;
                 /*  */
                 display: -webkit-box !important;
                 -webkit-line-clamp: 1;
@@ -307,6 +296,51 @@ export const ListMyCoursesHeader = styled(List)`
                 text-overflow: ellipsis;
                 white-space: normal;
             }
+        }
+
+        .handle_course {
+            position: absolute;
+            cursor: pointer;
+            color: #d5d5d5;
+            border-radius: 4px;
+            top: 0;
+            right: 0px;
+            font-size: 16px;
+            /* padding: 0px 2px 4px 6px; */
+            transition: all ease 0.2s;
+            &:hover {
+                color: #4e4e4e;
+            }
+        }
+    }
+`;
+
+export const ListHandleRegisterCourse = styled(List)`
+    .ant-list-item {
+        margin-bottom: 6px;
+        /* border-bottom: unset; */
+        background: #f8f8f8;
+        color: #909090;
+        font-size: 12px;
+        padding: 4px 12px;
+        border-radius: 4px;
+        border: 1px solid transparent;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all ease 0.2s;
+        &.delete {
+            margin-bottom: 0px;
+        }
+        &.read_more:hover {
+            color: #46b815;
+            /* border: 1px solid #b7eb8f; */
+            background: #f6ffed;
+        }
+
+        &.delete:hover {
+            color: #cf1322;
+            background: #fff1f0;
+            /* border: 1px solid #ffa39e; */
         }
     }
 `;

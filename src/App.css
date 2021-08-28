@@ -8,3 +8,7 @@
     /* font-size: 62.5%; */
     font-family: "Roboto", sans-serif;
 }
+.ant-popover-inner {
+    border-radius: 4px;
+}
+.ant-popover-inner-content {padding: 8px;}
