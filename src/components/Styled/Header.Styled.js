@@ -309,7 +309,7 @@ export const ListMyCoursesHeader = styled(List)`
             /* padding: 0px 2px 4px 6px; */
             transition: all ease 0.2s;
             &:hover {
-                color: #4e4e4e;
+                color: #afafaf;
             }
         }
     }

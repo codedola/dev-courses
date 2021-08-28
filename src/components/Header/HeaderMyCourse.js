@@ -71,7 +71,7 @@ export default function HeaderMyCourse() {
                                         content={
                                             <ListHandleRegisterCourse>
                                                 <List.Item className='read_more'>
-                                                    Xem thêm
+                                                    Xem chi tiết
                                                 </List.Item>
                                                 <List.Item className='delete'>
                                                     Hủy ghi danh
