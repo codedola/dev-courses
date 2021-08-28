@@ -176,6 +176,28 @@ export const ListUserHeader = styled(List)`
 
 // Header My Course
 export const EmptyMyCourse = styled(Empty)`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    &.filter_course {
+        width: 20%;
+        margin: 0;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        .ant-empty-image {
+            height: 40px;
+            width: unset;
+            margin-bottom: 0;
+            .ant-empty-img-simple {
+                height: 100%;
+                width: 100%;
+                margin: auto;
+            }
+        }
+    }
     .ant-empty-image {
         width: 300px;
         height: 80px;
@@ -206,6 +228,14 @@ export const ListMyCoursesHeader = styled(List)`
         background-color: transparent;
     }
     .ant-list-item {
+        mark,
+        mark.YourHighlightClass {
+            padding: 4px 0px;
+            color: #666666;
+            background-color: #fdff81;
+        }
+
+        /*  */
         justify-content: flex-start;
         flex-wrap: nowrap;
         position: relative;
@@ -220,6 +250,7 @@ export const ListMyCoursesHeader = styled(List)`
         }
         /* Tool - Search - Sort */
         &.tool {
+            background: #fff;
             cursor: auto;
             .ant-input-affix-wrapper {
                 border: 1px solid #e0e0e0;
@@ -251,6 +282,11 @@ export const ListMyCoursesHeader = styled(List)`
         &.tool:hover {
             background: unset;
         }
+        &.empty.filter {
+            flex-wrap: wrap;
+            justify-content: center;
+            flex-direction: column;
+        }
         &.empty:hover {
             background: unset;
         }
@@ -272,7 +308,7 @@ export const ListMyCoursesHeader = styled(List)`
             .title {
                 margin-bottom: 0;
                 font-size: 14px;
-                color: #4e4e4e;
+                color: #666666;
                 font-weight: 600;
                 padding-right: 6px;
                 cursor: pointer;
