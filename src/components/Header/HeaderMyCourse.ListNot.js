@@ -35,7 +35,7 @@ export default function HeaderMyCourseListNot({
                                             item.maKhoaHoc
                                         )}
                                     >
-                                        Hủy ghi danh
+                                        Xóa khóa học
                                     </List.Item>
                                 </ListHandleRegisterCourse>
                             }

@@ -50,7 +50,7 @@ export default function HeaderMyCourseListFilter({
                                                 item.maKhoaHoc
                                             )}
                                         >
-                                            Hủy ghi danh
+                                            Xóa khóa học
                                         </List.Item>
                                     </ListHandleRegisterCourse>
                                 }

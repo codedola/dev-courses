@@ -84,10 +84,6 @@ export default function HeaderMyCourse() {
 
     function handleDeleteCourseAsync(id) {
         return function () {
-            message.loading({
-                content: "Loading...",
-                key: "updatable",
-            });
             dispatch(
                 actDeleteRegisterCourseAsync({
                     maKhoaHoc: id,
