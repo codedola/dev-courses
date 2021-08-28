@@ -71,7 +71,9 @@ export default function SearchCourse() {
                     </ColResult>
                 </Row>
 
-                <ListCourses listCourses={listCourses} />
+                {listCourses?.length !== 0 ? (
+                    <ListCourses listCourses={listCourses} />
+                ) : null}
             </SpinStyled>
             {loading ? <LoadingPaging /> : null}
             {currentPage !== totalPages ? renderButtonLoadMore() : null}

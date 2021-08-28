@@ -98,6 +98,7 @@ export default function HeaderMyCourse() {
                     message.success({
                         content: "Hủy thành công",
                         key: "updatable",
+                        duration: 0.5,
                     });
                 } else {
                     message.error({

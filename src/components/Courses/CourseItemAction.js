@@ -9,7 +9,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { actRegisterCourseAsync } from "../../store/course/actions";
 import { ActionCard } from "../Styled/Card.Styled";
-import { showNotification, typeNotify } from "../shared/Notification";
+import {
+    showNotification,
+    typeNotify,
+    typePlacement,
+} from "../shared/Notification";
 export default function CourseItemAction({ showModal, isRegister, course }) {
     const dispatch = useDispatch();
     const history = useHistory();
@@ -28,6 +32,7 @@ export default function CourseItemAction({ showModal, isRegister, course }) {
                 showNotification({
                     type: typeNotify.success,
                     message: res.message,
+                    placement: typePlacement.topLeft,
                 });
             } else {
                 showNotification({
