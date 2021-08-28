@@ -1,6 +1,11 @@
 import React from "react";
-import { Badge, Popover, List, Image, Empty } from "antd";
-import { CarOutlined } from "@ant-design/icons";
+import { Badge, Popover, List, Image, Empty, Input, Space } from "antd";
+import {
+    CarOutlined,
+    SearchOutlined,
+    SortAscendingOutlined,
+    SortDescendingOutlined,
+} from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { ListMyCoursesHeader, EmptyMyCourse } from "../Styled/Header.Styled";
@@ -13,12 +18,26 @@ export default function HeaderMyCourse() {
     const countMyCourses = listCourseRegister?.length;
 
     //
+    const onChange = (e) => console.log(e.target.value);
+
     return (
         <Popover
             placement='bottom'
             trigger='click'
             content={
                 <ListMyCoursesHeader itemLayout='horizontal'>
+                    <List.Item className='tool'>
+                        <Space size='middle'>
+                            <Input
+                                placeholder='Search course...'
+                                bordered={false}
+                                prefix={<SearchOutlined />}
+                                onChange={onChange}
+                            />
+                            <SortAscendingOutlined />
+                            <SortDescendingOutlined />
+                        </Space>
+                    </List.Item>
                     {listCourseRegister && countMyCourses !== 0 ? (
                         listCourseRegister.map((item, index) => {
                             const course = hashCourses[item.maKhoaHoc];

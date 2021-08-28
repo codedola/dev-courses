@@ -63,7 +63,7 @@ export default function CourseInfoModal({
                                 (
                                 {soLuongHocVien === 0
                                     ? "473,613"
-                                    : soLuongHocVien}
+                                    : soLuongHocVien}{" "}
                                 students)
                             </div>
                         </Space>

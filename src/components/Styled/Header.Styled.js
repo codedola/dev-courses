@@ -217,6 +217,41 @@ export const ListMyCoursesHeader = styled(List)`
         &:hover {
             background: #e6fffb;
         }
+        /* Tool - Search - Sort */
+        &.tool {
+            cursor: auto;
+            .ant-input-affix-wrapper {
+                border: 1px solid #e0e0e0;
+                border-radius: 8px;
+                padding-top: 6px;
+                padding-bottom: 6px;
+                .ant-input-prefix {
+                    color: #e0e0e0;
+                    margin-right: 6px;
+                }
+                .ant-input {
+                    color: #757575;
+                }
+            }
+            .anticon-sort-ascending,
+            .anticon-sort-descending {
+                display: block;
+                cursor: pointer;
+                padding: 6px 12px;
+                border-radius: 8px;
+                color: #989898;
+                background: #00000005;
+                font-size: 18px;
+                &:hover {
+                    background: #e6fffb;
+                }
+            }
+        }
+        &.tool:hover {
+            background: unset;
+        }
+
+        /* End Tool */
         &.load_more {
             background: #f0f0f0;
             text-align: center;
