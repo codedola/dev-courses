@@ -199,7 +199,7 @@ export const ListMyCoursesHeader = styled(List)`
 
     &::-webkit-scrollbar {
         width: 4px;
-        background-color: #f5f5f5;
+        background-color: transparent;
     }
 
     &::-webkit-scrollbar-thumb {
