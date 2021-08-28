@@ -8,6 +8,10 @@
     /* font-size: 62.5%; */
     font-family: "Roboto", sans-serif;
 }
+
+.ant-modal-content {
+    border-radius: 10px;
+}
 .ant-popover-inner {
     border-radius: 4px;
 }

@@ -3,6 +3,14 @@ import { Modal } from "antd";
 
 export const ModalCourseInfo = styled(Modal)`
     top: 20px;
+
+    .ant-modal-content {
+        border-radius: 10px;
+        .ant-modal-header {
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+    }
     @media only screen and (max-width: 768px) {
         width: 100%;
     }

@@ -96,13 +96,13 @@ export default function HeaderMyCourse() {
             ).then(function (res) {
                 if (res.ok) {
                     message.success({
-                        content: "Hủy thành công",
+                        content: "Xóa thành công",
                         key: "updatable",
                         duration: 0.5,
                     });
                 } else {
                     message.error({
-                        content: "Hủy thất bại",
+                        content: "Xóa thất bại",
                         key: "updatable",
                     });
                 }
