@@ -8,6 +8,7 @@ export default function HeaderSearch() {
             history.push(`/search?q=${value}`);
         }
     };
+
     return (
         <div className='header_search'>
             <SearchStyled

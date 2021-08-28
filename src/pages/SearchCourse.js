@@ -13,9 +13,20 @@ import ListCourses from "../components/Home/ListCourses";
 export default function SearchCourse() {
     const location = useLocation();
     const dispatch = useDispatch();
+    const [searchText, setSearchText] = useState("");
     const [loadingFirst, setLoadingFirst] = useState(false);
-    const searchText = queryString.parse(location.search)?.q;
 
+    useEffect(
+        function () {
+            const cpp = location?.search.includes("++");
+            if (cpp) {
+                setSearchText(location?.search?.split("=")[1]);
+            } else {
+                setSearchText(queryString.parse(location.search)?.q);
+            }
+        },
+        [location]
+    );
     const {
         listCourses,
         totalPages,

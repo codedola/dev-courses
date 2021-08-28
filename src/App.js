@@ -31,7 +31,6 @@ function App() {
     useEffect(
         function () {
             async function runPromiseAll() {
-                console.log("hello world");
                 await Promise.all([
                     dispatch(actGetListCategoriesAsync()),
                     dispatch(actGetListCourseAllAsync()),

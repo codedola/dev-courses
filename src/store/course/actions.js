@@ -1,5 +1,5 @@
 import { CourseService } from "../../services/courses";
-import { actIncreaseCourse } from "../auth/actions";
+import { actIncreaseCourse, actDecreaseCourse } from "../auth/actions";
 export const ACT_GET_LIST_ALL = "ACT_GET_LIST_ALL";
 export const ACT_GET_LIST_COURSE = "ACT_GET_LIST_COURSE";
 export const ACT_GET_LIST_COURSE_SEARCH = "ACT_GET_LIST_COURSE_SEARCH";
@@ -190,6 +190,31 @@ export function actRegisterCourseAsync({ taiKhoan, maKhoaHoc, tenKhoaHoc }) {
 
             if (response.status === 200) {
                 dispatch(actIncreaseCourse({ maKhoaHoc, tenKhoaHoc }));
+                return {
+                    ok: true,
+                    message: response.data,
+                };
+            }
+        } catch (error) {
+            console.log({ error });
+            return {
+                ok: false,
+                message: error?.response?.data,
+            };
+        }
+    };
+}
+
+export function actDeleteRegisterCourseAsync({ taiKhoan, maKhoaHoc }) {
+    return async function (dispatch) {
+        try {
+            const response = await CourseService.DeleteRegisterCourse({
+                taiKhoan,
+                maKhoaHoc,
+            });
+            console.log("delete register course", response);
+            if (response.status === 200) {
+                dispatch(actDecreaseCourse({ maKhoaHoc }));
                 return {
                     ok: true,
                     message: response.data,

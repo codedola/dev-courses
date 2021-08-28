@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Space, List, Popover, Input, Empty } from "antd";
+import { Space, List, Popover, Input, Empty, Modal } from "antd";
 
 const { Search } = Input;
 export const SearchStyled = styled(Search)`
@@ -377,6 +377,49 @@ export const ListHandleRegisterCourse = styled(List)`
             color: #cf1322;
             background: #fff1f0;
             /* border: 1px solid #ffa39e; */
+        }
+    }
+`;
+
+export const ModalStyled = styled(Modal)`
+    z-index: 1031;
+    .ant-modal-content {
+        border-radius: 16px;
+        .ant-modal-header {
+            border-top-left-radius: 16px;
+            border-top-right-radius: 16px;
+            padding-top: 26px;
+            padding-bottom: 26px;
+            .ant-modal-title {
+                text-align: center;
+                font-size: 18px;
+            }
+        }
+        .ant-modal-body {
+            padding: 0;
+            .ant-list {
+                .ant-list-item {
+                    justify-content: center;
+                    font-weight: 600;
+                    font-size: 16px;
+                    cursor: pointer;
+                }
+
+                .ant-list-item.upload {
+                    color: #0095f6;
+                }
+
+                .ant-list-item.library {
+                    color: #09dd09;
+                }
+
+                .ant-list-item.cancel {
+                    font-weight: 400;
+                }
+                .ant-list-item.delete {
+                    color: red;
+                }
+            }
         }
     }
 `;

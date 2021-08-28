@@ -4,6 +4,7 @@ import {
     SAVE_TOKEN,
     SAVE_INFO_CURRENT_USER,
     INCREASE_MY_COURSES,
+    DECREASE_MY_COURSES,
 } from "./actions";
 const initialAuth = {
     accessToken: "",
@@ -55,6 +56,23 @@ export default function authReducers(stateAuth = initialAuth, action) {
                     chiTietKhoaHocGhiDanh: [
                         ...stateAuth.currentUser.chiTietKhoaHocGhiDanh,
                         { maKhoaHoc, tenKhoaHoc },
+                    ],
+                },
+            };
+        }
+
+        case DECREASE_MY_COURSES: {
+            const { maKhoaHoc } = action.payload;
+            return {
+                ...stateAuth,
+                currentUser: {
+                    ...stateAuth.currentUser,
+                    chiTietKhoaHocGhiDanh: [
+                        ...stateAuth.currentUser.chiTietKhoaHocGhiDanh.filter(
+                            function (course) {
+                                return course.maKhoaHoc !== maKhoaHoc;
+                            }
+                        ),
                     ],
                 },
             };

@@ -6,7 +6,18 @@ export const GET_CURRENT_USER = "GET_CURRENT_USER";
 export const SAVE_TOKEN = "SAVE_TOKEN";
 export const SAVE_INFO_CURRENT_USER = "SAVE_INFO_CURRENT_USER";
 export const INCREASE_MY_COURSES = "INCREASE_MY_COURSES";
+export const DECREASE_MY_COURSES = "DECREASE_MY_COURSES";
+
 //
+export function actDecreaseCourse({ maKhoaHoc }) {
+    // giam dan
+    return {
+        type: DECREASE_MY_COURSES,
+        payload: {
+            maKhoaHoc,
+        },
+    };
+}
 export function actIncreaseCourse({ maKhoaHoc, tenKhoaHoc }) {
     return {
         type: INCREASE_MY_COURSES,

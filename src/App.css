@@ -11,4 +11,11 @@
 .ant-popover-inner {
     border-radius: 4px;
 }
-.ant-popover-inner-content {padding: 8px;}
+.ant-popover-inner-content {position: relative; padding: 8px;}
+.ant-popover-inner-content .ant-message {
+    position: absolute;
+}
+
+/* .ant-popover-inner-content .ant-message .ant-message-notice .ant-message-notice-content {
+  
+} */

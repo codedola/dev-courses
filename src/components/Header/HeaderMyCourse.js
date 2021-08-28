@@ -1,31 +1,33 @@
-import React, { useMemo, useState } from "react";
-import { Badge, Popover, List, Image, Empty, Input, Space } from "antd";
-import {
-    CarOutlined,
-    SearchOutlined,
-    SortAscendingOutlined,
-    SortDescendingOutlined,
-    SettingOutlined,
-} from "@ant-design/icons";
-import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
-import Highlighter from "react-highlight-words";
-import {
-    ListMyCoursesHeader,
-    EmptyMyCourse,
-    ListHandleRegisterCourse,
-} from "../Styled/Header.Styled";
-
+import React, { useMemo, useState, useEffect } from "react";
+import { Badge, Popover, List, Empty, message } from "antd";
+import { CarOutlined } from "@ant-design/icons";
+import { useSelector, useDispatch } from "react-redux";
+import { ListMyCoursesHeader, EmptyMyCourse } from "../Styled/Header.Styled";
+import HeaderMyCourseTool from "./HeaderMyCourse.Tool";
+import HeaderMyCourseListFilter from "./HeaderMyCourse.ListFilter";
+import HeaderMyCourseListNot from "./HeaderMyCourse.ListNot";
+import { actDeleteRegisterCourseAsync } from "../../store/course/actions";
 export default function HeaderMyCourse() {
+    const dispatch = useDispatch();
     const [orderDir, setOrderDir] = useState(""); //desc | asc
     const [searchText, setSearchText] = useState("");
-    const hashCourses = useSelector((state) => state.Courses.hashListCourseAll);
     //
     const currentUser = useSelector((state) => state.Auths.currentUser);
     const listCourseRegister = currentUser?.chiTietKhoaHocGhiDanh;
     const countMyCourses = listCourseRegister?.length;
 
     //
+    useEffect(function () {
+        message.config({
+            top: 10,
+            duration: 2,
+            maxCount: 10,
+            rtl: true,
+            getContainer: () =>
+                document.querySelector(".ant-popover-inner-content"),
+        });
+    }, []);
+
     const onChangeSearchText = (e) => {
         setSearchText(e.target.value);
         if (orderDir !== "") {
@@ -44,7 +46,7 @@ export default function HeaderMyCourse() {
                 return listCourseRegister.filter((course) => {
                     let text = searchText.toLocaleLowerCase();
                     let nameCourse = course.tenKhoaHoc.toLocaleLowerCase();
-                    return nameCourse.search(text) === -1;
+                    return nameCourse.includes(text) === false;
                 });
             } else {
                 return [];
@@ -59,7 +61,7 @@ export default function HeaderMyCourse() {
                 let listCourseSearch = listCourseRegister.filter((course) => {
                     let text = searchText.toLocaleLowerCase();
                     let nameCourse = course.tenKhoaHoc.toLocaleLowerCase();
-                    return nameCourse.search(text) !== -1;
+                    return nameCourse.includes(text) === true;
                 });
                 return listCourseSearch.sort(function (a, b) {
                     let indexNumber = 1; // desc
@@ -80,142 +82,62 @@ export default function HeaderMyCourse() {
         [listCourseRegister, orderDir, searchText]
     );
 
+    function handleDeleteCourseAsync(id) {
+        return function () {
+            message.loading({
+                content: "Loading...",
+                key: "updatable",
+            });
+            dispatch(
+                actDeleteRegisterCourseAsync({
+                    maKhoaHoc: id,
+                    taiKhoan: currentUser.taiKhoan,
+                })
+            ).then(function (res) {
+                if (res.ok) {
+                    message.success({
+                        content: "Hủy thành công",
+                        key: "updatable",
+                    });
+                } else {
+                    message.error({
+                        content: "Hủy thất bại",
+                        key: "updatable",
+                    });
+                }
+            });
+        };
+    }
+
     return (
         <Popover
             placement='bottom'
             trigger='click'
             arrowPointAtCenter
             content={
-                <ListMyCoursesHeader itemLayout='horizontal'>
-                    {/* Tool Search-Sort */}
-                    <List.Item className='tool'>
-                        <Space size='middle'>
-                            <Input
-                                value={searchText}
-                                allowClear
-                                placeholder='Search course...'
-                                bordered={false}
-                                prefix={<SearchOutlined />}
-                                onChange={onChangeSearchText}
-                            />
-                            <SortAscendingOutlined
-                                style={
-                                    orderDir === "asc"
-                                        ? { background: "#e6fffb" }
-                                        : null
-                                }
-                                onClick={onChangeOrderDir("asc")}
-                            />
-                            <SortDescendingOutlined
-                                style={
-                                    orderDir === "desc"
-                                        ? { background: "#e6fffb" }
-                                        : null
-                                }
-                                onClick={onChangeOrderDir("desc")}
-                            />
-                        </Space>
-                    </List.Item>
-                    {/* List Register Course */}
-                    {listFilterCourse.length !== 0 ? (
-                        listFilterCourse.map((item, index) => {
-                            const course = hashCourses[item.maKhoaHoc];
-                            return (
-                                <List.Item key={index}>
-                                    <Image
-                                        preview={false}
-                                        src={course?.hinhAnh}
-                                    />
-                                    <div className='course_info'>
-                                        <h3 className='title'>
-                                            <Highlighter
-                                                highlightClassName='YourHighlightClass'
-                                                searchWords={[searchText]}
-                                                autoEscape={true}
-                                                textToHighlight={
-                                                    course?.tenKhoaHoc || ""
-                                                }
-                                            />
-                                        </h3>
-                                        <p className='description'>
-                                            {course?.moTa}
-                                        </p>
-                                    </div>
-                                    <Popover
-                                        placement='leftTop'
-                                        trigger='hover'
-                                        arrowPointAtCenter
-                                        content={
-                                            <ListHandleRegisterCourse>
-                                                <List.Item className='read_more'>
-                                                    Xem chi tiết
-                                                </List.Item>
-                                                <List.Item className='delete'>
-                                                    Hủy ghi danh
-                                                </List.Item>
-                                            </ListHandleRegisterCourse>
-                                        }
-                                    >
-                                        <div className='handle_course'>
-                                            <SettingOutlined />
-                                        </div>
-                                    </Popover>
-                                </List.Item>
-                            );
-                        })
-                    ) : (
-                        <List.Item className='empty filter'>
-                            <EmptyMyCourse
-                                className='filter_course'
-                                image={Empty.PRESENTED_IMAGE_SIMPLE}
-                                description={null}
-                            />
-                            <div className='notify_empty'>
-                                <Highlighter
-                                    highlightClassName='YourHighlightClass'
-                                    searchWords={[searchText]}
-                                    autoEscape={true}
-                                    textToHighlight={`Không tìm thấy khóa học ${searchText}`}
-                                />
-                            </div>
-                        </List.Item>
-                    )}
+                <ListMyCoursesHeader
+                    itemLayout='horizontal'
+                    className='ListMyCoursesHeader'
+                >
+                    <HeaderMyCourseTool
+                        searchText={searchText}
+                        orderDir={orderDir}
+                        onChangeSearchText={onChangeSearchText}
+                        onChangeOrderDir={onChangeOrderDir}
+                    />
 
-                    {renderlistNotResult.map((item, index) => {
-                        const course = hashCourses[item.maKhoaHoc];
-                        return (
-                            <List.Item key={index}>
-                                <Image preview={false} src={course?.hinhAnh} />
-                                <div className='course_info'>
-                                    <h3 className='title'>
-                                        {course?.tenKhoaHoc}
-                                    </h3>
-                                    <p className='description'>
-                                        {course?.moTa}
-                                    </p>
-                                </div>
-                                <Popover
-                                    placement='leftTop'
-                                    trigger='hover'
-                                    arrowPointAtCenter
-                                    content={
-                                        <ListHandleRegisterCourse>
-                                            <List.Item className='read_more'>
-                                                Xem chi tiết
-                                            </List.Item>
-                                            <List.Item className='delete'>
-                                                Hủy ghi danh
-                                            </List.Item>
-                                        </ListHandleRegisterCourse>
-                                    }
-                                >
-                                    <div className='handle_course'>
-                                        <SettingOutlined />
-                                    </div>
-                                </Popover>
-                            </List.Item>
-                        );
-                    })}
+                    {countMyCourses !== 0 ? (
+                        <HeaderMyCourseListFilter
+                            searchText={searchText}
+                            listFilterCourse={listFilterCourse}
+                            handleDeleteCourseAsync={handleDeleteCourseAsync}
+                        />
+                    ) : null}
+
+                    <HeaderMyCourseListNot
+                        renderlistNotResult={renderlistNotResult}
+                        handleDeleteCourseAsync={handleDeleteCourseAsync}
+                    />
 
                     {listCourseRegister && listCourseRegister.length === 0 ? (
                         <List.Item
@@ -231,11 +153,11 @@ export default function HeaderMyCourse() {
                 </ListMyCoursesHeader>
             }
         >
-            <Link to='/my-courses' className='cart'>
+            <div className='cart'>
                 <Badge count={countMyCourses || 0} showZero>
                     <CarOutlined />
                 </Badge>
-            </Link>
+            </div>
         </Popover>
     );
 }
