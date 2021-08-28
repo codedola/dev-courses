@@ -56,13 +56,11 @@ export default function HeaderMyCourse() {
     const listFilterCourse = useMemo(
         function () {
             if (listCourseRegister && listCourseRegister.length !== 0) {
-                let listCourseSearch = [
-                    ...listCourseRegister.filter((course) => {
-                        let text = searchText.toLocaleLowerCase();
-                        let nameCourse = course.tenKhoaHoc.toLocaleLowerCase();
-                        return nameCourse.search(text) !== -1;
-                    }),
-                ];
+                let listCourseSearch = listCourseRegister.filter((course) => {
+                    let text = searchText.toLocaleLowerCase();
+                    let nameCourse = course.tenKhoaHoc.toLocaleLowerCase();
+                    return nameCourse.search(text) !== -1;
+                });
                 return listCourseSearch.sort(function (a, b) {
                     let indexNumber = 1; // desc
                     if (orderDir === "asc") indexNumber = -1;
@@ -130,7 +128,6 @@ export default function HeaderMyCourse() {
                                     />
                                     <div className='course_info'>
                                         <h3 className='title'>
-                                            {/* {course?.tenKhoaHoc} */}
                                             <Highlighter
                                                 highlightClassName='YourHighlightClass'
                                                 searchWords={[searchText]}
