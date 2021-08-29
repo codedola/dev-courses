@@ -13,7 +13,9 @@ import {
     LoginStyled,
     RowLoginStyled,
 } from "../components/Styled/Login.Styled";
+import useNotAuth from "../utilities/hook/useNotAuth";
 export default function Login() {
+    useNotAuth();
     const dispatch = useDispatch();
     const history = useHistory();
     const [loading, setLoading] = useState(false);

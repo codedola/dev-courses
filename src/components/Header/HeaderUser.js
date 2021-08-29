@@ -28,9 +28,9 @@ export default function HeaderUser() {
             content={
                 <ListUserHeader size='small'>
                     <List.Item className='courses'>
-                        <Link to='/my-courses'>
+                        <Link to='/dashboard'>
                             <ReadOutlined />
-                            <span>My courses</span>
+                            <span>Dashboard</span>
                         </Link>
                     </List.Item>
                     <List.Item className='setting'>

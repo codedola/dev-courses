@@ -17,6 +17,7 @@ import HeaderApp from "./components/Header";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import SearchCourse from "./pages/SearchCourse";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
     const dispatch = useDispatch();
@@ -60,6 +61,11 @@ function App() {
                         </Route>
                     </Switch>
                 </ContentApp>
+                <Switch>
+                    <Route path='/dashboard'>
+                        <Dashboard />
+                    </Route>
+                </Switch>
             </ContainerApp>
         </WapperApp>
     );

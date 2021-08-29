@@ -8,10 +8,10 @@ const gridStyle = {
 };
 const listTopics = [
     "JavaScript",
-    "NodeJS",
+    "Node JS",
     "React",
     "Python",
-    "NextJS",
+    "Next JS",
     "PHP",
     "SQL",
     "FullStack",

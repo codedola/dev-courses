@@ -42,6 +42,7 @@ export default function HeaderMyCourse() {
 
     const renderlistNotResult = useMemo(
         function () {
+            if (currentUser === null) return [];
             if (searchText !== "") {
                 return listCourseRegister.filter((course) => {
                     let text = searchText.toLocaleLowerCase();
@@ -52,11 +53,12 @@ export default function HeaderMyCourse() {
                 return [];
             }
         },
-        [listCourseRegister, searchText]
+        [listCourseRegister, searchText, currentUser]
     );
 
     const listFilterCourse = useMemo(
         function () {
+            if (currentUser === null) return [];
             if (listCourseRegister && listCourseRegister.length !== 0) {
                 let listCourseSearch = listCourseRegister.filter((course) => {
                     let text = searchText.toLocaleLowerCase();
@@ -79,7 +81,7 @@ export default function HeaderMyCourse() {
                 return [];
             }
         },
-        [listCourseRegister, orderDir, searchText]
+        [listCourseRegister, orderDir, searchText, currentUser]
     );
 
     function handleDeleteCourseAsync(id) {

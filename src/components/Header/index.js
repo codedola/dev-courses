@@ -13,16 +13,19 @@ import HeaderLogo from "./HeaderLogo";
 import HeaderSearch from "./HeaderSearch";
 import HeaderUser from "./HeaderUser";
 import HeaderMyCourse from "./HeaderMyCourse";
+import { useRouteMatch } from "react-router-dom";
 export default function Header() {
     const currentUser = useSelector((state) => state.Auths.currentUser);
+    const isMatchDashboard = useRouteMatch("/dashboard");
+    console.log(isMatchDashboard);
 
     return (
-        <ContainerHeader>
+        <ContainerHeader isDashboard={Boolean(isMatchDashboard)}>
             <HeaderTop>
                 <WapperHeaderTop>
                     <div className='headerTop__right'>
                         <HeaderLogo />
-                        <HeaderSearch />
+                        {!isMatchDashboard ? <HeaderSearch /> : null}
                     </div>
 
                     <SpaceStyled

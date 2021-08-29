@@ -34,7 +34,8 @@ export const ContainerHeader = styled.header`
     position: relative;
     z-index: 1001;
     background-color: #fff;
-    box-shadow: 0 1px 4px #00000033;
+    box-shadow: ${(props) =>
+        props.isDashboard ? "unset" : "0 1px 4px #00000033"};
 `;
 
 export const HeaderTop = styled.div`
@@ -286,6 +287,15 @@ export const ListMyCoursesHeader = styled(List)`
             flex-wrap: wrap;
             justify-content: center;
             flex-direction: column;
+
+            .notify_empty {
+                width: 100%;
+                text-align: center;
+                overflow: hidden;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
         }
         &.empty:hover {
             background: unset;
