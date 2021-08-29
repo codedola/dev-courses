@@ -1,118 +1,43 @@
 import React, { useState } from "react";
-import { List, Avatar, Col, Space, Input } from "antd";
+import { Col, Affix } from "antd";
 import { RowManagerUser } from "../Styled/Dashboard.Styled";
-import {
-    SearchOutlined,
-    SortAscendingOutlined,
-    SortDescendingOutlined,
-} from "@ant-design/icons";
-const data = [
-    {
-        title: "Ant Design Title 1",
-    },
-    {
-        title: "Ant Design Title 2",
-    },
-    {
-        title: "Ant Design Title 3",
-    },
-    {
-        title: "Ant Design Title 4",
-    },
-    {
-        title: "Ant Design Title 5",
-    },
-    {
-        title: "Ant Design Title 6",
-    },
-    {
-        title: "Ant Design Title 7",
-    },
-    {
-        title: "Ant Design Title 8",
-    },
-    {
-        title: "Ant Design Title 9",
-    },
-    {
-        title: "Ant Design Title 10",
-    },
-    {
-        title: "Ant Design Title 11",
-    },
-    {
-        title: "Ant Design Title 12",
-    },
-    {
-        title: "Ant Design Title 13",
-    },
-    {
-        title: "Ant Design Title 14",
-    },
-];
-
-const cssSort = {
-    color: " #08979c",
-    background: "#e6fffb",
-};
-export default function ManagerUsers() {
+import ManagerUserList from "./ManagerUserList";
+import ManagerUserTool from "./ManagerUserTool";
+import { actGetUserPagingAsync } from "../../store/user/actions";
+import usePagingCourse from "../../utilities/hook/usePagingCourse";
+export default function ManagerUsers({ containerAffix }) {
     const [searchText, setSearchText] = useState("");
-    const [orderDir, setOrderDir] = useState("");
+    const [orderBy, setOrderBy] = useState("");
 
-    function onChangeOrderDir(typeSort) {
+    const { listCourses: listUser } = usePagingCourse({
+        funcSelector: (state) => state.User.PagingUser,
+        actAsync: actGetUserPagingAsync,
+    });
+    function onChangeOrderBy(typeSort) {
         return function () {
-            setOrderDir(typeSort);
+            setOrderBy(typeSort);
+            setSearchText("");
         };
     }
 
     function onChangeSearchText(e) {
         setSearchText(e.target.value);
+        setOrderBy("");
     }
     return (
         <RowManagerUser>
             <Col span={24}>
-                <div className='tool'>
-                    <Space size='middle'>
-                        <Input
-                            value={searchText}
-                            allowClear
-                            placeholder='Search course...'
-                            bordered={false}
-                            prefix={<SearchOutlined />}
-                            onChange={onChangeSearchText}
-                        />
-                        <SortAscendingOutlined
-                            style={orderDir === "asc" ? cssSort : null}
-                            onClick={onChangeOrderDir("asc")}
-                        />
-                        <SortDescendingOutlined
-                            style={orderDir === "desc" ? cssSort : null}
-                            onClick={onChangeOrderDir("desc")}
-                        />
-                    </Space>
-                </div>
+                <Affix target={() => containerAffix} offsetTop={0}>
+                    <ManagerUserTool
+                        searchText={searchText}
+                        onChangeSearchText={onChangeSearchText}
+                        onChangeOrderBy={onChangeOrderBy}
+                    />
+                </Affix>
             </Col>
-
+            {/* List user */}
             <Col span={24}>
-                <List
-                    itemLayout='horizontal'
-                    dataSource={data}
-                    renderItem={(item) => (
-                        <List.Item>
-                            <List.Item.Meta
-                                avatar={
-                                    <Avatar src='https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png' />
-                                }
-                                title={
-                                    <a href='https://ant.design'>
-                                        {item.title}
-                                    </a>
-                                }
-                                description='Ant Design, a design language'
-                            />
-                        </List.Item>
-                    )}
-                />
+                <ManagerUserList listUser={listUser} />
             </Col>
         </RowManagerUser>
     );

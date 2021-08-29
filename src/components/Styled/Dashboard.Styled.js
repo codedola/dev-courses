@@ -80,6 +80,20 @@ export const ButtonSearchTashbar = styled(Button)`
 export const RowManagerCategoryUser = styled(Row)`
     height: 100vh;
     overflow-y: scroll;
+
+    &::-webkit-scrollbar-track {
+        /* box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); */
+        background-color: transparent;
+    }
+
+    &::-webkit-scrollbar {
+        width: 4px;
+        background-color: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: transparent;
+    }
 `;
 export const RowManagerCategory = styled(Row)`
     padding: 10px;
@@ -93,8 +107,19 @@ export const RowManagerUser = styled(Row)`
     border-radius: 10px;
 
     .tool {
+        /* background: #fff; */
         background: rgb(248 248 248);
+        padding-top: 8px;
+        padding-bottom: 8px;
         cursor: auto;
+
+        .ant-space {
+            display: flex;
+            .ant-space-item:first-child {
+                flex-grow: 1;
+            }
+        }
+
         .ant-input-affix-wrapper {
             border: 1px solid #e0e0e0;
             border-radius: 8px;
@@ -108,18 +133,14 @@ export const RowManagerUser = styled(Row)`
                 color: #757575;
             }
         }
-        .anticon-sort-ascending,
-        .anticon-sort-descending {
+        .anticon-user-switch {
             display: block;
             cursor: pointer;
-            padding: 6px 12px;
+            padding: 8px;
             border-radius: 8px;
             color: #989898;
             background: #00000005;
             font-size: 18px;
-            &:hover {
-                background: rgb(251 251 251);
-            }
         }
     }
 `;

@@ -5,10 +5,11 @@ import { ButtonLoadMore } from "../../components/Styled/App.Styled";
 export default function usePagingCourse({
     actAsync = () => {},
     restParams = {},
+    funcSelector = (state) => state.Courses.PagingCourse,
 }) {
     const dispatch = useDispatch();
     const [loading, setLoading] = useState(false);
-    const PagingCourse = useSelector((state) => state.Courses.PagingCourse);
+    const PagingCourse = useSelector(funcSelector);
     const listCourses = PagingCourse.list;
     const currentPage = PagingCourse.currentPage;
     const totalPages = PagingCourse.totalPages;
