@@ -5,6 +5,11 @@ import {
     SortAscendingOutlined,
     SortDescendingOutlined,
 } from "@ant-design/icons";
+
+const cssSort = {
+    color: " #08979c",
+    background: "#e6fffb",
+};
 export default function HeaderMyCourseTool({
     searchText,
     orderDir,
@@ -23,15 +28,11 @@ export default function HeaderMyCourseTool({
                     onChange={onChangeSearchText}
                 />
                 <SortAscendingOutlined
-                    style={
-                        orderDir === "asc" ? { background: "#e6fffb" } : null
-                    }
+                    style={orderDir === "asc" ? cssSort : null}
                     onClick={onChangeOrderDir("asc")}
                 />
                 <SortDescendingOutlined
-                    style={
-                        orderDir === "desc" ? { background: "#e6fffb" } : null
-                    }
+                    style={orderDir === "desc" ? cssSort : null}
                     onClick={onChangeOrderDir("desc")}
                 />
             </Space>

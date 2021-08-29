@@ -13,7 +13,7 @@ export default function Dashboard() {
     // const [visibleForm, setVisibleForm] = useState(false);
 
     return (
-        <Row>
+        <Row style={{ height: "100%" }}>
             <Col md={4} xs={24}>
                 <DashboardMenu />
             </Col>
