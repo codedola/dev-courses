@@ -155,7 +155,7 @@ export const ListManagerUserStyled = styled(List)`
                 .ant-list-item-meta-title {
                     .user_name {
                         display: inline-block;
-                        padding-bottom: 0px;
+                        margin-bottom: 0px;
                         color: #08979c;
                         font-weight: 600;
                         .YourHighlightClass {

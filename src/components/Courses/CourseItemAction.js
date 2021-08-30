@@ -32,6 +32,7 @@ export default function CourseItemAction({ showModal, isRegister, course }) {
                 showNotification({
                     type: typeNotify.success,
                     message: res.message,
+                    description: `Khóa học ${tenKhoaHoc} đã ghi danh thành công`,
                     placement: typePlacement.topLeft,
                 });
             } else {

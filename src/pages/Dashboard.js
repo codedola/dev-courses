@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Row, Col } from "antd";
 import DashboardMenu from "../components/Dashboard/Dashboard.Menu";
-import DashboardContent from "../components/Dashboard/Dashboard.Content";
+import DashboardManager from "../components/Dashboard/Dashboard.Manager";
 import { useDispatch } from "react-redux";
 import useAuth from "../utilities/hook/useAuth";
 import {
@@ -34,7 +34,7 @@ export default function Dashboard() {
                     <DashboardMenu />
                 </Col>
                 <Col md={20} xs={24}>
-                    <DashboardContent />
+                    <DashboardManager />
                 </Col>
             </Row>
             <LoadingPage isLoading={loading} />
