@@ -41,7 +41,7 @@ export default function ManagerUserList({
                                     </Badge>
                                 }
                                 title={
-                                    <div>
+                                    <>
                                         <p className='user_name'>
                                             <Highlighter
                                                 highlightClassName='YourHighlightClass'
@@ -59,7 +59,7 @@ export default function ManagerUserList({
                                         >
                                             {nameType}
                                         </Tag>
-                                    </div>
+                                    </>
                                 }
                                 // description={`${user.taiKhoan} - ${user.email}`}
                                 description={user.email}
@@ -102,10 +102,11 @@ export default function ManagerUserList({
                                     </Badge>
                                 }
                                 title={
-                                    <div>
-                                        <a href='https://ant.design'>
+                                    <>
+                                        <p className='user_name'>
                                             {user.hoTen}
-                                        </a>
+                                        </p>
+
                                         <Tag
                                             color={color}
                                             style={{
@@ -115,7 +116,7 @@ export default function ManagerUserList({
                                         >
                                             {nameType}
                                         </Tag>
-                                    </div>
+                                    </>
                                 }
                                 // description={`${user.taiKhoan} - ${user.email}`}
                                 description={user.email}

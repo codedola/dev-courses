@@ -1,9 +1,11 @@
 import React, { useState, useMemo } from "react";
 import { Col, Affix } from "antd";
+import BackTop from "../BackTop";
 import { RowManagerUser } from "../Styled/Dashboard.Styled";
 import ManagerUserList from "./ManagerUserList";
 import ManagerUserTool from "./ManagerUserTool";
 import { useSelector } from "react-redux";
+
 export default function ManagerUsers({ containerAffix }) {
     const [orderBy, setOrderBy] = useState("");
     const [searchText, setSearchText] = useState("");
@@ -80,6 +82,7 @@ export default function ManagerUsers({ containerAffix }) {
                     listNotFilter={listNotFilterSearch}
                 />
             </Col>
+            <BackTop size='small' target={() => containerAffix || window} />
         </RowManagerUser>
     );
 }
