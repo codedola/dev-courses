@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Menu, Button, Row, List } from "antd";
+import { Menu, Button, Row, List, Col } from "antd";
 
 export const MenuStyled = styled(Menu)`
     .ant-menu-item {
@@ -81,6 +81,29 @@ export const RowManagerCategoryUser = styled(Row)`
     height: 100vh;
     overflow-y: scroll;
 
+    &::-webkit-scrollbar-track {
+        /* box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); */
+        background-color: transparent;
+    }
+
+    &::-webkit-scrollbar {
+        width: 4px;
+        background-color: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: transparent;
+    }
+`;
+
+export const RowManagerUserInfo = styled(Row)`
+    padding: 10px;
+    background: rgb(248 248 248);
+    border-radius: 10px;
+`;
+export const ColManagerCourse = styled(Col)`
+    height: 100vh;
+    overflow-y: scroll;
     &::-webkit-scrollbar-track {
         /* box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); */
         background-color: transparent;

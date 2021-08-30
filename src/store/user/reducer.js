@@ -5,6 +5,8 @@ import {
 } from "./actions";
 const initState = {
     listAllUser: [],
+    listGiaoVu: [],
+    listHocVien: [],
     PagingUser: {
         list: [],
         count: 0,
@@ -42,9 +44,16 @@ export default function userReducer(stateUser = initState, action) {
         }
 
         case GET_ALL_USER: {
+            const list = action.payload.list;
             return {
                 ...stateUser,
-                listAllUser: action.payload.list,
+                listAllUser: list,
+                listGiaoVu: list.filter(
+                    (user) => user.maLoaiNguoiDung === "GV"
+                ),
+                listHocVien: list.filter(
+                    (user) => user.maLoaiNguoiDung === "HV"
+                ),
             };
         }
 

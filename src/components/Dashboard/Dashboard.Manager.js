@@ -7,25 +7,28 @@ import DashboardTopic from "./DashboardTopic";
 import ManagerCategories from "./ManagerCategories";
 import { Switch, Route, useRouteMatch } from "react-router-dom";
 
-import { RowManagerCategoryUser } from "../Styled/Dashboard.Styled";
+import {
+    RowManagerCategoryUser,
+    ColManagerCourse,
+} from "../Styled/Dashboard.Styled";
 export default function DashboardManager() {
     let { path } = useRouteMatch();
 
     const [containerAffix, setContainerAffix] = useState(null);
     return (
         <div style={{ padding: "0px 20px" }}>
-            <Row>
-                <Col span={16}>
+            <Row gutter={[16, 16]}>
+                <ColManagerCourse span={16}>
                     <Switch>
                         <Route exact path={path}>
                             <ManagerCourse />
                         </Route>
-                        <Route path={`${path}/:topicTitle`}>
+                        {/* <Route path={`${path}/:topicTitle`}>
                             <DashboardTopic />
-                        </Route>
+                        </Route> */}
                     </Switch>
-                </Col>
-
+                </ColManagerCourse>
+                {/* Sidebar */}
                 <Col span={8}>
                     <RowManagerCategoryUser
                         gutter={[0, 16]}
