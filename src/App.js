@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Switch, Route } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import {
@@ -7,10 +7,10 @@ import {
     WapperApp,
     ContentApp,
 } from "./components/Styled/App.Styled";
-
+import LoadingPage from "./components/LoadingPage";
 import { actGetListCategoriesAsync } from "./store/category/actions";
 import { actGetListCourseAllAsync } from "./store/course/actions";
-import {} from "./store/course/actions";
+import { actGetCategoriesUserAsync } from "./store/user/actions";
 import { actCheckLoginAsync } from "./store/auth/actions";
 import Homepage from "./pages/Homepage";
 import HeaderApp from "./components/Header";
@@ -21,6 +21,7 @@ import Dashboard from "./pages/Dashboard";
 
 function App() {
     const dispatch = useDispatch();
+    const [loading, setLoading] = useState(false);
 
     useEffect(
         function () {
@@ -32,10 +33,11 @@ function App() {
     useEffect(
         function () {
             async function runPromiseAll() {
-                await Promise.all([
-                    dispatch(actGetListCategoriesAsync()),
-                    dispatch(actGetListCourseAllAsync()),
-                ]);
+                setLoading(true);
+                await dispatch(actGetListCategoriesAsync());
+                await dispatch(actGetListCourseAllAsync());
+                await dispatch(actGetCategoriesUserAsync());
+                setLoading(false);
             }
             runPromiseAll();
         },
@@ -67,6 +69,7 @@ function App() {
                     </Route>
                 </Switch>
             </ContainerApp>
+            <LoadingPage isLoading={loading} />
         </WapperApp>
     );
 }

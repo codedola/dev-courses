@@ -1,4 +1,8 @@
-import { GET_LIST_USER_PAGING, GET_ALL_USER } from "./actions";
+import {
+    GET_LIST_USER_PAGING,
+    GET_ALL_USER,
+    GET_CATEGORIES_USER,
+} from "./actions";
 const initState = {
     listAllUser: [],
     PagingUser: {
@@ -8,6 +12,7 @@ const initState = {
         totalCount: 0,
         totalPages: 1,
     },
+    hashCategoriesUser: {},
 };
 
 export default function userReducer(stateUser = initState, action) {
@@ -40,6 +45,19 @@ export default function userReducer(stateUser = initState, action) {
             return {
                 ...stateUser,
                 listAllUser: action.payload.list,
+            };
+        }
+
+        case GET_CATEGORIES_USER: {
+            const hashCate = action.payload.list.reduce(function (curr, item) {
+                return {
+                    ...curr,
+                    [item.maLoaiNguoiDung]: item.tenLoaiNguoiDung,
+                };
+            }, {});
+            return {
+                ...stateUser,
+                hashCategoriesUser: hashCate,
             };
         }
 

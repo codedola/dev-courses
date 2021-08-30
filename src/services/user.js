@@ -19,4 +19,7 @@ export const UserServices = {
                 },
             });
     },
+    GetCategoriesUser() {
+        return api.call().get("/QuanLyNguoiDung/LayDanhSachLoaiNguoiDung");
+    },
 };

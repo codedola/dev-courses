@@ -11,7 +11,7 @@ import { ItemIconStyled, RowManagerCategory } from "../Styled/Dashboard.Styled";
 import { Col } from "antd";
 const listIcons = [
     {
-        name: "TuDuy",
+        name: "Logic",
         icon: <TuDuyIcon />,
     },
     {
@@ -27,7 +27,7 @@ const listIcons = [
         icon: <DesignIcon />,
     },
     {
-        name: "DiDong",
+        name: "Mobile",
         icon: <DiDongIcon />,
     },
     {

@@ -1,29 +1,66 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { Col, Affix } from "antd";
 import { RowManagerUser } from "../Styled/Dashboard.Styled";
 import ManagerUserList from "./ManagerUserList";
 import ManagerUserTool from "./ManagerUserTool";
-import { actGetUserPagingAsync } from "../../store/user/actions";
-import usePagingCourse from "../../utilities/hook/usePagingCourse";
+import { useSelector } from "react-redux";
 export default function ManagerUsers({ containerAffix }) {
-    const [searchText, setSearchText] = useState("");
     const [orderBy, setOrderBy] = useState("");
+    const [searchText, setSearchText] = useState("");
+    const listAllUser = useSelector((state) => state.User.listAllUser);
 
-    const { listCourses: listUser } = usePagingCourse({
-        funcSelector: (state) => state.User.PagingUser,
-        actAsync: actGetUserPagingAsync,
-    });
     function onChangeOrderBy(typeSort) {
         return function () {
             setOrderBy(typeSort);
-            setSearchText("");
         };
     }
 
     function onChangeSearchText(e) {
         setSearchText(e.target.value);
-        setOrderBy("");
     }
+
+    const listFilterSort = useMemo(
+        function () {
+            if (orderBy === "") return listAllUser;
+            if (orderBy === "HV") {
+                return listAllUser.filter(
+                    (user) => user.maLoaiNguoiDung === "HV"
+                );
+            }
+            if (orderBy === "GV") {
+                return listAllUser.filter(
+                    (user) => user.maLoaiNguoiDung === "GV"
+                );
+            }
+        },
+        [orderBy, listAllUser]
+    );
+
+    const listFilterSearch = useMemo(
+        function () {
+            return listFilterSort.filter((user) => {
+                let text = searchText.toLocaleLowerCase();
+                let nameUser = user.hoTen.toLocaleLowerCase();
+                return nameUser.includes(text) === true;
+            });
+        },
+        [listFilterSort, searchText]
+    );
+
+    const listNotFilterSearch = useMemo(
+        function () {
+            if (searchText !== "") {
+                return listFilterSort.filter((user) => {
+                    let text = searchText.toLocaleLowerCase();
+                    let nameUser = user.hoTen.toLocaleLowerCase();
+                    return nameUser.includes(text) === false;
+                });
+            } else {
+                return [];
+            }
+        },
+        [listFilterSort, searchText]
+    );
     return (
         <RowManagerUser>
             <Col span={24}>
@@ -35,9 +72,13 @@ export default function ManagerUsers({ containerAffix }) {
                     />
                 </Affix>
             </Col>
-            {/* List user */}
+
             <Col span={24}>
-                <ManagerUserList listUser={listUser} />
+                <ManagerUserList
+                    searchText={searchText}
+                    listFilter={listFilterSearch}
+                    listNotFilter={listNotFilterSearch}
+                />
             </Col>
         </RowManagerUser>
     );

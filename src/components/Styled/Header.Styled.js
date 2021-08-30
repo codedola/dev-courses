@@ -374,6 +374,14 @@ export const ListHandleRegisterCourse = styled(List)`
         font-weight: 600;
         cursor: pointer;
         transition: all ease 0.2s;
+
+        &.category:hover {
+            color: #08979c;
+            background: #e6fffb;
+            /* border-color: #87e8de; */
+            /* border-bottom: #87e8de; */
+        }
+
         &.delete {
             margin-bottom: 0px;
         }

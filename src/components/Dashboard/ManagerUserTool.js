@@ -20,19 +20,25 @@ export default function ManagerUserTool({
                     onChange={onChangeSearchText}
                 />
                 <Popover
-                    placement='bottomRight'
+                    placement='leftTop'
                     trigger='hover'
                     arrowPointAtCenter
                     content={
                         <ListHandleRegisterCourse>
                             <List.Item
-                                className='read_more'
+                                className='category'
+                                onClick={onChangeOrderBy("")}
+                            >
+                                Tất cả
+                            </List.Item>
+                            <List.Item
+                                className='category'
                                 onClick={onChangeOrderBy("GV")}
                             >
                                 Giáo vụ
                             </List.Item>
                             <List.Item
-                                className='read_more'
+                                className='category'
                                 onClick={onChangeOrderBy("HV")}
                             >
                                 Học viên

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Menu, Button, Row } from "antd";
+import { Menu, Button, Row, List } from "antd";
 
 export const MenuStyled = styled(Menu)`
     .ant-menu-item {
@@ -141,6 +141,53 @@ export const RowManagerUser = styled(Row)`
             color: #989898;
             background: #00000005;
             font-size: 18px;
+        }
+    }
+`;
+
+export const ListManagerUserStyled = styled(List)`
+    .ant-list-item {
+        .ant-list-item-meta {
+            .ant-list-item-meta-avatar {
+            }
+
+            .ant-list-item-meta-content {
+                .ant-list-item-meta-title {
+                    .user_name {
+                        display: inline-block;
+                        padding-bottom: 0px;
+                        color: #08979c;
+                        font-weight: 600;
+                        .YourHighlightClass {
+                            padding: 4px 0px;
+                            color: #08979c;
+                            background-color: #fdff81;
+                        }
+                    }
+                }
+            }
+        }
+        &.empty.filter {
+            flex-wrap: wrap;
+            justify-content: center;
+            flex-direction: column;
+
+            .notify_empty {
+                width: 100%;
+                text-align: center;
+                overflow: hidden;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                .YourHighlightClass {
+                    padding: 4px 0px;
+                    color: #08979c;
+                    background-color: #fdff81;
+                }
+            }
+        }
+        &.empty:hover {
+            background: unset;
         }
     }
 `;
