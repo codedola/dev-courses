@@ -16,8 +16,8 @@ export default function Dashboard() {
 
     useEffect(
         function () {
-            setLoading(true);
             async function runAll() {
+                setLoading(true);
                 await dispatch(actGetUserPagingAsync());
                 await dispatch(actGetAllUserAsync());
                 setLoading(false);

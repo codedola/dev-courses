@@ -95,7 +95,14 @@ export const RowManagerCategoryUser = styled(Row)`
         background-color: transparent;
     }
 `;
+//
+export const RowCourseCreation = styled(Row)`
+    padding: 10px;
+    background: rgb(248 248 248);
+    border-radius: 10px;
+`;
 
+//
 export const RowManagerUserInfo = styled(Row)`
     padding: 10px;
     background: rgb(248 248 248);

@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import { Row, Col } from "antd";
 import ManagerUsers from "./ManagerUsers";
 import ManagerCourse from "./ManagerCourse";
-import DashboardTopic from "./DashboardTopic";
-
+import CourseCreation from "../CourseCreation";
 import ManagerCategories from "./ManagerCategories";
 import { Switch, Route, useRouteMatch } from "react-router-dom";
 
@@ -13,7 +12,6 @@ import {
 } from "../Styled/Dashboard.Styled";
 export default function DashboardManager() {
     let { path } = useRouteMatch();
-
     const [containerAffix, setContainerAffix] = useState(null);
     return (
         <div style={{ padding: "0px 20px" }}>
@@ -23,9 +21,9 @@ export default function DashboardManager() {
                         <Route exact path={path}>
                             <ManagerCourse />
                         </Route>
-                        {/* <Route path={`${path}/:topicTitle`}>
-                            <DashboardTopic />
-                        </Route> */}
+                        <Route path={`${path}/course-creation`} exact>
+                            <CourseCreation />
+                        </Route>
                     </Switch>
                 </ColManagerCourse>
                 {/* Sidebar */}

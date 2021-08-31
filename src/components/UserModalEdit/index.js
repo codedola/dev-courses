@@ -5,7 +5,7 @@ import {
     FormItemStyled,
     ButtonRegister,
 } from "../Styled/Login.Styled";
-import { Input, Space, message, Radio, Form } from "antd";
+import { Input, Space, message, Radio } from "antd";
 import {
     UserOutlined,
     LockOutlined,

@@ -17,6 +17,7 @@ export default function DashboardMenu() {
     function onSelectedKey(keyInfo) {
         setKeySelected(keyInfo.key);
     }
+
     return (
         <MenuStyled
             mode='inline'
@@ -31,7 +32,7 @@ export default function DashboardMenu() {
                 <Link to={`${url}/profile`}>Khóa học</Link>
             </Menu.Item>
             <Menu.Item key='3' icon={<PlusCircleOutlined />}>
-                <Link to={`${url}/post-creation`}>Tạo khóa học</Link>
+                <Link to={`${url}/course-creation`}>Tạo khóa học</Link>
             </Menu.Item>
 
             <Menu.Item key='4' icon={<UsergroupAddOutlined />}>
