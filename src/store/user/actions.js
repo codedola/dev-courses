@@ -2,11 +2,21 @@ import { UserServices } from "../../services/user";
 export const GET_ALL_USER = "GET_ALL_USER";
 export const GET_LIST_USER_PAGING = "GET_LIST_USER_PAGING";
 export const GET_CATEGORIES_USER = "GET_CATEGORIES_USER";
+export const ACT_UPLOAD_CURRENT_USER = "ACT_UPLOAD_CURRENT_USER";
 export function actGetAllUser(list) {
     return {
         type: GET_ALL_USER,
         payload: {
             list,
+        },
+    };
+}
+
+export function actUploadCurrentUser(data) {
+    return {
+        type: ACT_UPLOAD_CURRENT_USER,
+        payload: {
+            data,
         },
     };
 }
@@ -51,7 +61,7 @@ export function actGetCategoriesUserAsync() {
     return async function (dispatch) {
         try {
             const response = await UserServices.GetCategoriesUser();
-            console.log("Response categories user", response);
+
             dispatch(getCategoriesUser(response.data));
         } catch (error) {}
     };
@@ -82,5 +92,40 @@ export function actGetUserPagingAsync({ page = 1, pageSize = 100 } = {}) {
                 );
             }
         } catch (error) {}
+    };
+}
+
+export function actUploadInfoCurrentUserAsync({
+    taiKhoan,
+    matKhau,
+    hoTen,
+    soDT,
+    maLoaiNguoiDung = "HV",
+    email,
+} = {}) {
+    return async function (dispatch, getState) {
+        try {
+            const response = await UserServices.UploadInfoCurrentUser({
+                taiKhoan,
+                matKhau,
+                hoTen,
+                soDT,
+                maLoaiNguoiDung,
+                email,
+            });
+
+            if (response.status === 200) {
+                dispatch(actUploadCurrentUser(response.data));
+                await dispatch(actGetAllUserAsync());
+
+                return {
+                    ok: true,
+                };
+            }
+        } catch (error) {
+            return {
+                ok: false,
+            };
+        }
     };
 }

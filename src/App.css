@@ -23,3 +23,7 @@
 /* .ant-popover-inner-content .ant-message .ant-message-notice .ant-message-notice-content {
   
 } */
+
+.ant-image-preview-root .ant-image-preview-mask {
+    z-index: 1002;
+}

@@ -17,7 +17,6 @@ import { useRouteMatch } from "react-router-dom";
 export default function Header() {
     const currentUser = useSelector((state) => state.Auths.currentUser);
     const isMatchDashboard = useRouteMatch("/dashboard");
-    console.log(isMatchDashboard);
 
     return (
         <ContainerHeader isDashboard={Boolean(isMatchDashboard)}>

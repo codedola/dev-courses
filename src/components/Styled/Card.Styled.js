@@ -30,17 +30,18 @@ export const CardStyled = styled(Card)`
     border-radius: 4px;
 
     overflow: hidden;
-    transition: all 0.2s;
+    transition: all ease 0.2s;
     &:hover {
         box-shadow: 0 2px 12px 0 rgb(0 0 0 / 30%);
         /* box-shadow: 0 1px 4px #00000033; */
-        transform: scale(1.05);
+        transform: scale(1.04);
     }
     &.ant-card-bordered {
         border: unset;
     }
     .ant-card-cover {
         cursor: auto;
+        padding: 4px 4px 0px 4px;
         img {
             min-width: 0;
             height: 160px;

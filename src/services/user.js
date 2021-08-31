@@ -22,4 +22,24 @@ export const UserServices = {
     GetCategoriesUser() {
         return api.call().get("/QuanLyNguoiDung/LayDanhSachLoaiNguoiDung");
     },
+    UploadInfoCurrentUser({
+        taiKhoan,
+        matKhau,
+        hoTen,
+        soDT,
+        maLoaiNguoiDung,
+        email,
+    }) {
+        return api
+            .callWithAuth()
+            .put("/QuanLyNguoiDung/CapNhatThongTinNguoiDung", {
+                taiKhoan,
+                matKhau,
+                hoTen,
+                soDT,
+                maLoaiNguoiDung,
+                maNhom: "GP01",
+                email,
+            });
+    },
 };

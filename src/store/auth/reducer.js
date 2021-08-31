@@ -6,6 +6,7 @@ import {
     INCREASE_MY_COURSES,
     DECREASE_MY_COURSES,
 } from "./actions";
+import { ACT_UPLOAD_CURRENT_USER } from "../user/actions";
 const initialAuth = {
     accessToken: "",
     currentUser: null,
@@ -74,6 +75,16 @@ export default function authReducers(stateAuth = initialAuth, action) {
                             }
                         ),
                     ],
+                },
+            };
+        }
+
+        case ACT_UPLOAD_CURRENT_USER: {
+            return {
+                ...stateAuth,
+                currentUser: {
+                    ...stateAuth.currentUser,
+                    ...action.payload.data,
                 },
             };
         }

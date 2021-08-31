@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { ModalCourseInfo } from "../Styled/Course.Styled";
 import {
     FormStyled,
     FormItemStyled,
     ButtonRegister,
 } from "../Styled/Login.Styled";
-import { Input, Space } from "antd";
+import { Input, Space, message, Radio, Form } from "antd";
 import {
     UserOutlined,
     LockOutlined,
@@ -15,13 +15,61 @@ import {
     InfoCircleOutlined,
 } from "@ant-design/icons";
 import { useRouteMatch } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { regexEmail, regexSDT } from "../shared/MessageValidateForm";
+import { actUploadInfoCurrentUserAsync } from "../../store/user/actions";
 export default function ModalUserEdit({ isModalVisible, onCancelModal }) {
+    const dispatch = useDispatch();
+    const [loading, setLoading] = useState(false);
     const isDashboard = useRouteMatch("/dashboard");
-    const currentUser = useSelector((state) => state.Auths.currentUser);
 
+    const currentUser = useSelector((state) => state.Auths.currentUser);
+    useEffect(function () {
+        message.config({
+            top: 50,
+            duration: 2,
+            maxCount: 10,
+            rtl: true,
+            getContainer: () => document.querySelector("form.user_edit"),
+        });
+    }, []);
+
+    //
+    function validateDataForm(objData) {
+        let isName = objData.hoTen === "";
+        let isEmail = regexEmail.test(objData.email.toLowerCase());
+        let isPhone = objData.soDT.match(regexSDT);
+        if (!isEmail || !isPhone) {
+            isName && message.warning("Họ tên không được rỗng");
+            message.warning(
+                `${!isEmail ? "Email " : ""}${
+                    !isPhone ? `${!isEmail ? "-" : ""} Số điện thoại ` : ""
+                }không hợp lệ`
+            );
+            return false;
+        }
+        return true;
+    }
     function onFinish(formData) {
-        console.log(formData);
+        const isOK = validateDataForm(formData);
+        if (!isOK || loading) return;
+
+        const { taiKhoan, matKhau, hoTen, soDT, maLoaiNguoiDung, email } =
+            formData;
+        setLoading(true);
+        dispatch(
+            actUploadInfoCurrentUserAsync({
+                taiKhoan,
+                matKhau,
+                hoTen,
+                soDT,
+                maLoaiNguoiDung,
+                email,
+            })
+        ).then(function () {
+            setLoading(false);
+            onCancelModal();
+        });
     }
 
     return (
@@ -45,6 +93,7 @@ export default function ModalUserEdit({ isModalVisible, onCancelModal }) {
                     hoTen: currentUser?.hoTen,
                     soDT: currentUser?.soDT,
                     email: currentUser?.email,
+                    maLoaiNguoiDung: currentUser?.maLoaiNguoiDung,
                 }}
             >
                 {/* Form Item TAI KHOAN */}
@@ -90,6 +139,14 @@ export default function ModalUserEdit({ isModalVisible, onCancelModal }) {
                     <Input placeholder='Email' prefix={<MailOutlined />} />
                 </FormItemStyled>
 
+                {/* Ma loai nguoi dung */}
+                <FormItemStyled name='maLoaiNguoiDung'>
+                    <Radio.Group>
+                        <Radio value='HV'>Học viên</Radio>
+                        <Radio value='GV'>Giáo vụ</Radio>
+                    </Radio.Group>
+                </FormItemStyled>
+
                 <FormItemStyled style={{ marginTop: 10 }}>
                     <Space
                         style={{
@@ -104,7 +161,7 @@ export default function ModalUserEdit({ isModalVisible, onCancelModal }) {
                             block
                             className='btn_edit'
                         >
-                            Lưu thông tin
+                            {loading ? "Đang lưu" : "Lưu thông tin"}
                         </ButtonRegister>
                     </Space>
                 </FormItemStyled>
