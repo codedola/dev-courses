@@ -15,7 +15,17 @@ export const FormStyled = styled(Form)`
     border-radius: 8px;
     box-shadow: rgb(60 64 67 / 10%) 0px 1px 2px 0px,
         rgb(60 64 67 / 15%) 0px 2px 8px 2px;
-
+    &.user_edit {
+        padding: 0;
+        border-radius: 0;
+        box-shadow: unset;
+        .ant-form-item {
+            margin-bottom: 20px;
+            .ant-input-affix-wrapper {
+                border-radius: 4px;
+            }
+        }
+    }
     .ant-input-prefix {
         .anticon {
             color: gray;
@@ -62,7 +72,9 @@ export const ButtonRegister = styled(Button)`
     line-height: 1rem;
     border-radius: 10px;
     padding: 12px 40px;
-
+    &.btn_edit {
+        border-radius: 4px;
+    }
     font-weight: 600;
     transition: unset;
     background-color: #00a400;

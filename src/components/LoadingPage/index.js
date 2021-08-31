@@ -10,7 +10,7 @@ const LoadingContainer = styled.div`
     right: 0;
     bottom: 0;
     background: #ffffffb8;
-    z-index: 1002;
+    z-index: 1031;
 `;
 
 const SVGStyled = styled.svg`

@@ -68,6 +68,9 @@ export default function CourseItemAction({ showModal, isRegister, course }) {
                 title='Xem chi tiết'
                 mouseEnterDelay={0}
                 mouseLeaveDelay={0}
+                overlayInnerStyle={{
+                    borderRadius: 10,
+                }}
             >
                 <Button
                     type='default'

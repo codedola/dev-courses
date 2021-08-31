@@ -4,6 +4,20 @@ import { Modal } from "antd";
 export const ModalCourseInfo = styled(Modal)`
     top: 20px;
 
+    &.user_edit {
+        transition: unset;
+        .ant-modal-body {
+            padding: 24px;
+        }
+        .ant-modal-content {
+            border-radius: 4px;
+            .ant-modal-header {
+                border-top-left-radius: 4px;
+                border-top-right-radius: 4px;
+            }
+        }
+    }
+
     .ant-modal-content {
         border-radius: 10px;
         .ant-modal-header {
@@ -15,11 +29,19 @@ export const ModalCourseInfo = styled(Modal)`
         width: 100%;
     }
     .ant-modal-header {
-        background-color: #e6f7ff;
+        /* background-color: #e6f7ff; */
+        background-color: #a2dafb;
+        background-image: linear-gradient(
+            0deg,
+            #bee5fd 0%,
+            #c0fbf4 41%,
+            #ffffff 97%
+        );
+
         .ant-modal-title {
             font-size: 1.2rem;
             font-weight: 600;
-            color: #333;
+            color: #7e7e7f;
         }
     }
     .ant-modal-body {
@@ -34,8 +56,9 @@ export const ModalCourseInfo = styled(Modal)`
             line-height: 56px;
 
             .anticon {
+                line-height: 26px;
                 vertical-align: middle;
-                color: #c1c1c1;
+                color: #9e9e9e;
             }
         }
     }

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Menu, Button, Row, List, Col } from "antd";
+import { Menu, Button, Row, List, Col, Descriptions } from "antd";
 
 export const MenuStyled = styled(Menu)`
     .ant-menu-item {
@@ -212,5 +212,45 @@ export const ListManagerUserStyled = styled(List)`
         &.empty:hover {
             background: unset;
         }
+    }
+`;
+
+export const DescriptionsUser = styled(Descriptions)`
+    .ant-descriptions-header {
+        .ant-descriptions-title {
+            .title_info {
+                display: flex;
+                align-items: center;
+                .fullname {
+                    color: #5a5a5a;
+                }
+                .ant-tag {
+                    margin-left: 8px;
+                    margin-right: 8px;
+                    border-radius: 10px;
+                }
+                .ant-badge {
+                    margin-left: 10px;
+                    .ant-badge-status-processing {
+                        background-color: #27f224;
+                        width: 8px;
+                        height: 8px;
+                    }
+                    .ant-badge-status-text {
+                        color: #18ca16;
+                        margin-left: 4px;
+                    }
+                }
+            }
+        }
+
+        .ant-descriptions-extra {
+            .edit_btn {
+                transition: unset;
+            }
+        }
+    }
+
+    .ant-descriptions-view {
     }
 `;

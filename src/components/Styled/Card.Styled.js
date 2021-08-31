@@ -11,7 +11,7 @@ export const ActionCard = styled.div`
     margin-top: 14px;
     margin-bottom: 10px;
     .add-cart {
-        border-radius: 6px;
+        border-radius: 4px;
     }
 
     .add-cart.register {
@@ -26,12 +26,14 @@ export const ActionCard = styled.div`
 `;
 
 export const CardStyled = styled(Card)`
-    box-shadow: 0 1px 4px #00000033;
-    border-radius: 8px;
+    /* box-shadow: 0 1px 4px #00000033; */
+    border-radius: 4px;
+
     overflow: hidden;
     transition: all 0.2s;
     &:hover {
         box-shadow: 0 2px 12px 0 rgb(0 0 0 / 30%);
+        /* box-shadow: 0 1px 4px #00000033; */
         transform: scale(1.05);
     }
     &.ant-card-bordered {
@@ -47,7 +49,8 @@ export const CardStyled = styled(Card)`
     }
 
     .ant-card-body {
-        padding: 8px 8px 12px 8px;
+        /* padding: 8px 8px 12px 8px; */
+        padding: 8px;
         cursor: auto;
         .title {
             width: 100%;
