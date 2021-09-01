@@ -51,6 +51,11 @@ export const CourseService = {
             .callWithAuth()
             .post("/QuanLyKhoaHoc/HuyGhiDanh", { maKhoaHoc, taiKhoan });
     },
+    CreateNewCourse(formData) {
+        return api
+            .callWithAuth()
+            .post("/QuanLyKhoaHoc/ThemKhoaHocUploadHinh", formData);
+    },
 };
 
 /**

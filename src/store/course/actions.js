@@ -229,3 +229,34 @@ export function actDeleteRegisterCourseAsync({ taiKhoan, maKhoaHoc }) {
         }
     };
 }
+
+export function actCreateNewCourseAsync({
+    maKhoaHoc,
+    tenKhoaHoc,
+    moTa,
+    maNhom = "GP01",
+    ngayTao,
+    maDanhMucKhoaHoc,
+    taiKhoanNguoiTao,
+    hinhAnh,
+    biDanh = "bi-danh",
+    luotXem = 100,
+    danhGia = 10,
+} = {}) {
+    return async function () {
+        try {
+            const formData = new FormData();
+            formData.append("moTa", moTa);
+            formData.append("biDanh", biDanh);
+            formData.append("luotXem", luotXem);
+            formData.append("danhGia", danhGia);
+            formData.append("maNhom", maNhom);
+            formData.append("ngayTao", ngayTao);
+            formData.append("hinhAnh", hinhAnh);
+            formData.append("maKhoaHoc", maKhoaHoc);
+            formData.append("tenKhoaHoc", tenKhoaHoc);
+            formData.append("maDanhMucKhoaHoc", maDanhMucKhoaHoc);
+            formData.append("taiKhoanNguoiTao", taiKhoanNguoiTao);
+        } catch (error) {}
+    };
+}

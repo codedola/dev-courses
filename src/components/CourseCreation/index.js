@@ -13,6 +13,7 @@ export default function CourseCreation() {
     const [urlPreview, setUrlPreview] = useState(null);
     const [objFile, setObjFile] = useState(null);
     const listCategories = useSelector((state) => state.Categories.list);
+    const currentUser = useSelector((state) => state.Auths.currentUser);
 
     function hanldePreviewImg(e) {
         const file = e.target.files[0];
@@ -38,10 +39,18 @@ export default function CourseCreation() {
     }
 
     function hanldeCreateNewCourse(formData) {
+        const luotXem = 100;
+        const danhGia = 10;
+        const hinhAnh = objFile;
+        const taiKhoanNguoiTao = currentUser.taiKhoan;
+        const ngayTao = formData.ngayTao.format("DD/MM/YYYY");
         console.log("formData", {
             ...formData,
-            ngayTao: formData.ngayTao.format("DD/MM/YYYY"),
-            hinhAnh: objFile,
+            ngayTao,
+            hinhAnh,
+            luotXem,
+            danhGia,
+            taiKhoanNguoiTao,
         });
     }
     return (
