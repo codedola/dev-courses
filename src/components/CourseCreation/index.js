@@ -1,11 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Form, Col, Row, Input, Select, DatePicker, Image } from "antd";
-import { RowCourseCreation } from "../Styled/Dashboard.Styled";
+import {
+    RowCourseCreation,
+    ButtonCreateCourse,
+} from "../Styled/Dashboard.Styled";
 import { useSelector } from "react-redux";
 import { CameraOutlined } from "@ant-design/icons";
 const { Option } = Select;
 
 export default function CourseCreation() {
+    const inputFile = useRef(null);
     const [urlPreview, setUrlPreview] = useState(null);
     const [objFile, setObjFile] = useState(null);
     const listCategories = useSelector((state) => state.Categories.list);
@@ -26,10 +30,28 @@ export default function CourseCreation() {
             reader.readAsDataURL(file);
         }
     }
+
+    function onClickInputFile() {
+        if (inputFile) {
+            inputFile.current.input.click();
+        }
+    }
+
+    function hanldeCreateNewCourse(formData) {
+        console.log("formData", {
+            ...formData,
+            ngayTao: formData.ngayTao.format("DD/MM/YYYY"),
+            hinhAnh: objFile,
+        });
+    }
     return (
-        <RowCourseCreation style={{ padding: 12 }}>
+        <RowCourseCreation>
             <Col span={24}>
-                <Form layout='vertical' hideRequiredMark>
+                <Form
+                    layout='vertical'
+                    size='large'
+                    onFinish={hanldeCreateNewCourse}
+                >
                     <Row gutter={16}>
                         <Col span={12}>
                             <Form.Item name='tenKhoaHoc' label='Tên khóa học'>
@@ -76,8 +98,11 @@ export default function CourseCreation() {
                             </Form.Item>
                         </Col>
                         <Col span={12}>
-                            <Form.Item label='Ngày tạo'>
-                                <DatePicker style={{ width: "100%" }} />
+                            <Form.Item name='ngayTao' label='Ngày tạo'>
+                                <DatePicker
+                                    style={{ width: "100%" }}
+                                    format={["DD/MM/YYYY"]}
+                                />
                             </Form.Item>
                         </Col>
                     </Row>
@@ -93,23 +118,39 @@ export default function CourseCreation() {
                     </Row>
                     <Row gutter={16}>
                         <Col span={24}>
-                            <Form.Item name='hinhAnh' label='Chọn ảnh'>
+                            <Form.Item name='hinhAnh' className='inputFile_img'>
                                 <Input
                                     type='file'
+                                    ref={inputFile}
                                     onChange={hanldePreviewImg}
                                 />
                             </Form.Item>
                         </Col>
+
                         <Col span='24'>
-                            <Image
-                                src={
-                                    urlPreview
-                                        ? urlPreview
-                                        : "https://gw.alipayobjects.com/zos/antfincdn/aPkFc8Sj7n/method-draw-image.svg"
-                                }
-                            />
+                            <div className='image_course'>
+                                <CameraOutlined onClick={onClickInputFile} />
+                                {urlPreview ? (
+                                    <Image
+                                        src={urlPreview || ""}
+                                        style={{ width: "100%" }}
+                                    />
+                                ) : null}
+                            </div>
                         </Col>
                     </Row>
+                    <Form.Item style={{ marginTop: 10 }}>
+                        <ButtonCreateCourse
+                            type='primary'
+                            size='large'
+                            htmlType='submit'
+                            // block
+                            // disabled
+                            // loading
+                        >
+                            Tạo khóa học
+                        </ButtonCreateCourse>
+                    </Form.Item>
                 </Form>
             </Col>
         </RowCourseCreation>
