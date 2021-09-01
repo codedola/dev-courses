@@ -16,8 +16,8 @@ export const CardPopularTopics = styled(Card)`
     }
 
     .ant-card-body {
-        box-shadow: rgb(110 113 114 / 10%) 0px 1px 2px 0px,
-            rgb(135 138 140 / 10%) 0px 2px 6px 2px;
+        /* box-shadow: rgb(110 113 114 / 10%) 0px 1px 2px 0px,
+            rgb(135 138 140 / 10%) 0px 2px 2px 2px; */
 
         /* background-color: #ffdee9;
         background-image: linear-gradient(0deg, #ffe3ec 0%, #c3fffc 100%); */

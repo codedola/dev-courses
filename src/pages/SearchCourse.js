@@ -34,7 +34,7 @@ export default function SearchCourse() {
         loading,
         totalCount,
         renderButtonLoadMore,
-    } = usePagingCourse({ actAsync: actGetListCourseBySearchAsync });
+    } = usePagingCourse({ actAsync: actGetListCourseBySearchAsync, restParams: {tenKhoaHoc: searchText} });
 
     useEffect(
         function () {

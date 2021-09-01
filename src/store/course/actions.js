@@ -130,7 +130,7 @@ export function actGetListCourseBySearchAsync({
                 tenKhoaHoc,
             });
 
-            console.log("response search text", response);
+           
             if (response.status === 200) {
                 const {
                     currentPage,
@@ -196,7 +196,6 @@ export function actRegisterCourseAsync({ taiKhoan, maKhoaHoc, tenKhoaHoc }) {
                 };
             }
         } catch (error) {
-            console.log({ error });
             return {
                 ok: false,
                 message: error?.response?.data,
@@ -212,7 +211,7 @@ export function actDeleteRegisterCourseAsync({ taiKhoan, maKhoaHoc }) {
                 taiKhoan,
                 maKhoaHoc,
             });
-            console.log("delete register course", response);
+           
             if (response.status === 200) {
                 dispatch(actDecreaseCourse({ maKhoaHoc }));
                 return {
@@ -257,6 +256,21 @@ export function actCreateNewCourseAsync({
             formData.append("tenKhoaHoc", tenKhoaHoc);
             formData.append("maDanhMucKhoaHoc", maDanhMucKhoaHoc);
             formData.append("taiKhoanNguoiTao", taiKhoanNguoiTao);
-        } catch (error) {}
+
+            const reponse = await CourseService.CreateNewCourse(formData);
+            
+            if (reponse.status === 200) {
+                const newCourse = reponse.data;
+                return {
+                    ok: true,
+                    course: newCourse
+                }
+            }
+
+        } catch (error) {
+            return {
+                ok:false
+            }
+        }
     };
 }

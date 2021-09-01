@@ -4,19 +4,44 @@ import {
     RowCourseCreation,
     ButtonCreateCourse,
 } from "../Styled/Dashboard.Styled";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { CameraOutlined } from "@ant-design/icons";
+import { actCreateNewCourseAsync } from "../../store/course/actions"
+import {showNotification, typeNotify , typePlacement} from "../shared/Notification"
 const { Option } = Select;
 
 export default function CourseCreation() {
     const inputFile = useRef(null);
-    const [urlPreview, setUrlPreview] = useState(null);
+    const dispatch = useDispatch();
+    //
     const [objFile, setObjFile] = useState(null);
-    const listCategories = useSelector((state) => state.Categories.list);
+    const [urlPreview, setUrlPreview] = useState(null);
     const currentUser = useSelector((state) => state.Auths.currentUser);
+    const listCategories = useSelector((state) => state.Categories.list);
 
     function hanldePreviewImg(e) {
         const file = e.target.files[0];
+        const isLt1M = file.size / 1024 / 1024 < 1;
+        const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
+        if (!isJpgOrPng) {
+            setUrlPreview(null);
+            setObjFile(null);
+            showNotification({
+                type: typeNotify.error,
+                placement: typePlacement.bottomLeft,
+                message: "Bạn chỉ được upload JPG/PNG file!"
+            })
+            return;
+        }
+         
+        if (!isLt1M) {
+           showNotification({
+                type: typeNotify.error,
+                placement: typePlacement.bottomLeft,
+                message: "Dung lượng file vượt quá 1 MB!"
+           })
+            return;
+        }
         const reader = new FileReader();
         reader.addEventListener(
             "load",
@@ -39,19 +64,18 @@ export default function CourseCreation() {
     }
 
     function hanldeCreateNewCourse(formData) {
-        const luotXem = 100;
-        const danhGia = 10;
+        if (objFile === null) {
+            showNotification({
+                type: typeNotify.error,
+                placement: typePlacement.bottomLeft,
+                message: "Khóa học phải có ảnh!"
+            })
+            return
+        } 
         const hinhAnh = objFile;
-        const taiKhoanNguoiTao = currentUser.taiKhoan;
+        const taiKhoanNguoiTao = currentUser?.taiKhoan;
         const ngayTao = formData.ngayTao.format("DD/MM/YYYY");
-        console.log("formData", {
-            ...formData,
-            ngayTao,
-            hinhAnh,
-            luotXem,
-            danhGia,
-            taiKhoanNguoiTao,
-        });
+        dispatch(actCreateNewCourseAsync({...formData, ngayTao, hinhAnh, taiKhoanNguoiTao}))
     }
     return (
         <RowCourseCreation>
@@ -153,9 +177,6 @@ export default function CourseCreation() {
                             type='primary'
                             size='large'
                             htmlType='submit'
-                            // block
-                            // disabled
-                            // loading
                         >
                             Tạo khóa học
                         </ButtonCreateCourse>

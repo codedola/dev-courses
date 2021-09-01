@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useEffect } from "react";
+import React, { useMemo, useState } from "react";
 import { Badge, Popover, List, Empty, message } from "antd";
 import { CarOutlined } from "@ant-design/icons";
 import { useSelector, useDispatch } from "react-redux";
@@ -11,22 +11,11 @@ export default function HeaderMyCourse() {
     const dispatch = useDispatch();
     const [orderDir, setOrderDir] = useState(""); //desc | asc
     const [searchText, setSearchText] = useState("");
+    const [containerMessage, setContainerMessage] = useState(null)
     //
     const currentUser = useSelector((state) => state.Auths.currentUser);
     const listCourseRegister = currentUser?.chiTietKhoaHocGhiDanh;
     const countMyCourses = listCourseRegister?.length;
-
-    //
-    useEffect(function () {
-        message.config({
-            top: 10,
-            duration: 2,
-            maxCount: 10,
-            rtl: true,
-            getContainer: () =>
-                document.querySelector(".ant-popover-inner-content"),
-        });
-    }, []);
 
     const onChangeSearchText = (e) => {
         setSearchText(e.target.value);
@@ -92,29 +81,34 @@ export default function HeaderMyCourse() {
                     taiKhoan: currentUser.taiKhoan,
                 })
             ).then(function (res) {
+                  message.config({
+                    top: 10,
+                    duration: 2,
+                    maxCount: 10,
+                    rtl: true,
+                    getContainer: () => containerMessage || document.body,
+                });
                 if (res.ok) {
-                    message.success({
-                        content: "Xóa thành công",
-                        key: "updatable",
-                        duration: 0.5,
-                    });
+                    message.success("Xóa thành công");
                 } else {
-                    message.error({
-                        content: "Xóa thất bại",
-                        key: "updatable",
-                    });
+                    message.error("Xóa thất bại");
                 }
             });
         };
     }
 
     return (
+       
+
+        
         <Popover
             placement='bottom'
             trigger='click'
             arrowPointAtCenter
             content={
+                 <div ref={setContainerMessage}>
                 <ListMyCoursesHeader
+                  
                     itemLayout='horizontal'
                     className='ListMyCoursesHeader'
                 >
@@ -149,7 +143,8 @@ export default function HeaderMyCourse() {
                             />
                         </List.Item>
                     ) : null}
-                </ListMyCoursesHeader>
+                    </ListMyCoursesHeader>
+                    </div>
             }
         >
             <div className='cart'>
@@ -157,6 +152,7 @@ export default function HeaderMyCourse() {
                     <CarOutlined />
                 </Badge>
             </div>
-        </Popover>
+            </Popover>
+           
     );
 }

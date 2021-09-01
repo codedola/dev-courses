@@ -4,7 +4,6 @@ import { Menu } from "antd";
 import { MenuStyled } from "../Styled/Dashboard.Styled";
 import {
     LogoutOutlined,
-    IdcardOutlined,
     FormOutlined,
     PlusCircleOutlined,
     UsergroupAddOutlined,
@@ -28,9 +27,7 @@ export default function DashboardMenu() {
             <Menu.Item key='1' icon={<BarChartOutlined />}>
                 <Link to={`${url}`}>Thông tin</Link>
             </Menu.Item>
-            <Menu.Item key='2' icon={<IdcardOutlined />}>
-                <Link to={`${url}/profile`}>Khóa học</Link>
-            </Menu.Item>
+         
             <Menu.Item key='3' icon={<PlusCircleOutlined />}>
                 <Link to={`${url}/course-creation`}>Tạo khóa học</Link>
             </Menu.Item>
