@@ -5,6 +5,7 @@ import {
     ACT_GET_LIST_COURSE_SEARCH,
 } from "./actions";
 const intialState = {
+    listAll: [],
     hashListCourseAll: {},
     PagingCourse: {
         list: [],
@@ -32,6 +33,7 @@ export default function courseReducer(stateCourse = intialState, action) {
             return {
                 ...stateCourse,
                 hashListCourseAll: hashCourse,
+                listAll: action.payload.list
             };
         }
         case ACT_GET_LIST_COURSE: {
