@@ -257,10 +257,10 @@ export function actCreateNewCourseAsync({
             formData.append("maDanhMucKhoaHoc", maDanhMucKhoaHoc);
             formData.append("taiKhoanNguoiTao", taiKhoanNguoiTao);
 
-            const reponse = await CourseService.CreateNewCourse(formData);
-            
-            if (reponse.status === 200) {
-                const newCourse = reponse.data;
+            const response = await CourseService.CreateNewCourse(formData);
+            console.log("response create new course", response)
+            if (response.status === 200) {
+                const newCourse = response.data;
                 await dispatch(actGetListCourseByCategoryAsync(newCourse.maDanhMucKhoaHoc));
                 await dispatch(actGetListCourseAllAsync())
                 return {

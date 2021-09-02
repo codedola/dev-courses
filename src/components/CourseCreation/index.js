@@ -82,6 +82,8 @@ export default function CourseCreation() {
             .then(function (res) {
                 if (res.ok) {
                     setNewCourse(res.course);
+                    setObjFile(null);
+                    setUrlPreview(null)
                 } else {
                     showNotification({
                         type: typeNotify.error,
@@ -91,10 +93,19 @@ export default function CourseCreation() {
                 }
             })
     }
+
+    
     return (
         <RowCourseCreation>
             <Col span={24}> {
-                newCourse ?  <FormCreation urlPreview={urlPreview} hanldeCreateNewCourse={hanldeCreateNewCourse} hanldePreviewImg={hanldePreviewImg}/> : <CreateSuccess />
+                !newCourse ?
+                    <FormCreation
+                        urlPreview={urlPreview}
+                        hanldeCreateNewCourse={hanldeCreateNewCourse}
+                        hanldePreviewImg={hanldePreviewImg}
+                    />
+                    :
+                    <CreateSuccess maKhoaHoc={newCourse?.maKhoaHoc} setNewCourse={setNewCourse} />
             }
                
             </Col>

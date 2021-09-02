@@ -1,36 +1,38 @@
 import React from 'react'
-import { Result, Button , Descriptions, Image} from 'antd';
-export default function CreateSuccess({course}) {
+import { Result, Button, Descriptions, Image } from 'antd';
+import { useSelector} from "react-redux"
+export default function CreateSuccess({ maKhoaHoc, setNewCourse }) {
+    const course = useSelector(state => state.Courses.hashListCourseAll[maKhoaHoc])
+    function setNullForNewCourse() {
+        setNewCourse(null)
+    }
     return (
-    
-            
             <Result
-            status="success"
-                title={<>
-                    {course?.tenKhoaHoc || "Complete React Developer in 2021"}
-                     
-                </>}
-            subTitle={`Khóa học ${course?.tenKhoaHoc || "Complete React Developer in 2021"} được tạo thành công`}
+                status="success"
+                title={course?.tenKhoaHoc}
+                subTitle={`Khóa học ${course?.tenKhoaHoc} được tạo thành công`}
             extra={
-              
-                <Descriptions layout="vertical" column={2} bordered  extra={<Button type="primary">Tạo khóa học mới</Button>}>
-                    <Descriptions.Item label="Tên khóa học">Complete React Developer in 2021</Descriptions.Item>
-    <Descriptions.Item label="Mã khóa học">"REACT2021"</Descriptions.Item>
-    <Descriptions.Item label="Chủ đề">FrontEnd</Descriptions.Item>
-    <Descriptions.Item label="Ngày tạo">2018-04-24 18:00:00</Descriptions.Item>
-   
- 
-    <Descriptions.Item label="Mô tả">
-    Become a Senior React Developer! Build a massive E-commerce app with Redux, Hooks, GraphQL, ContextAPI, Stripe, Firebase
+                <Descriptions
+                    layout="vertical"
+                    column={2}
+                    bordered
+                    size="middle"
+                    extra={<Button type="default" size="middle" onClick={setNullForNewCourse}>Tạo khóa học mới</Button>}
+                >
+                    <Descriptions.Item label="Tên khóa học">{course?.tenKhoaHoc}</Descriptions.Item>
+                    <Descriptions.Item label="Mã khóa học">{course?.maKhoaHoc}</Descriptions.Item>
+                    <Descriptions.Item label="Chủ đề">
+                        {course?.danhMucKhoaHoc?.tenDanhMucKhoaHoc}
                     </Descriptions.Item>
+                    <Descriptions.Item label="Ngày tạo">{ course?.ngayTao}</Descriptions.Item>
+                    <Descriptions.Item label="Mô tả">{course?.moTa}</Descriptions.Item>
                     <Descriptions.Item label="Hình ảnh">
-    <Image
-      src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-    />
-    </Descriptions.Item>
-  </Descriptions>
-               
-                
+                        <Image
+                            src={course?.hinhAnh}
+                            preview = {false}
+                        />
+                    </Descriptions.Item>
+                </Descriptions>
             }
         />
   
