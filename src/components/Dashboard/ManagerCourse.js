@@ -50,7 +50,7 @@ export default function ManagerCourse() {
                 {
                     activeRegister ?
                         <Row>
-                        {listRegisterCourses.length !== 0 ?
+                        {listRegisterCourses?.length !== 0 ?
                             listRegisterCourses?.map(function (course, index) {
                                 const courseInfo = hashListCourse[course.maKhoaHoc];
                                 return (
@@ -70,7 +70,7 @@ export default function ManagerCourse() {
                     </Row>
                         :
                     <Row>
-                    {listCourseCreation.length !== 0 ?
+                    {listCourseCreation?.length !== 0 ?
                         listCourseCreation?.map(function (course, index) {
                             const courseInfo = hashListCourse[course.maKhoaHoc];
                            

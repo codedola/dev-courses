@@ -10,8 +10,7 @@ export default function ManagerUsers({ containerAffix }) {
     const [orderBy, setOrderBy] = useState("");
     const [searchText, setSearchText] = useState("");
     const listAllUser = useSelector((state) => state.User.listAllUser);
-    const listGiaoVu = useSelector((state) => state.User.listGiaoVu);
-    const listHocVien = useSelector((state) => state.User.listHocVien);
+    
 
     function onChangeOrderBy(typeSort) {
         return function () {
@@ -25,11 +24,17 @@ export default function ManagerUsers({ containerAffix }) {
 
     const listFilterSort = useMemo(
         function () {
-            if (orderBy === "HV") return listHocVien;
-            if (orderBy === "GV") return listGiaoVu;
-            return listAllUser;
+            if (orderBy === "HV") {
+                return listAllUser.filter(
+                    (user) => user.maLoaiNguoiDung === "HV"
+                )
+            }
+            if (orderBy === "GV") {
+                return listAllUser.filter((user) => user.maLoaiNguoiDung === "GV")
+            }
+            return listAllUser
         },
-        [orderBy, listAllUser, listHocVien, listGiaoVu]
+        [orderBy, listAllUser]
     );
 
     const listFilterSearch = useMemo(

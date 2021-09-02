@@ -1,10 +1,12 @@
 import React from "react";
-import { List, Badge, Avatar, Tag, Empty } from "antd";
+import { List, Badge, Avatar, Tag, Empty, Popover } from "antd";
+import {SettingOutlined } from "@ant-design/icons"
 import AvatarHocVien from "../../assets/images/avatar1.jpg";
 import AvatarGiaoVu from "../../assets/images/avatar2.jpg";
-import { useSelector } from "react-redux";
-import { EmptyMyCourse } from "../Styled/Header.Styled";
+import { useSelector, useDispatch } from "react-redux";
+import { EmptyMyCourse , ListHandleRegisterCourse} from "../Styled/Header.Styled";
 import { ListManagerUserStyled } from "../Styled/Dashboard.Styled";
+import { actDeleteUserAsync} from "../../store/user/actions"
 import Highlighter from "react-highlight-words";
 const permission = {
     HV: {
@@ -21,9 +23,17 @@ export default function ManagerUserList({
     listFilter,
     listNotFilter,
 }) {
+    const dispatch = useDispatch();
     const hashCategoriesUser = useSelector(
         (state) => state.User.hashCategoriesUser
     );
+
+    function handleDeleteUser(taiKhoan) {
+        return function () {
+            // console.log("taiKhoan delete user", taiKhoan)
+            dispatch(actDeleteUserAsync(taiKhoan))
+        }
+    }
     return (
         <ListManagerUserStyled itemLayout='horizontal'>
             {/* List Filter */}
@@ -64,6 +74,25 @@ export default function ManagerUserList({
                                 // description={`${user.taiKhoan} - ${user.email}`}
                                 description={user.email}
                             />
+                              <Popover
+                                    placement='left'
+                                    trigger='hover'
+                                    arrowPointAtCenter
+                                    content={
+                                        <ListHandleRegisterCourse>
+                                            <List.Item
+                                                className='delete'
+                                                onClick={handleDeleteUser(user.taiKhoan)}
+                                            >
+                                                Xóa user
+                                            </List.Item>
+                                        </ListHandleRegisterCourse>
+                                    }
+                                >
+                            <div style={{cursor: "pointer", color:"#a0a0a0"}}>
+                                <SettingOutlined />
+                            </div>
+                        </Popover>
                         </List.Item>
                     );
                 })}
@@ -121,6 +150,25 @@ export default function ManagerUserList({
                                 // description={`${user.taiKhoan} - ${user.email}`}
                                 description={user.email}
                             />
+                              <Popover
+                                    placement='left'
+                                    trigger='hover'
+                                    arrowPointAtCenter
+                                    content={
+                                        <ListHandleRegisterCourse>
+                                            <List.Item
+                                                className='delete'
+                                                onClick={handleDeleteUser(user.taiKhoan)}
+                                            >
+                                                Xóa user
+                                            </List.Item>
+                                        </ListHandleRegisterCourse>
+                                    }
+                                >
+                            <div style={{cursor: "pointer", color:"#a0a0a0"}}>
+                                <SettingOutlined />
+                            </div>
+                        </Popover>
                         </List.Item>
                     );
                 })}

@@ -1,7 +1,7 @@
 import {
     GET_LIST_USER_PAGING,
     GET_ALL_USER,
-    GET_CATEGORIES_USER,
+    GET_CATEGORIES_USER, ACT_DELETE_USER
 } from "./actions";
 const initState = {
     listAllUser: [],
@@ -19,6 +19,13 @@ const initState = {
 
 export default function userReducer(stateUser = initState, action) {
     switch (action.type) {
+        case ACT_DELETE_USER: {
+            const key = action.payload.taiKhoan
+            return {
+                ...stateUser,
+                listAllUser: [...stateUser.listAllUser.filter(user => user.taiKhoan !== key)]
+            }
+        }
         case GET_LIST_USER_PAGING: {
             const {
                 list: listCourse,
@@ -45,15 +52,10 @@ export default function userReducer(stateUser = initState, action) {
 
         case GET_ALL_USER: {
             const list = action.payload.list;
+            
             return {
                 ...stateUser,
                 listAllUser: list,
-                listGiaoVu: list.filter(
-                    (user) => user.maLoaiNguoiDung === "GV"
-                ),
-                listHocVien: list.filter(
-                    (user) => user.maLoaiNguoiDung === "HV"
-                ),
             };
         }
 

@@ -42,4 +42,11 @@ export const UserServices = {
                 email,
             });
     },
+    DeleteUser(TaiKhoan) {
+        return api.callWithAuth().delete("/QuanLyNguoiDung/XoaNguoiDung", {
+            params: {
+                TaiKhoan
+            }
+        })
+    }
 };

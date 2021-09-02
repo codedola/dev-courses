@@ -3,6 +3,7 @@ export const GET_ALL_USER = "GET_ALL_USER";
 export const GET_LIST_USER_PAGING = "GET_LIST_USER_PAGING";
 export const GET_CATEGORIES_USER = "GET_CATEGORIES_USER";
 export const ACT_UPLOAD_CURRENT_USER = "ACT_UPLOAD_CURRENT_USER";
+export const ACT_DELETE_USER = "ACT_DELETE_USER";
 export function actGetAllUser(list) {
     return {
         type: GET_ALL_USER,
@@ -11,7 +12,14 @@ export function actGetAllUser(list) {
         },
     };
 }
-
+export function actDeleteUser(taiKhoan) {
+    return {
+        type: ACT_DELETE_USER,
+        payload: {
+            taiKhoan
+        }
+    }
+}
 export function actUploadCurrentUser(data) {
     return {
         type: ACT_UPLOAD_CURRENT_USER,
@@ -128,4 +136,25 @@ export function actUploadInfoCurrentUserAsync({
             };
         }
     };
+}
+
+export function actDeleteUserAsync(TaiKhoan) {
+    return async function (dispatch) {
+        try {
+            const response = await UserServices.DeleteUser(TaiKhoan);
+            console.log("response delete user", response)
+            if (response.status === 200) {
+                dispatch(actDeleteUser(TaiKhoan))
+                return {
+                    ok: true
+                }
+            }
+        } catch (error) {
+            console.log("loi trong delete user", {error})
+               return {
+                   ok: false,
+                   message: error?.response?.data
+                }
+        }
+    }
 }
