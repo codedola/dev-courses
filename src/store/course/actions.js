@@ -242,7 +242,7 @@ export function actCreateNewCourseAsync({
     luotXem = 100,
     danhGia = 10,
 } = {}) {
-    return async function () {
+    return async function (dispatch) {
         try {
             const formData = new FormData();
             formData.append("moTa", moTa);
@@ -261,6 +261,8 @@ export function actCreateNewCourseAsync({
             
             if (reponse.status === 200) {
                 const newCourse = reponse.data;
+                await dispatch(actGetListCourseByCategoryAsync(newCourse.maDanhMucKhoaHoc));
+                await dispatch(actGetListCourseAllAsync())
                 return {
                     ok: true,
                     course: newCourse

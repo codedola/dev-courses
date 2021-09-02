@@ -104,9 +104,9 @@ export const RowCourseCreation = styled(Row)`
     background-color: #ffffff;
     padding: 10px;
     border-radius: 4px;
-    box-shadow: rgb(60 64 67 / 10%) 0px 1px 4px 0px,
-        rgb(60 64 67 / 15%) 0px 2px 6px 2px;
-
+    /* box-shadow: rgb(60 64 67 / 10%) 0px 1px 4px 0px,
+        rgb(60 64 67 / 15%) 0px 2px 6px 2px; */
+border: 1px solid #ebebeb;
     .ant-col {
         padding-left: 8px;
         padding-right: 8px;
@@ -124,6 +124,8 @@ export const RowCourseCreation = styled(Row)`
         display: flex;
         flex-direction: column;
         align-items: flex-start;
+        padding-left: 8px;
+        padding-right: 8px;
         .anticon-camera {
             /* position: absolute;
             top: 0px;
