@@ -56,6 +56,13 @@ export const CourseService = {
             .callWithAuth()
             .post("/QuanLyKhoaHoc/ThemKhoaHocUploadHinh", formData);
     },
+    DeleteCourseCreation(MaKhoaHoc) {
+        return api.callWithAuth().delete("/QuanLyKhoaHoc/XoaKhoaHoc", {
+            params: {
+                MaKhoaHoc
+            }
+        })
+    }
 };
 
 /**

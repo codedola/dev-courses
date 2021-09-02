@@ -31,7 +31,7 @@ export default function UserDescription() {
     return (
         <>
             <Space>
-                <Image width={120} src={AVATAR} />
+                <Image width={128} src={AVATAR} />
                 <DescriptionsUser
                     title={
                         <div className='title_info'>

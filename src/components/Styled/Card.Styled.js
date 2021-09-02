@@ -32,9 +32,10 @@ export const CardStyled = styled(Card)`
     overflow: hidden;
     transition: all ease 0.2s;
     &:hover {
-        box-shadow: 0 2px 12px 0 rgb(0 0 0 / 30%);
         /* box-shadow: 0 1px 4px #00000033; */
+        box-shadow: 0 2px 12px 0 rgb(0 0 0 / 30%);
         transform: scale(1.04);
+      
     }
     &.ant-card-bordered {
         border: unset;
@@ -115,6 +116,32 @@ export const CardStyled = styled(Card)`
                 .anticon {
                     margin-right: 2px;
                     font-size: 1rem;
+                }
+            }
+        }
+
+        .action_creation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 12px;
+            .ant-space-item:first-child {
+                flex-grow: 1;
+            }
+            .view_detail {
+                border: unset;
+                background-color: #efefef;
+                font-weight: 600;
+                color: #727272;
+            }
+
+            .delete_course {
+               cursor: pointer;
+                .anticon {
+                    font-size: 28px;
+                    color: #bcbcbc;
+                    &:hover {
+                        color: #ff8080;
+                    }
                 }
             }
         }

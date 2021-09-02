@@ -25,7 +25,7 @@ export default function CreateSuccess({ maKhoaHoc, setNewCourse }) {
                         {course?.danhMucKhoaHoc?.tenDanhMucKhoaHoc}
                     </Descriptions.Item>
                     <Descriptions.Item label="Ngày tạo">{ course?.ngayTao}</Descriptions.Item>
-                    <Descriptions.Item label="Mô tả">{course?.moTa}</Descriptions.Item>
+                    <Descriptions.Item label="Mô tả" span={2}>{course?.moTa}</Descriptions.Item>
                     <Descriptions.Item label="Hình ảnh">
                         <Image
                             src={course?.hinhAnh}

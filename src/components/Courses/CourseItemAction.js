@@ -14,7 +14,7 @@ import {
     typeNotify,
     typePlacement,
 } from "../shared/Notification";
-export default function CourseItemAction({ showModal, isRegister, course }) {
+export default function CourseItemAction({ showModal, isRegister, course, }) {
     const dispatch = useDispatch();
     const history = useHistory();
     const currentUser = useSelector((state) => state.Auths.currentUser);

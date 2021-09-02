@@ -4,7 +4,17 @@ export const ACT_GET_LIST_ALL = "ACT_GET_LIST_ALL";
 export const ACT_GET_LIST_COURSE = "ACT_GET_LIST_COURSE";
 export const ACT_GET_LIST_COURSE_SEARCH = "ACT_GET_LIST_COURSE_SEARCH";
 export const ACT_GET_LIST_COURSE_CATEGORIES = "ACT_GET_LIST_COURSE_CATEGORIES";
+export const ACT_DELETE_COURSE_CREATION = "ACT_DELETE_COURSE_CREATION";
 
+export function actDeleteCourseCreation(maKhoaHoc, maDanhMuc) {
+    return {
+        type: ACT_DELETE_COURSE_CREATION,
+        payload: {
+            maKhoaHoc,
+            maDanhMuc
+        }
+    }
+}
 export function actGetListCourse(
     { count, currentPage, list, totalCount, totalPages },
     typeAction = ACT_GET_LIST_COURSE
@@ -275,4 +285,24 @@ export function actCreateNewCourseAsync({
             }
         }
     };
+}
+
+export function actDeleteCourseCreationAsync(maKhoaHoc, maDanhMuc) {
+    return async function (dispatch) {
+        try {
+            const response = await CourseService.DeleteCourseCreation(maKhoaHoc);
+            if (response.status === 200) {
+                dispatch(actDeleteCourseCreation(maKhoaHoc, maDanhMuc))
+                return {
+                    ok: true,
+                    message: response.data
+                }
+            }
+        } catch (error) {
+            return {
+                ok: false,
+                error
+            }
+        }
+    }
 }

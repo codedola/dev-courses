@@ -15,7 +15,7 @@ export default function DashboardManager() {
     const [containerAffix, setContainerAffix] = useState(null);
     return (
         <div style={{ padding: "0px 20px" }}>
-            <Row gutter={[16, 16]}>
+            <Row gutter={[16, 16]} >
                 <ColManagerCourse span={16}>
                     <Switch>
                         <Route exact path={path}>

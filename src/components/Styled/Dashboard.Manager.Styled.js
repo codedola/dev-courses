@@ -1,7 +1,20 @@
 import styled from "styled-components";
-import { Space } from "antd";
+import { Space, Empty} from "antd";
 
+export const EmptyListStyled = styled(Empty)`
+    padding: 90px 0px;
+    .ant-empty-image {
+            height: 90px;
+        svg {
+             width: 180px;
+        }
+           
+    }
 
+    .ant-empty-description{
+        font-size: 20px;
+    }
+`
 
 export const SpaceFilterTypeCourse = styled(Space)`
     display: flex;

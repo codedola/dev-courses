@@ -3,6 +3,7 @@ import {
     ACT_GET_LIST_ALL,
     ACT_GET_LIST_COURSE_CATEGORIES,
     ACT_GET_LIST_COURSE_SEARCH,
+    ACT_DELETE_COURSE_CREATION
 } from "./actions";
 const intialState = {
     listAll: [],
@@ -19,6 +20,21 @@ const intialState = {
 
 export default function courseReducer(stateCourse = intialState, action) {
     switch (action.type) {
+        case ACT_DELETE_COURSE_CREATION: {
+            const id = action.payload.maKhoaHoc; //
+            const maDanhMuc = action.payload.maDanhMuc
+            const listCourseCategory = stateCourse.HashCourseCategories[maDanhMuc];
+            console.log("maDanhMuc", maDanhMuc)
+             console.log("listCourseCategory", listCourseCategory)
+            return {
+                ...stateCourse,
+                listAll: [...stateCourse.listAll.filter(course => course.maKhoaHoc !== id)],
+                HashCourseCategories: {
+                    ...stateCourse.HashCourseCategories,
+                    [maDanhMuc]:listCourseCategory ? [...listCourseCategory.filter(course => course.maKhoaHoc !== id)] : []
+                }
+            }
+        }
         case ACT_GET_LIST_ALL: {
             const hashCourse = action.payload.list.reduce(function (
                 hash,
