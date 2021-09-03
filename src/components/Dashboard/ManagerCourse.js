@@ -18,7 +18,8 @@ export default function ManagerCourse() {
 
 
     const listCourseCreation = useMemo(() => {
-        return listAll.filter(item => item.nguoiTao.taiKhoan === currentUser.taiKhoan)
+        if(currentUser === null) return []
+        return listAll?.filter(item => item?.nguoiTao?.taiKhoan === currentUser.taiKhoan)
      }, [listAll, currentUser])
     
     return (

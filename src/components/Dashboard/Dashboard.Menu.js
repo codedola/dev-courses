@@ -33,7 +33,7 @@ export default function DashboardMenu() {
             </Menu.Item>
 
             <Menu.Item key='4' icon={<UsergroupAddOutlined />}>
-                <Link to={`${url}/users`}>Học viên</Link>
+                Thêm học viên
             </Menu.Item>
 
             <Menu.Item key='5' icon={<FormOutlined />}>

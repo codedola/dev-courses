@@ -1,15 +1,24 @@
-import React from "react";
-import { Space, Input, List, Popover } from "antd";
-import { SearchOutlined, UserSwitchOutlined } from "@ant-design/icons";
+import React, {useState} from "react";
+import { Space, Input, List, Popover, Tooltip} from "antd";
+import { SearchOutlined, UserSwitchOutlined , PlusCircleOutlined} from "@ant-design/icons";
 import { ListHandleRegisterCourse } from "../Styled/Header.Styled";
+import UserAddNew from "../UserAddNew";
 export default function ManagerUserTool({
     searchText,
     onChangeSearchText,
     onChangeOrderBy,
 }) {
+    //visibleFormNewUser, showFormAddNewUser, closeFormAddNewUser
+    const [visibleFormNewUser, setVisibleFormNewUser] = useState(false);
+    const showFormAddNewUser = () => {
+        setVisibleFormNewUser(true)
+    }
+    const closeFormAddNewUser = () => {
+        setVisibleFormNewUser(false)
+    }
     return (
         <div className='tool'>
-            <Space size='large'>
+            <Space size='middle'>
                 <Input
                     size='middle'
                     value={searchText}
@@ -43,12 +52,30 @@ export default function ManagerUserTool({
                             >
                                 Học viên
                             </List.Item>
+                               
                         </ListHandleRegisterCourse>
                     }
                 >
                     <UserSwitchOutlined />
                 </Popover>
+
+                
+                <Tooltip
+                    placement="bottomRight"
+                    title="Thêm người dùng"
+                    mouseEnterDelay={0}
+                    mouseLeaveDelay={0}
+                    overlayInnerStyle={{borderRadius: 10}}
+                >
+                    <PlusCircleOutlined onClick={showFormAddNewUser} />
+                </Tooltip>
             </Space>
+
+            <UserAddNew
+                visibleFormNewUser={visibleFormNewUser}
+           
+                closeFormAddNewUser={closeFormAddNewUser}
+            />
         </div>
     );
 }

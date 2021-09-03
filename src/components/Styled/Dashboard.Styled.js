@@ -252,6 +252,18 @@ export const RowManagerUser = styled(Row)`
             background: #00000005;
             font-size: 18px;
         }
+
+      
+            .anticon-plus-circle {
+                 display: block;
+                cursor: pointer;
+                padding: 8px;
+                border-radius: 8px;
+                color: #989898;
+                background: #00000005;
+                font-size: 18px;
+                }
+        
     }
 `;
 

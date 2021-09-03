@@ -27,6 +27,8 @@ export default function Dashboard() {
         },
         [dispatch]
     );
+
+    
     return (
         <>
             <Row style={{ height: "100%" }}>

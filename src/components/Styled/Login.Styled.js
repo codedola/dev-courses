@@ -11,10 +11,24 @@ export const RowLoginStyled = styled(Row)``;
 
 export const LoginStyled = styled.div``;
 export const FormStyled = styled(Form)`
-    padding: 54px 30px 30px;
+  padding: 54px 30px 30px;
     border-radius: 8px;
     box-shadow: rgb(60 64 67 / 10%) 0px 1px 2px 0px,
         rgb(60 64 67 / 15%) 0px 2px 8px 2px;
+   
+    &.add_new-user {
+        padding: 0px;
+        border-radius:0px;
+        box-shadow: unset;
+        .ant-input-affix-wrapper {
+            border-radius: 0;
+        }
+
+        .ant-form-item{
+            margin-bottom: 36px;
+        }
+    }
+    
     &.user_edit {
         padding: 0;
         border-radius: 0;
