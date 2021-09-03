@@ -48,5 +48,21 @@ export const UserServices = {
                 TaiKhoan
             }
         })
+    },
+    CreateNewUser({  taiKhoan,
+        matKhau,
+        hoTen,
+        soDT,
+        maLoaiNguoiDung,
+        email} = {}) {
+        return api.callWithAuth().post("/QuanLyNguoiDung/ThemNguoiDung", {
+            taiKhoan,
+            matKhau,
+            hoTen,
+            soDT,
+            maLoaiNguoiDung,
+            maNhom: "GP01",
+            email
+        })
     }
 };

@@ -1,12 +1,11 @@
 import {
     GET_LIST_USER_PAGING,
     GET_ALL_USER,
-    GET_CATEGORIES_USER, ACT_DELETE_USER
+    GET_CATEGORIES_USER, ACT_DELETE_USER, ACT_ADD_NEW_USER
 } from "./actions";
 const initState = {
     listAllUser: [],
-    listGiaoVu: [],
-    listHocVien: [],
+  
     PagingUser: {
         list: [],
         count: 0,
@@ -19,6 +18,12 @@ const initState = {
 
 export default function userReducer(stateUser = initState, action) {
     switch (action.type) {
+        case ACT_ADD_NEW_USER: {
+            return {
+                ...stateUser,
+                listAllUser: [...stateUser.listAllUser, action.payload.user]
+            }
+        }
         case ACT_DELETE_USER: {
             const key = action.payload.taiKhoan
             return {

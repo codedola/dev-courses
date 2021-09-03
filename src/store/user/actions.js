@@ -4,6 +4,16 @@ export const GET_LIST_USER_PAGING = "GET_LIST_USER_PAGING";
 export const GET_CATEGORIES_USER = "GET_CATEGORIES_USER";
 export const ACT_UPLOAD_CURRENT_USER = "ACT_UPLOAD_CURRENT_USER";
 export const ACT_DELETE_USER = "ACT_DELETE_USER";
+export const ACT_ADD_NEW_USER = "ACT_ADD_NEW_USER";
+
+export function actAddNewUser(user) {
+    return {
+        type: ACT_ADD_NEW_USER,
+        payload: {
+            user
+        }
+    }
+}
 export function actGetAllUser(list) {
     return {
         type: GET_ALL_USER,
@@ -157,4 +167,41 @@ export function actDeleteUserAsync(TaiKhoan) {
                 }
         }
     }
+}
+
+
+export function actCreateNewUserAsync({
+    taiKhoan,    
+    matKhau,
+    hoTen,
+    soDT,
+    maLoaiNguoiDung="HV",
+    email } = {}) {
+    
+    return async function (dispatch) {
+        try {
+            const response = await UserServices.CreateNewUser({
+                 taiKhoan,    
+                matKhau,
+                hoTen,
+                soDT,
+                maLoaiNguoiDung,
+                email
+            })
+
+            if (response.status === 200) {
+                const newUser = response.data;
+                dispatch(actAddNewUser(newUser))
+                return {
+                    ok: true
+                }
+            }
+        } catch (error) {
+            return {
+                ok: false,
+                message: error?.response?.data || "Có lỗi xảy ra"
+            }
+        }
+    }
+
 }
