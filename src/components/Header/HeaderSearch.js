@@ -14,9 +14,9 @@ export default function HeaderSearch() {
             <SearchStyled
                 placeholder='Tìm kiếm khóa khọc...'
                 allowClear
-                enterButton
                 size='large'
                 onSearch={onSearch}
+                bordered={false}
             />
         </div>
     );

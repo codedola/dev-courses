@@ -4,14 +4,16 @@ import {
     HomeContainer,
     RowTabsListCourse,
 } from "../components/Styled/Home.Styled";
+import {SpacingStyled } from "../components/Styled/App.Styled"
 import { actGetListCourseAsync } from "../store/course/actions";
-import { Col, Divider } from "antd";
+import { Col } from "antd";
 import BackToTop from "../components/BackTop";
 import TabListCourseCategory from "../components/TabListCourseCategory";
 import PopularTopics from "../components/PopularTopics";
 import LoadingPaging from "../components/Home/LoadingPaging";
 import ListCourses from "../components/Home/ListCourses";
 import usePagingCourse from "../utilities/hook/usePagingCourse";
+import BackgroupHome from "../components/Home/BackgroupHome";
 export default function Homepage() {
     const dispatch = useDispatch();
     const {
@@ -31,17 +33,20 @@ export default function Homepage() {
 
     return (
         <HomeContainer>
+            <BackgroupHome />
+            
+             <SpacingStyled  />
             <RowTabsListCourse>
                 <Col span={24} style={{ padding: "0 8px" }}>
                     <TabListCourseCategory />
                 </Col>
             </RowTabsListCourse>
 
-            <Divider />
+            <SpacingStyled  sizeSpacing="16px" />
 
             <PopularTopics />
 
-            <Divider />
+            <SpacingStyled  />
 
             <ListCourses listCourses={listCourses} />
 

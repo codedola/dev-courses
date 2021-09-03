@@ -89,9 +89,9 @@ export default function HeaderMyCourse() {
                     getContainer: () => containerMessage || document.body,
                 });
                 if (res.ok) {
-                    message.success("Xóa thành công");
+                    message.success("Hủy thành công");
                 } else {
-                    message.error("Xóa thất bại");
+                    message.error("Hủy thất bại");
                 }
             });
         };

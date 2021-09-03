@@ -3,28 +3,20 @@ import { Space, List, Popover, Input, Empty, Modal } from "antd";
 
 const { Search } = Input;
 export const SearchStyled = styled(Search)`
+    padding: 2px 0px 1px 0px;
+    border: 1px solid;
+    border-color: #9f9f9f;
     .ant-input-wrapper.ant-input-group {
         .ant-input-affix-wrapper {
-            border-top-left-radius: 8px;
-            border-bottom-left-radius: 8px;
-            border-color: #cfcfcf;
-            &:hover,
-            &:focus-visible,
-            &:focus {
-                border-color: #acacac;
-                outline: transparent;
-                box-shadow: none;
-            }
+          
+            
         }
 
         .ant-input-group-addon {
             .ant-btn.ant-input-search-button {
-                background: #acacac;
-                border-top-right-radius: 8px;
-                border-bottom-right-radius: 8px;
+               
                 border: unset;
-                /* color: #08979c; */
-                /* background: #e6fffb; */
+            
             }
         }
     }
@@ -61,7 +53,7 @@ export const WapperHeaderTop = styled.div`
 
     .headerTop__right {
         display: flex;
-        flex-grow: 1;
+        flex-grow: 2;
         -webkit-box-align: center;
         align-items: center;
         .header_logo {
@@ -76,6 +68,8 @@ export const WapperHeaderTop = styled.div`
 
         .header_search {
             flex-grow: 1;
+
+            
         }
     }
 `;
