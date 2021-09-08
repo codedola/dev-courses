@@ -21,10 +21,19 @@
     position: absolute;
 }
 
-/* .ant-popover-inner-content .ant-message .ant-message-notice .ant-message-notice-content {
-  
-} */
 
 .ant-image-preview-root .ant-image-preview-mask {
     z-index: 1002;
+}
+.certain-category-search-dropdown 
+.rc-virtual-list-holder-inner .ant-select-item-option:last-child {
+    /* padding: 4px; */
+    background-color: #ffffff;
+    
+}
+
+
+.certain-category-search-dropdown 
+.rc-virtual-list-holder-inner .ant-select-item-option:last-child:hover{
+    background-color: #ffffff;
 }

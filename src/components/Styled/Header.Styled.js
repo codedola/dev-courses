@@ -68,11 +68,56 @@ export const WapperHeaderTop = styled.div`
 
         .header_search {
             flex-grow: 1;
-
-            
+            .ant-select {
+                width: 100%;
+            }
         }
     }
 `;
+export const WrapperSearchCategories = styled.div`
+    &:hover {
+        background-color: #fff;
+    }
+`
+
+export const ItemIconSearch = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 4px 10px;
+    background-color: #ffffff;
+
+    background-color: #a2dafb;
+    background-image: linear-gradient(
+        0deg,
+        #a2dafb 0%,
+        #9bf5eb 41%,
+        #ffffff 97%
+    );
+
+    /*  */
+    border-radius: 0px;
+    overflow: hidden;
+    text-align: center;
+    cursor: pointer;
+    /* margin-bottom: 8px; */
+    transition: all 200ms ease 0s;
+   color: #333;
+    &:hover {
+      
+       transform: scale(1.04);
+        box-shadow: rgb(0 0 0 / 10%) 0px 0px 10px;
+      
+    }
+    svg {
+        width: 36px;
+        height: 36px;
+        margin-right: 4px;
+    }
+`;
+
+// 
 
 export const SpaceStyled = styled(Space)`
     flex-grow: 1;

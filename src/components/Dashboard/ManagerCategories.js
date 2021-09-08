@@ -9,7 +9,7 @@ import {
 } from "../shared/TaskbarIcon";
 import { ItemIconStyled, RowManagerCategory } from "../Styled/Dashboard.Styled";
 import { Col } from "antd";
-const listIcons = [
+export const listIcons = [
     {
         name: "Logic",
         icon: <TuDuyIcon />,
