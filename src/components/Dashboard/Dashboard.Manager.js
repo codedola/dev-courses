@@ -10,6 +10,7 @@ import {
     RowManagerCategoryUser,
     ColManagerCourse,
 } from "../Styled/Dashboard.Styled";
+import CourseUpload from "../CourseUpload";
 export default function DashboardManager() {
     let { path } = useRouteMatch();
     const [containerAffix, setContainerAffix] = useState(null);
@@ -23,6 +24,9 @@ export default function DashboardManager() {
                         </Route>
                         <Route path={`${path}/course-creation`} exact>
                             <CourseCreation />
+                        </Route>
+                         <Route path={`${path}/course-upload`} exact>
+                            <CourseUpload />
                         </Route>
                     </Switch>
                 </ColManagerCourse>

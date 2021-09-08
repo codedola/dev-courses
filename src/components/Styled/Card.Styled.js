@@ -134,7 +134,8 @@ export const CardStyled = styled(Card)`
                 color: #727272;
             }
 
-            .delete_course {
+
+            .delete_course, .upload_course {
                cursor: pointer;
                 .anticon {
                     font-size: 28px;
@@ -142,6 +143,13 @@ export const CardStyled = styled(Card)`
                     &:hover {
                         color: #ff8080;
                     }
+                }
+            }
+
+            .upload_course {
+                .anticon {
+                    &:hover {color: #24b2d8; }
+                    
                 }
             }
         }

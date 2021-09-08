@@ -119,7 +119,7 @@ export default function HeaderSearch() {
     return (
         <div className='header_search'>
             <AutoComplete
-                dropdownClassName="certain-category-search-dropdown header_course"
+                dropdownClassName={` certain-category-search-dropdown ${searchText.trim() === "" ? "header_course" : ""}`}
                 backfill={true}
                 // open={true}
                 options={searchText.trim() === "" ? optionsDefault : optionsSearch}

@@ -9,7 +9,7 @@ export default function FormCreation({ urlPreview, hanldeCreateNewCourse, hanlde
     
     const listCategories = useSelector((state) => state.Categories.list);
 
-       function onClickInputFile() {
+    function onClickInputFile() {
         if (inputFile) {
             inputFile.current.input.click();
         }
