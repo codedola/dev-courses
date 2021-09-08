@@ -4,7 +4,11 @@ import { useHistory, Link} from "react-router-dom";
 import { AutoComplete, Row, Col, Empty } from 'antd';
 import { RiseOutlined, FireOutlined, HistoryOutlined, SearchOutlined} from "@ant-design/icons"
 import { listIcons } from "../Dashboard/ManagerCategories";
-import {useSelector } from "react-redux"
+import { useSelector } from "react-redux"
+// Constant
+const labelCSS = { fontSize: 14, fontWeight: 600, color: "gray" }
+
+//
 export default function HeaderSearch() {
     const history = useHistory();
     const [searchText, setSearchText] = useState("")
@@ -30,7 +34,6 @@ export default function HeaderSearch() {
                             </Link>
                           
                         </Col>
-                      
                     );
                 })}
             </Row>
@@ -81,15 +84,15 @@ export default function HeaderSearch() {
         })
         
         return [{
-            label: <span style={{ fontSize: 14, fontWeight: 600, color: "gray" }}>
-                Kết quả tìm kiếm
-            </span>,
+            label: <span style={labelCSS}>Kết quả tìm kiếm</span>,
             options: listResultItem.length !== 0 ? listResultItem : [{
                 value: "",
-                label: <EmptyMyCourse
-                            image={Empty.PRESENTED_IMAGE_SIMPLE}
-                            description={"Không tìm thấy: " + searchText}
-                        />
+                label: (
+                    <EmptyMyCourse
+                        image={Empty.PRESENTED_IMAGE_SIMPLE}
+                        description={"Không tìm thấy: " + searchText}
+                    />
+                )
             }]
         }]
     }, [listCourseFilterSearch, searchText])
@@ -97,18 +100,16 @@ export default function HeaderSearch() {
 
     const optionsDefault = [
         {
-            label: <span style={{ fontSize: 14, fontWeight: 600, color: "gray" }}>
+            label: <span style={labelCSS}>
                 Tìm Kiếm Phổ Biến <RiseOutlined style={{fontSize: 24, color: "#46ff84"}} />
             </span>,
             options: [
                 renderItemResultPopular(listCourse[4]),
-                renderItemResultPopular(listCourse[0]),
-                renderItemResultPopular(listCourse[2]),
                 renderItemResultPopular(listCourse[3]),
             ]
         },
         {
-            label: <span style={{ fontSize: 14, fontWeight: 600, color: "gray" }}>
+            label: <span style={labelCSS}>
                 Danh Mục Nổi Bật <FireOutlined style={{fontSize: 24, color: "#f9696d"}}/>
             </span>,
             options: [renderItemCategories()],
@@ -118,10 +119,10 @@ export default function HeaderSearch() {
     return (
         <div className='header_search'>
             <AutoComplete
-                dropdownClassName="certain-category-search-dropdown"
+                dropdownClassName="certain-category-search-dropdown header_course"
                 backfill={true}
-                options={searchText.trim() === "" ? optionsDefault : optionsSearch}
                 // open={true}
+                options={searchText.trim() === "" ? optionsDefault : optionsSearch}
             >
                 <SearchStyled
                     placeholder='Tìm kiếm khóa khọc...'

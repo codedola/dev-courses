@@ -25,7 +25,7 @@
 .ant-image-preview-root .ant-image-preview-mask {
     z-index: 1002;
 }
-.certain-category-search-dropdown 
+.certain-category-search-dropdown.header_course .rc-virtual-list .rc-virtual-list-holder 
 .rc-virtual-list-holder-inner .ant-select-item-option:last-child {
     /* padding: 4px; */
     background-color: #ffffff;
@@ -33,7 +33,15 @@
 }
 
 
-.certain-category-search-dropdown 
+.certain-category-search-dropdown.header_course .rc-virtual-list .rc-virtual-list-holder 
 .rc-virtual-list-holder-inner .ant-select-item-option:last-child:hover{
     background-color: #ffffff;
+}
+
+/* .certain-category-search-dropdown.header_course .rc-virtual-list .rc-virtual-list-holder {
+    max-height: 320px !important;
+} */
+
+.certain-category-search-dropdown.header_course .rc-virtual-list .rc-virtual-list-scrollbar{
+    /* visibility: hidden; */
 }
