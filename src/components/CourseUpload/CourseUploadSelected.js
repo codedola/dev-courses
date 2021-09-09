@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react'
+import React, { useMemo } from 'react'
 import {
     Row, Col, Popover, List,
     Empty, Image, Radio, Space, Badge
@@ -8,8 +8,8 @@ import { MedicineBoxOutlined } from "@ant-design/icons"
 import { useSelector } from "react-redux"
 import { WrapperTitleCourseUpload, RadioAntStyled, InfoCourseUpload } from "./CourseUpload.Styled"
 import IconUploading from './IconUploading'
-export default function CourseUploadSelected() {
-    const [courseUpload, setCourseUpload] = useState(null)
+export default function CourseUploadSelected({courseUpload, onSetCourseUpload, onDeleteCourseUpload}) {
+  
 
     const currentUser = useSelector(state => state.Auths.currentUser);
     const listAll = useSelector(state => state.Courses.listAll);
@@ -23,12 +23,16 @@ export default function CourseUploadSelected() {
     }, [listAll, currentUser])
 
     const onChangeCourseEdit = e => {
-        console.log('radio checked', e.target.value);
-        setCourseUpload(e.target.value)
+        if (onSetCourseUpload && typeof onSetCourseUpload === "function") {
+            onSetCourseUpload(e.target.value)
+        }
+        
     };
     return (
         <Row style={{marginTop: 10}}>
-            <Col lg={10} style={{display: "flex", alignItems: "center"}}>
+            <Col lg={10} style={{ display: "flex", alignItems: "center" }}>
+                {
+                    courseUpload === null ?
                 <Popover
                     trigger="hover"
                     placement="bottomLeft"
@@ -78,6 +82,16 @@ export default function CourseUploadSelected() {
                         </Space>
                     </WrapperTitleCourseUpload>
                 </Popover>
+                :
+                <WrapperTitleCourseUpload className="delete_course" onClick={onDeleteCourseUpload}>
+                    <Space>
+                        <MedicineBoxOutlined />
+                        <span className="title">
+                            Hủy Chỉnh Sửa
+                        </span>
+                    </Space>
+                </WrapperTitleCourseUpload>
+            }
             </Col>
             <Col lg={14}>
                 {

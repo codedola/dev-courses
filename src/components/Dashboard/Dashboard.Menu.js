@@ -23,6 +23,7 @@ export default function DashboardMenu() {
             theme='light'
             selectedKeys={keySelected}
             onSelect={onSelectedKey}
+            
         >
             <Menu.Item key='1' icon={<BarChartOutlined />}>
                 <Link to={`${url}`}>Thông tin</Link>

@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { Menu, Button, Row, List, Col, Descriptions } from "antd";
 
 export const MenuStyled = styled(Menu)`
+    height: 100vh;
     .ant-menu-item {
         border-radius: 4px;
         min-height: 60px;

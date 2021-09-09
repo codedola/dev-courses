@@ -1,6 +1,46 @@
 import styled from "styled-components";
 import { Radio, Tag} from "antd";
 
+export const WrapperFormUpload = styled.div`
+    .ant-form-item {
+        &.inputFile_img {
+            display: none;
+            input {
+            }
+        }
+    }
+    .image_course {
+        /* position: relative; */
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding-left: 8px;
+        padding-right: 8px;
+        .anticon-camera {
+            /* position: absolute;
+            top: 0px;
+            left: 0px; */
+            margin-bottom: 8px;
+            font-size: 30px;
+            color: #444;
+            padding: 10px 60px;
+            background: #ffffff;
+            border-radius: 6px;
+            cursor: pointer;
+            border: 3px dotted #cfcfcf;
+            /* dotted , outset*/
+            transition: all ease 0.2s;
+            &:hover {
+                color: #a6a6a6;
+                svg {
+                    transform: scale(1.3);
+                }
+            }
+        }
+        .ant-image {
+        }
+    }
+`
 export const InfoCourseUpload = styled.div`
     position: relative;
     svg {
@@ -74,8 +114,8 @@ export const CourseStateUpload = styled(Tag)`
 `
 
 export const WrapperTitleCourseUpload = styled.div`
+    
     .ant-space {
-        
         padding: 8px;
         /* background-color: #a2dafb;
         background-image: linear-gradient( 
@@ -97,6 +137,16 @@ export const WrapperTitleCourseUpload = styled.div`
         /* &:hover {
                box-shadow: rgb(46 41 51 / 8%) 0px 2px 4px, rgb(71 63 79 / 16%) 0px 5px 10px;
         } */
+    }
+
+    &.delete_course {
+        .ant-space {
+            border-color: #ffa0a0;
+            background: #ffeaea66;
+            .ant-space-item {
+                color: #ff8686;
+            }
+        }
     }
 `
 
