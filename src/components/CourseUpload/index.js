@@ -1,11 +1,15 @@
 import React from 'react'
-import { ContainerCourseEdit} from "./CourseUpload.Styled"
+import { Row, Col} from "antd"
+import CourseUploadSelected from './CourseUploadSelected'
 export default function CourseUpload() {
     return (
-        <ContainerCourseEdit>
-            <div className="choose_course-edit">
-               <p> Chọn khóa học</p>
-            </div>
-        </ContainerCourseEdit>
+        <Row>
+            <Col span={24}>
+                <CourseUploadSelected />
+            </Col>
+            <Col>
+                {/* Form Edit Course */}
+            </Col>
+        </Row>
     )
 }

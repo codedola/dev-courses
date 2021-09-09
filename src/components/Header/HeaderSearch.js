@@ -47,7 +47,7 @@ export default function HeaderSearch() {
                 style={{ fontWeight: 600, fontSize: 12, color: "#333", display: "block" }}
             >
                 <HistoryOutlined style={{ marginRight: 10, color: "gray", fontSize: 16}} />
-                {course?.tenKhoaHoc}
+                {course?.tenKhoaHoc + " (" + course?.danhMucKhoaHoc?.tenDanhMucKhoaHoc + ")"}
             </Link>
         ),
     })
@@ -104,8 +104,8 @@ export default function HeaderSearch() {
                 Tìm Kiếm Phổ Biến <RiseOutlined style={{fontSize: 24, color: "#46ff84"}} />
             </span>,
             options: [
-                renderItemResultPopular(listCourse[4]),
-                renderItemResultPopular(listCourse[3]),
+                renderItemResultPopular(listCourse[0]),
+                renderItemResultPopular(listCourse[2]),
             ]
         },
         {
