@@ -24,11 +24,20 @@ export default function CourseItem({ course, isShowCreation = false }) {
     function confirmDeleteCourse() {
         dispatch(actDeleteCourseCreationAsync(course.maKhoaHoc, danhMucKhoaHoc.maDanhMucKhoahoc))
             .then(function (res) {
-                showNotification({
-                    type: typeNotify.success,
-                    placement: typePlacement.bottomLeft,
-                    message: res.message
-                })
+                if (res.ok) {
+                    showNotification({
+                        type: typeNotify.success,
+                        placement: typePlacement.bottomLeft,
+                        message: res.message
+                    })
+                } else {
+                       showNotification({
+                        type: typeNotify.error,
+                        placement: typePlacement.bottomLeft,
+                        message: res.message
+                    })
+                }
+                
         })
     }
 

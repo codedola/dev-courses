@@ -171,12 +171,14 @@ export const ButtonCreateCourse = styled(Button)`
     border-radius: 6px;
     display: block;
     height: auto;
-    transition: 0.5s;
+    transition: all ease 0.2s;
+    border-color: #fff;
     &:hover,
     &:focus {
         background-position: right center;
         color: #fff;
         text-decoration: none;
+        border-color: #fff;
     }
     span {
         padding-top: 2px;

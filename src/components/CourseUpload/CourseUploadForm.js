@@ -6,13 +6,17 @@ import { ButtonCreateCourse } from "../Styled/Dashboard.Styled"
 import {WrapperFormUpload} from "./CourseUpload.Styled"
 import moment from "moment"
 const {Option } = Select
-export default function CourseUploadForm({ courseUpload, urlPreview, handleUploadCourse, hanldePreviewImg }) {
+export default function CourseUploadForm({
+    courseUpload, urlPreview, handleUploadCourse, hanldePreviewImg
+}) {
     const inputFile = useRef(null)
-    const { tenKhoaHoc, maKhoaHoc, danhMucKhoaHoc, maNhom, biDanh, ngayTao, moTa } = courseUpload;
-    const { maDanhMucKhoahoc } = danhMucKhoaHoc;
-
-    console.log("ma danh muc khoa hoc", courseUpload)
     const listCategories = useSelector((state) => state.Categories.list);
+    if (!courseUpload) return null;
+    const {
+        tenKhoaHoc, maKhoaHoc, danhMucKhoaHoc,
+        ngayTao, moTa
+    } = courseUpload;
+    const { maDanhMucKhoahoc } = danhMucKhoaHoc;
 
     function onClickInputFile() {
         if (inputFile) {
@@ -21,15 +25,12 @@ export default function CourseUploadForm({ courseUpload, urlPreview, handleUploa
     }
     return (
         <WrapperFormUpload>
-
             <Form
                 layout='vertical'
                 size='large'
                 onFinish={handleUploadCourse}
                 initialValues={{
                     moTa,
-                    biDanh,
-                    maNhom,
                     tenKhoaHoc,
                     maKhoaHoc,
                     ngayTao: moment(ngayTao, "DD/MM/YYYY"),
@@ -67,31 +68,17 @@ export default function CourseUploadForm({ courseUpload, urlPreview, handleUploa
                             </Select>
                         </Form.Item>
                     </Col>
-                    <Col span={12}>
-                        <Form.Item name='maNhom' label='Nhóm'>
-                            <Select placeholder='Chọn nhóm'>
-                                <Option value='GP01'>GP01</Option>
-                            </Select>
-                        </Form.Item>
-                    </Col>
-                </Row>
-                <Row gutter={16}>
-                    <Col span={12}>
-                        <Form.Item name='biDanh' label='Bí danh'>
-                            <Input placeholder='Nhập bí danh' />
-                        </Form.Item>
-                    </Col>
-                    <Col span={12}>
+                   <Col span={12}>
                         <Form.Item name='ngayTao' label='Ngày tạo'>
                             <DatePicker
                                 placeholder="Chọn ngày tạo"
                                 style={{ width: "100%" }}
-                                // defaultValue={moment(ngayTao, "DD/MM/YYYY")}
                                 format={["DD/MM/YYYY"]}
                             />
                         </Form.Item>
                     </Col>
                 </Row>
+               
                 <Row gutter={16}>
                     <Col span={24}>
                         <Form.Item name='moTa' label='Mô tả'>

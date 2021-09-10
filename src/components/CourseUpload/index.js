@@ -3,14 +3,17 @@ import { Row, Col} from "antd"
 import CourseUploadSelected from './CourseUploadSelected'
 import CourseUploadForm from './CourseUploadForm';
 import { showNotification, typeNotify, typePlacement } from "../shared/Notification"
-
+import { useSelector, useDispatch } from "react-redux"
+import { actUploadCourseAsync } from "../../store/course/actions";
 export default function CourseUpload() {
+    const dispatch = useDispatch();
     const [courseUpload, setCourseUpload] = useState(null);
     const [objFile, setObjFile] = useState(null);
     const [urlPreview, setUrlPreview] = useState(null);
+    const currentUser = useSelector(state => state.Auths.currentUser)
 
     useEffect(function () {
-        if (courseUpload) {
+        if (courseUpload?.hinhAnh) {
             setUrlPreview(courseUpload.hinhAnh);
             setObjFile(courseUpload.hinhAnh)
         }
@@ -65,7 +68,21 @@ export default function CourseUpload() {
 
 
     function handleUploadCourse(formData) {
-        console.log("handleUploadCourse", formData)
+        const hinhAnh = objFile;
+        const taiKhoanNguoiTao = currentUser?.taiKhoan;
+        const ngayTao = formData.ngayTao.format("DD/MM/YYYY");
+        console.log("handleUploadCourse", { ...formData, hinhAnh, ngayTao, taiKhoanNguoiTao });
+        dispatch(actUploadCourseAsync({ ...formData, hinhAnh, ngayTao, taiKhoanNguoiTao }))
+            .then(function (res) {
+                if (res.ok) {
+                    setCourseUpload(null)
+                showNotification({
+                type: typeNotify.success,
+                placement: typePlacement.bottomLeft,
+                message: "Cập Nhật Khóa Học Thành Công"
+            })
+            }
+        })
     }
     return (
         <Row>

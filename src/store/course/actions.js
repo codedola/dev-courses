@@ -268,7 +268,7 @@ export function actCreateNewCourseAsync({
             formData.append("taiKhoanNguoiTao", taiKhoanNguoiTao);
 
             const response = await CourseService.CreateNewCourse(formData);
-            console.log("response create new course", response)
+           
             if (response.status === 200) {
                 const newCourse = response.data;
                 await dispatch(actGetListCourseByCategoryAsync(newCourse.maDanhMucKhoaHoc));
@@ -287,6 +287,79 @@ export function actCreateNewCourseAsync({
     };
 }
 
+export function actUploadCourseAsync({
+    maKhoaHoc,
+    tenKhoaHoc,
+    moTa,
+    maNhom = "GP01",
+    ngayTao,
+    maDanhMucKhoaHoc,
+    taiKhoanNguoiTao,
+    hinhAnh,
+    biDanh="",
+    luotXem = 100,
+    danhGia = 10,
+} = {}) {
+    return async function (dispatch) {
+        try {
+            const formData = new FormData();
+            // formData.append("moTa", moTa);
+            // formData.append("biDanh", biDanh);
+            // formData.append("luotXem", luotXem);
+            // formData.append("danhGia", danhGia);
+            // formData.append("maNhom", maNhom);
+            // formData.append("ngayTao", ngayTao);
+            formData.append("hinhAnh", hinhAnh);
+            // formData.append("maKhoaHoc", maKhoaHoc);
+            formData.append("tenKhoaHoc", tenKhoaHoc);
+            // formData.append("maDanhMucKhoaHoc", maDanhMucKhoaHoc);
+            // formData.append("taiKhoanNguoiTao", taiKhoanNguoiTao);
+    
+            // filename = "bí danh theo tên" _"mã nhóm".Extension react-hook_gp01.jpg
+        
+            if (typeof hinhAnh === "object") {
+                const responseImg = await CourseService.UploadHinhAnhKhoaHoc(formData);
+                console.log("responseImg upload course", responseImg);
+            }
+         
+    
+             
+            
+           
+            const response = await CourseService.UploadCourseStringBody(
+                {
+                    maKhoaHoc,
+                    tenKhoaHoc,
+                    moTa,
+                    maNhom,
+                    ngayTao,
+                    maDanhMucKhoaHoc,
+                    taiKhoanNguoiTao,
+                    hinhAnh,
+                    biDanh,
+                    luotXem,
+                    danhGia
+                }
+            )
+
+            if (response.status === 200) {
+                await dispatch(actGetListCourseAllAsync());
+                
+                return {
+                    ok: true
+                }
+            }
+
+          
+           
+            
+         
+        } catch (error) {
+            console.log("error upload course", {error})
+        }
+    }
+}
+
 export function actDeleteCourseCreationAsync(maKhoaHoc, maDanhMuc) {
     return async function (dispatch) {
         try {
@@ -301,7 +374,7 @@ export function actDeleteCourseCreationAsync(maKhoaHoc, maDanhMuc) {
         } catch (error) {
             return {
                 ok: false,
-                error
+                message: error?.response?.data
             }
         }
     }

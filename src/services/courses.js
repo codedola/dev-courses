@@ -62,10 +62,15 @@ export const CourseService = {
                 MaKhoaHoc
             }
         })
+    },
+    UploadCourse(formData) {
+        return api.callWithAuth().post("/QuanLyKhoaHoc/CapNhatKhoaHocUpload", formData);
+    },
+    UploadHinhAnhKhoaHoc(formData) {
+        return api.call().post("/QuanLyKhoaHoc/UploadHinhAnhKhoaHoc", formData)
+    },
+    UploadCourseStringBody(formData) {
+        return api.callWithAuth().put("/QuanLyKhoaHoc/CapNhatKhoaHoc", formData)
     }
+ 
 };
-
-/**
- * "maKhoaHoc": "ITEC2118",
-  "taiKhoan": "nguyenvana"
- */
