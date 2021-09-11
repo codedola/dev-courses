@@ -7,7 +7,7 @@ import {
 } from "../components/Styled/Home.Styled";
 import {SpacingStyled } from "../components/Styled/App.Styled"
 import { actGetListCourseAsync } from "../store/course/actions";
-import { Col } from "antd";
+import { Col, Affix } from "antd";
 import {ExclamationCircleOutlined} from "@ant-design/icons"
 import BackToTop from "../components/BackTop";
 import TabListCourseCategory from "../components/TabListCourseCategory";
@@ -52,13 +52,15 @@ export default function Homepage() {
 
             <SpacingStyled  />
 
-            <AlertStyled
-                type="info"
-                showIcon
-                icon={<ExclamationCircleOutlined />}
-                // banner={true}
-                message="Do ảnh hưởng của dịch Covid-19, DevCourse miễn phí tất cả các khóa học !"
-            />
+            <Affix offsetTop={0}>
+                <AlertStyled
+                    type="info"
+                    showIcon
+                    icon={<ExclamationCircleOutlined />}
+                    // banner={true}
+                    message="Do ảnh hưởng của dịch Covid-19, DevCourse miễn phí tất cả các khóa học !"
+                />
+            </Affix>
               <SpacingStyled  />
             <ListCourses listCourses={listCourses} />
 
