@@ -50,7 +50,6 @@ export default function CourseInfoModal({
                             split={<Divider type='vertical' />}
                             className='state_detail'
                         >
-                            <span>120 total hours</span>
                             <span>All Levels</span>
                             <span>Subtitles</span>
                         </Space>

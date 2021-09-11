@@ -11,30 +11,51 @@ export const ActionCard = styled.div`
     margin-top: 14px;
     margin-bottom: 10px;
     .add-cart {
-        border-radius: 4px;
+        border-radius: 2px;
+            border-color: transparent;
+            background: #ffd4d47a;
+            color: #d42020;
+            font-weight: 400;
+        &:hover {
+            border-color: #ffd4d4;
+            background: #ffb5b65c;
+            color: #e03e3e;
+        }
     }
 
     .add-cart.register {
-        background: #52c41a;
+        /* background: #52c41a;
         border-color: #52c41a;
+        cursor: auto; */
+        background: #bdff9d3b;
+        border-color: transparent;
         cursor: auto;
+        color: #06ad06;
+        
     }
 
     .view-more {
         margin-left: 8px;
+        border-color: transparent;
+        background: #e6e6e64d;
+        .anticon {
+            font-size: 20px;
+            margin-top: 2px;
+            color: gray;
+        }
     }
 `;
 
 export const CardStyled = styled(Card)`
     /* box-shadow: 0 1px 4px #00000033; */
-    border-radius: 4px;
+    border-radius: 2px;
 
     overflow: hidden;
     transition: all ease 0.2s;
     &:hover {
         /* box-shadow: 0 1px 4px #00000033; */
-        box-shadow: 0 2px 12px 0 rgb(0 0 0 / 30%);
-        transform: scale(1.04);
+        box-shadow: 0 2px 6px 0 rgb(210 210 210 / 30%);
+        transform: scale(1.02);
       
     }
     &.ant-card-bordered {

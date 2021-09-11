@@ -2,7 +2,7 @@ import React from "react";
 import { Button, Tooltip } from "antd";
 import {
     EditOutlined,
-    PicRightOutlined,
+    FileSearchOutlined, 
     CheckCircleOutlined,
 } from "@ant-design/icons";
 import { useDispatch, useSelector } from "react-redux";
@@ -74,11 +74,12 @@ export default function CourseItemAction({ showModal, isRegister, course, }) {
             >
                 <Button
                     type='default'
-                    shape='circle'
                     onClick={showModal}
+                    // ghost={true}
                     className='view-more'
+                    
                 >
-                    <PicRightOutlined />
+                    <FileSearchOutlined />
                 </Button>
             </Tooltip>
         </ActionCard>
