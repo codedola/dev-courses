@@ -11,7 +11,8 @@ export default function HeaderMyCourse() {
     const dispatch = useDispatch();
     const [orderDir, setOrderDir] = useState(""); //desc | asc
     const [searchText, setSearchText] = useState("");
-    const [containerMessage, setContainerMessage] = useState(null)
+    const [containerMessage, setContainerMessage] = useState(null);
+    const [loading, setLoading] = useState(false)
     //
     const currentUser = useSelector((state) => state.Auths.currentUser);
     const listCourseRegister = currentUser?.chiTietKhoaHocGhiDanh;
@@ -75,12 +76,15 @@ export default function HeaderMyCourse() {
 
     function handleDeleteCourseAsync(id) {
         return function () {
+            if(loading) return
+            setLoading(true);
             dispatch(
                 actDeleteRegisterCourseAsync({
                     maKhoaHoc: id,
                     taiKhoan: currentUser.taiKhoan,
                 })
             ).then(function (res) {
+                setLoading(false);
                   message.config({
                     top: 10,
                     duration: 2,
