@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Modal } from "antd";
 
 export const ModalCourseInfo = styled(Modal)`
-    top: 20px;
+    top: 10px;
 
     &.user_edit {
         transition: unset;
@@ -30,13 +30,13 @@ export const ModalCourseInfo = styled(Modal)`
     }
     .ant-modal-header {
         /* background-color: #e6f7ff; */
-        background-color: #a2dafb;
+        /* background-color: #a2dafb;
         background-image: linear-gradient(
             0deg,
             #bee5fd 0%,
             #c0fbf4 41%,
             #ffffff 97%
-        );
+        ); */
 
         .ant-modal-title {
             font-size: 1.2rem;

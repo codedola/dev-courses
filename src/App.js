@@ -18,6 +18,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import SearchCourse from "./pages/SearchCourse";
 import Dashboard from "./pages/Dashboard";
+import CategoriesCourse from "./pages/CategoriesCourse";
 
 function App() {
     const dispatch = useDispatch();
@@ -49,6 +50,9 @@ function App() {
                 <HeaderApp />
                 <ContentApp>
                     <Switch>
+                         <Route path='/categories/:category' exact>
+                            <CategoriesCourse />
+                        </Route>
                         <Route path='/search' exact>
                             <SearchCourse />
                         </Route>

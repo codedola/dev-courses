@@ -11,7 +11,7 @@ import { ItemIconStyled, RowManagerCategory } from "../Styled/Dashboard.Styled";
 import { Col } from "antd";
 export const listIcons = [
     {
-        name: "Logic",
+        name: "TuDuy",
         icon: <TuDuyIcon />,
     },
     {
