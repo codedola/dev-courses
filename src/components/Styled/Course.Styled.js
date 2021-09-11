@@ -1,6 +1,9 @@
 import styled from "styled-components";
 import { Modal } from "antd";
 
+
+
+
 export const ModalCourseInfo = styled(Modal)`
     top: 10px;
 

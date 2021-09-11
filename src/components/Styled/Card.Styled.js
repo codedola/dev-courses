@@ -1,9 +1,46 @@
 import styled from "styled-components";
-import { Card } from "antd";
+import { Card, Space } from "antd";
 
 export const WapperCardItem = styled.div`
     padding: 8px;
 `;
+export const SpaceCategoryAndPrice = styled(Space)`
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+
+    .ant-space-item {
+        font-weight: 600;
+    }
+    .category {
+        border-radius: 2px;
+        cursor: auto;
+        font-weight: 600;
+        border-radius: 0px;
+        letter-spacing: -0.6px;
+        
+        //
+        color: #8c4400;
+        background: #fff3d9;
+        border-color: transparent;
+    }
+
+    .price {
+        .pay {
+            text-decoration: line-through;
+            color: #6a6f73;
+            font-weight: 400;
+            font-size: 13px;
+        }
+        .free {
+            color: #149243;
+            font-size: 15px;
+            margin-right: 6px;
+            letter-spacing: -0.8px;
+            /* text-shadow: 1px 1px 8px #b4ffd1; */
+        }
+    }
+`
 export const ActionCard = styled.div`
     display: flex;
     justify-content: space-between;
@@ -12,13 +49,13 @@ export const ActionCard = styled.div`
     margin-bottom: 10px;
     .add-cart {
         border-radius: 2px;
-            border-color: transparent;
-            background: #ffd4d47a;
-            color: #d42020;
-            font-weight: 400;
+        border-color: transparent;
+        background: #ffd4d447; //#ffd4d447
+        color: #d42020;
+        font-weight: 400;
         &:hover {
-            border-color: #ffd4d4;
-            background: #ffb5b65c;
+            border-color: transparent;
+            background: #ffd4d447;
             color: #e03e3e;
         }
     }
@@ -80,17 +117,10 @@ export const CardStyled = styled(Card)`
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-
+            margin-bottom: 0px;
             font-weight: 700;
             letter-spacing: -0.4px;
             cursor: pointer;
-        }
-
-        .ant-tag {
-            margin-top: 10px;
-            /* padding: 2px 8px; */
-            border-radius: 2px;
-            cursor: auto;
         }
 
         .author {
@@ -113,8 +143,8 @@ export const CardStyled = styled(Card)`
                 .num_star {
                     margin-right: 6px;
                     font-weight: 600;
-                    color: #b4690e;
-                    font-size: 1rem;
+                    color: #8c4400;
+                    font-size: 14px;
                 }
                 ul {
                     display: flex;
@@ -127,7 +157,7 @@ export const CardStyled = styled(Card)`
                         color: #e59819;
                     }
                     li {
-                        font-size: 18px;
+                        font-size: 14px;
                     }
                 }
             }

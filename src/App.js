@@ -48,7 +48,10 @@ function App() {
         <WapperApp>
             <ContainerApp>
                 <HeaderApp />
+                
+              
                 <ContentApp>
+                   
                     <Switch>
                          <Route path='/categories/:category' exact>
                             <CategoriesCourse />

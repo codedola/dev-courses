@@ -1,5 +1,6 @@
 import React from "react";
 import { ModalCourseInfo } from "../Styled/Course.Styled";
+import {SpaceCategoryAndPrice } from "../Styled/Card.Styled"
 import { Tag, Space, Divider, Rate } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 export default function CourseInfoModal({
@@ -15,7 +16,7 @@ export default function CourseInfoModal({
         nguoiTao,
         ngayTao,
         soLuongHocVien,
-        // danhMucKhoaHoc,
+        danhMucKhoaHoc,
         // luotXem,
     } = course;
     return (
@@ -41,18 +42,29 @@ export default function CourseInfoModal({
                 <div className='state'>
                     <Space direction='vertical' className='state_space'>
                         <Space className='state_created'>
-                            <Tag color='#e59819'>BestSeller</Tag>
+                            <Tag color='blue'>BestSeller</Tag>
                             <span style={{ color: "green" }}>
                                 Ngày tạo:<strong>{ngayTao}</strong>
                             </span>
                         </Space>
-                        <Space
+                         <SpaceCategoryAndPrice style={{marginTop: 0}} split={<Divider type='vertical' />} >
+                            <Tag color='orange' className="category">
+                                {danhMucKhoaHoc?.tenDanhMucKhoaHoc || "Coding"}
+                            </Tag>
+                            <div className="price">
+                                <span className="free">Free</span>
+                                <span className="pay">$89.99</span>
+                            </div>
+                             <Space
                             split={<Divider type='vertical' />}
                             className='state_detail'
                         >
-                            <span>All Levels</span>
-                            <span>Subtitles</span>
+                            <span style={{fontWeight: 400}}>All Levels</span>
+                            <span style={{fontWeight: 400}}>Subtitles</span>
                         </Space>
+                        </SpaceCategoryAndPrice>
+                       
+                     
                         <Space className='rate'>
                             <div className='star'>
                                 <span className='num_star'>4.5</span>
@@ -66,7 +78,9 @@ export default function CourseInfoModal({
                                 students)
                             </div>
                         </Space>
+                       
                     </Space>
+                        
                 </div>
 
                 <div

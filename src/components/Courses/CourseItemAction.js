@@ -46,7 +46,10 @@ export default function CourseItemAction({ showModal, isRegister, course, }) {
     return (
         <ActionCard>
             {isRegister ? (
-                <Button type='primary' className='add-cart register' block>
+                <Button type='primary'
+                    className='add-cart register'
+                    // size="large"
+                    block>
                     <CheckCircleOutlined />
                     <span>Đã ghi danh</span>
                 </Button>
@@ -55,7 +58,8 @@ export default function CourseItemAction({ showModal, isRegister, course, }) {
                     type='primary'
                     className='add-cart'
                     danger
-                    block
+                        block
+                        // size="large"
                     onClick={handleRegisterCourse}
                 >
                     <EditOutlined />
@@ -75,7 +79,7 @@ export default function CourseItemAction({ showModal, isRegister, course, }) {
                 <Button
                     type='default'
                     onClick={showModal}
-                    // ghost={true}
+                //    size="large"
                     className='view-more'
                     
                 >

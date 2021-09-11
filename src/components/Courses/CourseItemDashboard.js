@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Rate, Tag, Button, Space, Popconfirm } from "antd";
 import { EyeOutlined , DeleteFilled, CloseCircleOutlined} from "@ant-design/icons";
-import { CardStyled, WapperCardItem } from "../Styled/Card.Styled";
+import { CardStyled, WapperCardItem, SpaceCategoryAndPrice } from "../Styled/Card.Styled";
 import CourseInfoModal from "./CourseInfoModal";
 import { useSelector, useDispatch } from "react-redux";
 import { actDeleteCourseCreationAsync } from "../../store/course/actions";
@@ -63,9 +63,15 @@ export default function CourseItem({ course, isShowCreation = false }) {
                 </div>
                 {/* Category */}
 
-                <Tag color='orange' style={{ fontWeight: 600 }}>
-                    {danhMucKhoaHoc?.tenDanhMucKhoaHoc || "Coding"}
-                </Tag>
+                 <SpaceCategoryAndPrice>
+                    <Tag color='orange' className="category">
+                        {danhMucKhoaHoc?.tenDanhMucKhoaHoc || "Coding"}
+                    </Tag>
+                    <div className="price">
+                        <span className="free">Free</span>
+                        <span className="pay">$89.99</span>
+                    </div>
+                </SpaceCategoryAndPrice>
 
                 {/* action */}
                 {isShowCreation ?  <Space className="action_creation">

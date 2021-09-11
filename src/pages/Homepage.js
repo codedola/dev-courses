@@ -1,12 +1,14 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import {
+    AlertStyled,
     HomeContainer,
     RowTabsListCourse,
 } from "../components/Styled/Home.Styled";
 import {SpacingStyled } from "../components/Styled/App.Styled"
 import { actGetListCourseAsync } from "../store/course/actions";
 import { Col } from "antd";
+import {ExclamationCircleOutlined} from "@ant-design/icons"
 import BackToTop from "../components/BackTop";
 import TabListCourseCategory from "../components/TabListCourseCategory";
 import PopularTopics from "../components/PopularTopics";
@@ -33,9 +35,11 @@ export default function Homepage() {
 
     return (
         <HomeContainer>
+            
             <BackgroupHome />
             
-             <SpacingStyled  />
+            <SpacingStyled />
+            
             <RowTabsListCourse>
                 <Col span={24} style={{ padding: "0 8px" }}>
                     <TabListCourseCategory />
@@ -48,6 +52,14 @@ export default function Homepage() {
 
             <SpacingStyled  />
 
+            <AlertStyled
+                type="info"
+                showIcon
+                icon={<ExclamationCircleOutlined />}
+                // banner={true}
+                message="Do ảnh hưởng của dịch Covid-19, DevCourse miễn phí tất cả các khóa học !"
+            />
+              <SpacingStyled  />
             <ListCourses listCourses={listCourses} />
 
             {loading ? <LoadingPaging /> : null}

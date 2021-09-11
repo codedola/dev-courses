@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from "react";
 import { Rate, Tag } from "antd";
 import { EyeOutlined } from "@ant-design/icons";
-import { CardStyled, WapperCardItem } from "../Styled/Card.Styled";
+import { CardStyled, WapperCardItem, SpaceCategoryAndPrice } from "../Styled/Card.Styled";
 
 import CourseInfoModal from "./CourseInfoModal";
 import CourseItemAction from "./CourseItemAction";
@@ -49,11 +49,16 @@ export default function CourseItem({ course }) {
                         <span>{luotXem}</span>
                     </div>
                 </div>
-                {/* Category */}
-
-                <Tag color='orange' style={{ fontWeight: 600 }}>
-                    {danhMucKhoaHoc?.tenDanhMucKhoaHoc || "Coding"}
-                </Tag>
+                {/* Price and Category */}
+                <SpaceCategoryAndPrice>
+                    <Tag color='orange' className="category">
+                        {danhMucKhoaHoc?.tenDanhMucKhoaHoc || "Coding"}
+                    </Tag>
+                    <div className="price">
+                        <span className="free">Free</span>
+                        <span className="pay">$89.99</span>
+                    </div>
+                </SpaceCategoryAndPrice>
 
                 {/* action */}
                 <CourseItemAction

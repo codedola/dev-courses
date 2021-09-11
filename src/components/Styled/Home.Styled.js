@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Row } from "antd";
+import { Row, Alert } from "antd";
 export const HomeContainer = styled.div`
     margin-top: 30px;
     /* width: 100%; */
@@ -12,6 +12,23 @@ export const HomeContainer = styled.div`
         max-width: 1200px;
     } */
 `;
+
+export const AlertStyled = styled(Alert)`
+    /* margin-top: 10px; */
+    /* margin-bottom: 10px; */
+    padding-top: 18px;
+    padding-bottom: 18px;
+    .anticon {
+        font-size: 18px;
+    }
+
+    .ant-alert-content {
+        .ant-alert-message {
+            color: #2c88f0;
+            font-size: 16px;
+        }
+    }
+`
 
 export const RowTabsListCourse = styled(Row)`
     background-color: #ffffff;
