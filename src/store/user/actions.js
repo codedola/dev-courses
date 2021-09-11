@@ -156,11 +156,11 @@ export function actDeleteUserAsync(TaiKhoan) {
             if (response.status === 200) {
                 dispatch(actDeleteUser(TaiKhoan))
                 return {
-                    ok: true
+                    ok: true,
+                    message: response.data
                 }
             }
         } catch (error) {
-            console.log("loi trong delete user", {error})
                return {
                    ok: false,
                    message: error?.response?.data

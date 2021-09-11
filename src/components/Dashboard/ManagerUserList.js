@@ -8,6 +8,7 @@ import { EmptyMyCourse , ListHandleRegisterCourse} from "../Styled/Header.Styled
 import { ListManagerUserStyled } from "../Styled/Dashboard.Styled";
 import { actDeleteUserAsync} from "../../store/user/actions"
 import Highlighter from "react-highlight-words";
+import {showNotification, typeNotify, typePlacement } from "../shared/Notification"
 const permission = {
     HV: {
         color: "blue",
@@ -21,19 +22,38 @@ const permission = {
 export default function ManagerUserList({
     searchText,
     listFilter,
-    listNotFilter,
+    listNotFilter
 }) {
     const dispatch = useDispatch();
+     
     const hashCategoriesUser = useSelector(
         (state) => state.User.hashCategoriesUser
     );
 
     function handleDeleteUser(taiKhoan) {
         return function () {
-            // console.log("taiKhoan delete user", taiKhoan)
             dispatch(actDeleteUserAsync(taiKhoan))
+                .then(function (res) {
+                    if (res.ok) {
+                        showNotification({
+                            type: typeNotify.success,
+                            message: res.message || "Success!",
+                            placement: typePlacement.bottomRight,
+                        })
+                    } else {
+                       showNotification({
+                            type: typeNotify.error,
+                           message: res.message || "Error!",
+                           
+                            placement: typePlacement.bottomRight,
+                            duration: 2,
+                        })
+                    }
+                })
         }
     }
+
+    
     return (
         <ListManagerUserStyled itemLayout='horizontal'>
             {/* List Filter */}
@@ -43,7 +63,7 @@ export default function ManagerUserList({
                     const nameType = hashCategoriesUser[typeUser];
                     const { color, avatar } = permission[typeUser];
                     return (
-                        <List.Item key={index}>
+                        <List.Item key={index} >
                             <List.Item.Meta
                                 avatar={
                                     <Badge dot={true} color='lime'>
@@ -173,5 +193,6 @@ export default function ManagerUserList({
                     );
                 })}
         </ListManagerUserStyled>
+      
     );
 }

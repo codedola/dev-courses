@@ -34,7 +34,7 @@ export default function DashboardManager() {
                 <Col span={8}>
                     <RowManagerCategoryUser
                         gutter={[0, 16]}
-                        ref={setContainerAffix}
+                        ref={setContainerAffix}   
                     >
                         <Col span={24}>
                             <ManagerCategories />
@@ -44,6 +44,7 @@ export default function DashboardManager() {
                             <ManagerUsers containerAffix={containerAffix} />
                         </Col>
                     </RowManagerCategoryUser>
+                   
                 </Col>
             </Row>
         </div>

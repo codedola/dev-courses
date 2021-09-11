@@ -6,7 +6,7 @@ import ManagerUserList from "./ManagerUserList";
 import ManagerUserTool from "./ManagerUserTool";
 import { useSelector } from "react-redux";
 
-export default function ManagerUsers({ containerAffix }) {
+export default function ManagerUsers({ containerAffix}) {
     const [orderBy, setOrderBy] = useState("");
     const [searchText, setSearchText] = useState("");
     const listAllUser = useSelector((state) => state.User.listAllUser);
@@ -63,15 +63,20 @@ export default function ManagerUsers({ containerAffix }) {
         },
         [listFilterSort, searchText]
     );
+
+    
     return (
         <RowManagerUser>
             <Col span={24}>
                 <Affix target={() => containerAffix} offsetTop={0}>
-                    <ManagerUserTool
-                        searchText={searchText}
-                        onChangeSearchText={onChangeSearchText}
-                        onChangeOrderBy={onChangeOrderBy}
-                    />
+                    
+                        <ManagerUserTool
+                            searchText={searchText}
+                            onChangeSearchText={onChangeSearchText}
+                            onChangeOrderBy={onChangeOrderBy}
+                        />
+                   
+                   
                 </Affix>
             </Col>
 
