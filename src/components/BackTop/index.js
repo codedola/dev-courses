@@ -10,13 +10,19 @@ const BackTopStyled = styled(BackTop)`
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 60px;
-            width: 60px;
-            border-radius: 8px;
-            background-color: #00000057;
+            height: 54px;
+            width: 54px;
+            /* border-radius: 8px; */
+            /* background-color: #00000057; */
+            border-radius: 50%;
+             background-color: #ffffff;
+            box-shadow: 0 1px 2px -2px rgb(0 0 0 / 16%),
+            0 3px 6px 0 rgb(0 0 0 / 12%), 0 5px 12px 4px rgb(0 0 0 / 9%);
             .anticon {
-                font-size: 2.2rem;
-                color: #ffffff;
+                /* font-size: 2.2rem; */
+                /* color: #ffffff; */
+                color: #7b7b7b;
+                font-size: 1.6rem;
             }
         }
     }
