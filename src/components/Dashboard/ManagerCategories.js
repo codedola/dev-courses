@@ -15,7 +15,7 @@ export const listIcons = [
         icon: <TuDuyIcon />,
     },
     {
-        name: "FrondEnd",
+        name: "FrontEnd",
         icon: <FrondEndIcon />,
     },
     {
@@ -27,7 +27,7 @@ export const listIcons = [
         icon: <DesignIcon />,
     },
     {
-        name: "Mobile",
+        name: "DiDong",
         icon: <DiDongIcon />,
     },
     {

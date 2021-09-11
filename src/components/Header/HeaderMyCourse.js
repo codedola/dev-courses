@@ -87,7 +87,7 @@ export default function HeaderMyCourse() {
                 setLoading(false);
                   message.config({
                     top: 10,
-                    duration: 2,
+                    duration: 1,
                     maxCount: 10,
                     rtl: true,
                     getContainer: () => containerMessage || document.body,
@@ -102,9 +102,6 @@ export default function HeaderMyCourse() {
     }
 
     return (
-       
-
-        
         <Popover
             placement='bottom'
             trigger='click'
@@ -143,7 +140,7 @@ export default function HeaderMyCourse() {
                         >
                             <EmptyMyCourse
                                 image={Empty.PRESENTED_IMAGE_SIMPLE}
-                                description={"Bạn chưa đăng ký khóa học"}
+                                description={"Chưa có khóa học ghi danh"}
                             />
                         </List.Item>
                     ) : null}
@@ -157,6 +154,5 @@ export default function HeaderMyCourse() {
                 </Badge>
             </div>
             </Popover>
-           
     );
 }

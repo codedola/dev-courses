@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import AVATAR from "../../assets/images/avatar1.jpg";
+import AvatarHocVien from "../../assets/images/avatar1.jpg";
+import AvatarGiaoVu from "../../assets/images/avatar2.jpg";
 import { SettingOutlined } from "@ant-design/icons";
 import { Space, Image, Tag, Badge, Button, Descriptions, Tooltip } from "antd";
 import { DescriptionsUser } from "../Styled/Dashboard.Styled";
@@ -9,10 +10,12 @@ const permission = {
     HV: {
         color: "blue",
         name: "Học viên",
+        avatar: AvatarHocVien
     },
     GV: {
         color: "red",
         name: "Giáo vụ",
+         avatar: AvatarGiaoVu
     },
 };
 export default function UserDescription() {
@@ -31,7 +34,7 @@ export default function UserDescription() {
     return (
         <>
             <Space>
-                <Image width={128} src={AVATAR} />
+                <Image width={128} src={permission[maLoaiNguoiDung]?.avatar || AvatarHocVien} />
                 <DescriptionsUser
                     title={
                         <div className='title_info'>
