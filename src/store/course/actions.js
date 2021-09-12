@@ -348,6 +348,10 @@ export function actUploadCourseAsync({
                 return {
                     ok: true
                 }
+            } else {
+                return {
+                    ok:false
+                }
             }
 
           

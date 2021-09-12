@@ -10,9 +10,9 @@ export default function CourseItem({ course, isShowCreation = false }) {
     const dispatch = useDispatch();
     const [isModalVisible, setIsModalVisible] = useState(false);
    
+   
     const currentUser = useSelector(state => state.Auths.currentUser)
-    const { tenKhoaHoc, hinhAnh, biDanh, nguoiTao, danhMucKhoaHoc, luotXem } =
-        course;
+ 
     
     const showModal = () => {
         setIsModalVisible(true);
@@ -22,7 +22,7 @@ export default function CourseItem({ course, isShowCreation = false }) {
         setIsModalVisible(false);
     };
     function confirmDeleteCourse() {
-        dispatch(actDeleteCourseCreationAsync(course.maKhoaHoc, danhMucKhoaHoc.maDanhMucKhoahoc))
+        dispatch(actDeleteCourseCreationAsync(course?.maKhoaHoc, course?.danhMucKhoaHoc?.maDanhMucKhoahoc))
             .then(function (res) {
                 if (res.ok) {
                     showNotification({
@@ -41,13 +41,13 @@ export default function CourseItem({ course, isShowCreation = false }) {
         })
     }
 
-    const fullNamAuhtor = isShowCreation ? currentUser?.hoTen : nguoiTao?.hoTen;
+    const fullNamAuhtor = isShowCreation ? currentUser?.hoTen : course?.nguoiTao?.hoTen;
 
     return (
         <WapperCardItem>
-            <CardStyled hoverable cover={<img alt={biDanh} src={hinhAnh} />}>
+            <CardStyled hoverable cover={<img alt={course?.biDanh} src={course?.hinhAnh} />}>
                 {/* Information */}
-                <h3 className='title'>{tenKhoaHoc}</h3>
+                <h3 className='title'>{course?.tenKhoaHoc}</h3>
                 <p className='author'>{ fullNamAuhtor || "Anonymous"}</p>
 
                 {/* rate */}
@@ -58,14 +58,14 @@ export default function CourseItem({ course, isShowCreation = false }) {
                     </div>
                     <div className='view'>
                         <EyeOutlined />
-                        <span>{luotXem}</span>
+                        <span>{course?.luotXem}</span>
                     </div>
                 </div>
                 {/* Category */}
 
                  <SpaceCategoryAndPrice>
                     <Tag color='orange' className="category">
-                        {danhMucKhoaHoc?.tenDanhMucKhoaHoc || "Coding"}
+                        {course?.danhMucKhoaHoc?.tenDanhMucKhoaHoc || "Coding"}
                     </Tag>
                     <div className="price">
                         <span className="free">Free</span>

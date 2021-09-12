@@ -8,17 +8,16 @@ export default function CourseInfoModal({
     handleCancel,
     isModalVisible,
 }) {
-    const {
-        tenKhoaHoc,
-        moTa,
-        hinhAnh,
-        biDanh,
-        nguoiTao,
-        ngayTao,
-        soLuongHocVien,
-        danhMucKhoaHoc,
-        // luotXem,
-    } = course;
+ 
+    const tenKhoaHoc = course?.tenKhoaHoc;
+    const moTa = course?.moTa;
+    const hinhAnh = course?.hinhAnh;
+    const biDanh = course?.biDanh;
+    const nguoiTao = course?.nguoiTao;
+    const ngayTao = course?.ngayTao;
+    const soLuongHocVien = course?.soLuongHocVien;
+    const danhMucKhoaHoc = course?.danhMucKhoaHoc;
+
     return (
         <ModalCourseInfo
             width={700}
@@ -33,9 +32,9 @@ export default function CourseInfoModal({
                     <Space split={<Divider type='vertical' />}>
                         <span>
                             <UserOutlined style={{ marginRight: 4 }} />
-                            {nguoiTao.hoTen}
+                            {nguoiTao?.hoTen}
                         </span>
-                        <Tag color='lime'>{nguoiTao.tenLoaiNguoiDung}</Tag>
+                        <Tag color='lime'>{nguoiTao?.tenLoaiNguoiDung}</Tag>
                     </Space>
                 </div>
 

@@ -31,6 +31,7 @@ export default function CourseUpload() {
     
     function hanldePreviewImg(e) {
         const file = e.target.files[0];
+        console.log("file", file)
         const isLt1M = file.size / 1024 / 1024 < 1;
         const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
         if (!isJpgOrPng) {
@@ -75,7 +76,7 @@ export default function CourseUpload() {
         console.log("handleUploadCourse", { ...formData, hinhAnh, ngayTao, taiKhoanNguoiTao });
         dispatch(actUploadCourseAsync({ ...formData, hinhAnh, ngayTao, taiKhoanNguoiTao }))
             .then(function (res) {
-                if (res.ok) {
+                if (res?.ok) {
                     setCourseUpload(null)
                 showNotification({
                 type: typeNotify.success,
