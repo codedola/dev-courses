@@ -2,6 +2,7 @@ import React, {useMemo} from 'react'
 import { Input, AutoComplete , Popover} from "antd"
 import { UserOutlined } from "@ant-design/icons"
 import BackgroupImage from "../../assets/images/backgroundUdemy.jpg"
+
 import { BackgroundHome} from "../Styled/Home.Styled"
 import {useSelector } from "react-redux"
 import CourseInfo from './CourseInfo'
@@ -72,7 +73,7 @@ export default function BackgroupHome() {
     return (
         <BackgroundHome>
             <div className="image_course">
-                <img alt="" src={BackgroupImage} />
+                <img alt="bg_course" src={BackgroupImage} />
             </div>
             <div className="search_course">
                 <h1>DevCourse | A broad selection of courses</h1>

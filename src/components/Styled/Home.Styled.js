@@ -2,16 +2,56 @@ import styled from "styled-components";
 import { Row, Alert } from "antd";
 export const HomeContainer = styled.div`
     margin-top: 30px;
-    /* width: 100%; */
-
-    /* padding-left: 15px;
-    padding-right: 15px;
-    margin-right: auto;
-    margin-left: auto;
-    @media only screen and (min-width: 768px) {
-        max-width: 1200px;
-    } */
 `;
+
+export const TopCompaniesStyled = styled.div` 
+    .title {
+        font-size: 28px;
+        font-weight: 600;
+        text-align: center;
+        margin-bottom: 28px;
+        color: #17388e;
+    }
+
+    .companies {
+        .ant-space {
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+`
+export const CourseIntroductionList = styled.div` 
+    p {
+        font-size: 17px;
+        color: gray;
+        .anticon {
+            color: #058a19;
+            font-size: 14px;
+            margin-right: 6px;
+        }
+    }
+`
+export const CourseIntroductionHead = styled.div`
+
+    .title_course {
+        text-transform: uppercase;
+        font-weight: 800;
+        color: #d40066;
+        margin-bottom: 20px;
+    }
+    
+
+    .title_head{
+        font-size: 24px;
+        line-height: initial;
+        color: #313131;
+    }
+
+    .description {
+        font-size: 18px;
+    }
+`
+
 
 export const AlertStyled = styled(Alert)`
     /* margin-top: 10px; */

@@ -16,6 +16,8 @@ import LoadingPaging from "../components/Home/LoadingPaging";
 import ListCourses from "../components/Home/ListCourses";
 import usePagingCourse from "../utilities/hook/usePagingCourse";
 import BackgroupHome from "../components/Home/BackgroupHome";
+import TopCompanies from "../components/Home/TopCompanies";
+import IntroductionCourses from "../components/Home/IntroductionCourses";
 export default function Homepage() {
     const dispatch = useDispatch();
     const {
@@ -38,7 +40,7 @@ export default function Homepage() {
             
             <BackgroupHome />
             
-            <SpacingStyled />
+            <SpacingStyled sizeSpacing="30px"/>
             
             <RowTabsListCourse>
                 <Col span={24} style={{ padding: "0 8px" }}>
@@ -46,28 +48,38 @@ export default function Homepage() {
                 </Col>
             </RowTabsListCourse>
 
-            <SpacingStyled  sizeSpacing="16px" />
+            <SpacingStyled  sizeSpacing="30px" />
 
             <PopularTopics />
 
-            <SpacingStyled  />
+            <SpacingStyled sizeSpacing="30px"/>
 
+            <TopCompanies />
+
+            <SpacingStyled sizeSpacing="40px" />
+            
+            <IntroductionCourses />
+            
+            <SpacingStyled  sizeSpacing="30px"/>
+            
+            {/* List Course Paging */}
             <Affix offsetTop={0}>
                 <AlertStyled
                     type="info"
                     showIcon
                     icon={<ExclamationCircleOutlined />}
-                    // banner={true}
+                    banner={true}
                     message="Do ảnh hưởng của dịch Covid-19, DevCourse miễn phí tất cả các khóa học !"
                 />
             </Affix>
-              <SpacingStyled  />
+            
             <ListCourses listCourses={listCourses} />
 
             {loading ? <LoadingPaging /> : null}
 
             {currentPage !== totalPages ? renderButtonLoadMore() : null}
 
+         
             <BackToTop />
         </HomeContainer>
     );

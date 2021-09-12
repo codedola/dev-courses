@@ -5,12 +5,13 @@ export const CardPopularTopics = styled(Card)`
     /* box-shadow: rgb(60 64 67 / 10%) 0px 1px 2px 0px,
         rgb(60 64 67 / 10%) 0px 2px 6px 2px; */
     .ant-card-head {
+        display: none;
         padding: 0 24px 0 0;
         .ant-card-head-wrapper {
             .ant-card-head-title {
                 font-size: 1.4rem;
                 font-weight: 600;
-                color: #333;
+                color: #17388e;
             }
         }
     }

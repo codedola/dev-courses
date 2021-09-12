@@ -5,6 +5,7 @@ import CourseUploadForm from './CourseUploadForm';
 import { showNotification, typeNotify, typePlacement } from "../shared/Notification"
 import { useSelector, useDispatch } from "react-redux"
 import { actUploadCourseAsync } from "../../store/course/actions";
+import BgUpload from './BgUpload';
 export default function CourseUpload() {
     const dispatch = useDispatch();
     const [courseUpload, setCourseUpload] = useState(null);
@@ -101,7 +102,10 @@ export default function CourseUpload() {
                             urlPreview={urlPreview}
                             handleUploadCourse={handleUploadCourse}
                             hanldePreviewImg={hanldePreviewImg}
-                        /> : null
+                        /> :
+                        <div className="bg_courseUpload" style={{textAlign: "center"}}>
+                            <BgUpload />
+                        </div>
                 }
             </Col>
         </Row>
