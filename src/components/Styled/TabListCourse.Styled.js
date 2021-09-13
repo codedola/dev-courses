@@ -4,10 +4,41 @@ import Carousel from "react-multi-carousel";
 
 export const TabsStyled = styled(Tabs)`
     .ant-tabs-nav {
+        padding: 0px 16px;
+        &::before {
+            border-bottom: none;
+        }
         .ant-tabs-nav-wrap {
             .ant-tabs-nav-list {
+                padding-left: 2px;
+                padding-right: 2px;
+
                 .ant-tabs-tab {
                     transition: unset;
+                    background: #f3f3f3;
+                    color: #a4a4a4;
+                    border-radius: 4px;
+                    margin-right: 10px;
+                    border-color: #fff;
+                    &:hover {
+                        /* transform: scale(1.02); */
+                        background: #ececec;
+                    }
+                    .ant-tabs-tab-btn {
+                        &:focus {
+                            color:#fff;
+                            
+                        }
+                    }
+                    &.ant-tabs-tab-active {
+                        background-color: #0093E9;
+                        background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+                        color: #fff;
+                        .ant-tabs-tab-btn {
+                            color: #fff;
+                        }
+                    }
+
                 }
             }
         }
@@ -20,6 +51,7 @@ export const TabsStyled = styled(Tabs)`
 
     @media only screen and (max-width: 768px) {
         .ant-tabs-nav {
+
             .ant-tabs-nav-operations {
                 display: none;
             }

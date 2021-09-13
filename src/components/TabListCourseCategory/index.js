@@ -28,6 +28,7 @@ export default function TabListCourseCategory() {
             size='large'
             moreIcon={null}
             onChange={handleChangeTabs}
+            className="thanhnhan"
         >
             {activeKey &&
                 listCategories.map(function (category) {

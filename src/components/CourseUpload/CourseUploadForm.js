@@ -45,7 +45,7 @@ export default function CourseUploadForm({
                     </Col>
                     <Col span={12}>
                         <Form.Item name='maKhoaHoc' label='Mã khóa học'>
-                            <Input placeholder='Nhập mã khóa học' />
+                            <Input placeholder='Nhập mã khóa học' disabled/>
                         </Form.Item>
                     </Col>
                 </Row>
