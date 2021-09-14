@@ -1,16 +1,16 @@
 import React from 'react'
 import { Row, Col } from "antd";
 import {CheckOutlined} from "@ant-design/icons"
-import { CourseIntroductionHead, CourseIntroductionList} from "../Styled/Home.Styled"
+import { CourseIntroductionHead, CourseIntroductionList, ImgIntroduction} from "../Styled/Home.Styled"
 import BgFrontEndDev from "../../assets/images/bg_frontend.png"
 export default function IntroductionCourses() {
     return (
         <div className="introduction_courses">
             <Row>
                 <Col lg={12}>
-                    <div className="bg_introduction">
+                    <ImgIntroduction>
                         <img src={BgFrontEndDev} alt="BgFrontEndDev" />
-                    </div>
+                    </ImgIntroduction>
                 </Col>
                 <Col lg={12}>
                     <CourseIntroductionHead>

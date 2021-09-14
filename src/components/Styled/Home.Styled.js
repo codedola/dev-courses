@@ -3,7 +3,14 @@ import { Row, Alert } from "antd";
 export const HomeContainer = styled.div`
     margin-top: 30px;
 `;
-
+export const ImgIntroduction = styled.div` 
+    img {
+        transition: all ease 0.2s;
+        &:hover {
+            transform: scale(1.02);
+        }
+    }
+`
 export const TopCompaniesStyled = styled.div` 
     .title {
         font-size: 28px;
@@ -17,15 +24,30 @@ export const TopCompaniesStyled = styled.div`
         .ant-space {
             display: flex;
             justify-content: space-between;
+            .ant-space-item {
+                img {
+                    transition: all ease 0.2s;
+                    &:hover {
+                        transform: scale(1.1);
+                    }
+                }
+            }
         }
     }
 `
 export const CourseIntroductionList = styled.div` 
     p {
         font-size: 17px;
-        color: gray;
+        color: #ffffff;
+        display: inline-block;
+        padding: 0px 10px;
+        border-radius: 10px;
+        background-color: #ffe228;
+        background-image: linear-gradient(
+    147deg, #ffe228 0%, #ff4747 74%);
+    font-weight: 600;
         .anticon {
-            color: #058a19;
+            color: #ffffff;
             font-size: 14px;
             margin-right: 6px;
         }

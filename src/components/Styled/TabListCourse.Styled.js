@@ -20,9 +20,11 @@ export const TabsStyled = styled(Tabs)`
                     border-radius: 4px;
                     margin-right: 10px;
                     border-color: #fff;
+                    transition: all ease 0.2s;
                     &:hover {
-                        /* transform: scale(1.02); */
+                        transform: scale(1.02);
                         background: #ececec;
+                       
                     }
                     .ant-tabs-tab-btn {
                         &:focus {
