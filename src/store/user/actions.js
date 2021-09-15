@@ -197,6 +197,7 @@ export function actCreateNewUserAsync({
                 }
             }
         } catch (error) {
+            console.log("error in create new user", {error})
             return {
                 ok: false,
                 message: error?.response?.data || "Có lỗi xảy ra"

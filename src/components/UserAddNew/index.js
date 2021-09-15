@@ -63,6 +63,14 @@ export default function UserAddNew({visibleFormNewUser, closeFormAddNewUser}) {
                         placement: typePlacement.bottomRight,
                         message: "Tạo thành viên thành công"
                     })
+                } else {
+                     closeFormAddNewUser();
+                    form.resetFields();
+                    showNotification({
+                        type: typeNotify.error,
+                        placement: typePlacement.bottomRight,
+                        message: "Tạo thành viên thất bại. Xin quyền truy cập"
+                    })
                 }
             })
     };
