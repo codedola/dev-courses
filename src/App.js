@@ -63,7 +63,10 @@ function App() {
                         <Route path='/login' exact>
                             <Login />
                         </Route>
-                        <Route path='/'>
+                        <Route path='/dev-courses' exact>
+                            <Homepage />
+                        </Route>
+                         <Route path='/' exact>
                             <Homepage />
                         </Route>
                     </Switch>
