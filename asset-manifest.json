@@ -1,19 +1,19 @@
 {
   "files": {
     "main.css": "/dev-courses/static/css/main.e2a1c035.chunk.css",
-    "main.js": "/dev-courses/static/js/main.230a90ac.chunk.js",
-    "main.js.map": "/dev-courses/static/js/main.230a90ac.chunk.js.map",
-    "runtime-main.js": "/dev-courses/static/js/runtime-main.c1764060.js",
-    "runtime-main.js.map": "/dev-courses/static/js/runtime-main.c1764060.js.map",
+    "main.js": "/dev-courses/static/js/main.bac5747d.chunk.js",
+    "main.js.map": "/dev-courses/static/js/main.bac5747d.chunk.js.map",
+    "runtime-main.js": "/dev-courses/static/js/runtime-main.ef477c13.js",
+    "runtime-main.js.map": "/dev-courses/static/js/runtime-main.ef477c13.js.map",
     "static/css/2.d3053451.chunk.css": "/dev-courses/static/css/2.d3053451.chunk.css",
-    "static/js/2.99090d43.chunk.js": "/dev-courses/static/js/2.99090d43.chunk.js",
-    "static/js/2.99090d43.chunk.js.map": "/dev-courses/static/js/2.99090d43.chunk.js.map",
-    "static/js/3.456342cf.chunk.js": "/dev-courses/static/js/3.456342cf.chunk.js",
-    "static/js/3.456342cf.chunk.js.map": "/dev-courses/static/js/3.456342cf.chunk.js.map",
+    "static/js/2.7c1c5475.chunk.js": "/dev-courses/static/js/2.7c1c5475.chunk.js",
+    "static/js/2.7c1c5475.chunk.js.map": "/dev-courses/static/js/2.7c1c5475.chunk.js.map",
+    "static/js/3.1a9f49e8.chunk.js": "/dev-courses/static/js/3.1a9f49e8.chunk.js",
+    "static/js/3.1a9f49e8.chunk.js.map": "/dev-courses/static/js/3.1a9f49e8.chunk.js.map",
     "index.html": "/dev-courses/index.html",
     "static/css/2.d3053451.chunk.css.map": "/dev-courses/static/css/2.d3053451.chunk.css.map",
     "static/css/main.e2a1c035.chunk.css.map": "/dev-courses/static/css/main.e2a1c035.chunk.css.map",
-    "static/js/2.99090d43.chunk.js.LICENSE.txt": "/dev-courses/static/js/2.99090d43.chunk.js.LICENSE.txt",
+    "static/js/2.7c1c5475.chunk.js.LICENSE.txt": "/dev-courses/static/js/2.7c1c5475.chunk.js.LICENSE.txt",
     "static/media/avatar1.71973640.jpg": "/dev-courses/static/media/avatar1.71973640.jpg",
     "static/media/avatar2.c8110702.jpg": "/dev-courses/static/media/avatar2.c8110702.jpg",
     "static/media/backgroundUdemy.163af8cf.jpg": "/dev-courses/static/media/backgroundUdemy.163af8cf.jpg",
@@ -21,10 +21,10 @@
     "static/media/styles.css": "/dev-courses/static/media/revicons.e8746a62.woff"
   },
   "entrypoints": [
-    "static/js/runtime-main.c1764060.js",
+    "static/js/runtime-main.ef477c13.js",
     "static/css/2.d3053451.chunk.css",
-    "static/js/2.99090d43.chunk.js",
+    "static/js/2.7c1c5475.chunk.js",
     "static/css/main.e2a1c035.chunk.css",
-    "static/js/main.230a90ac.chunk.js"
+    "static/js/main.bac5747d.chunk.js"
   ]
 }
