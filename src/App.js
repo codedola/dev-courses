@@ -42,19 +42,16 @@ function App() {
             }
             runPromiseAll();
         },
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-        []
+        
+        [dispatch]
     );
     return (
         <WapperApp>
             <ContainerApp>
                 <HeaderApp />
-                
-              
                 <ContentApp>
-                   
                     <Switch>
-                         <Route path='/categories/:category' exact>
+                        <Route path='/categories/:category' exact>
                             <CategoriesCourse />
                         </Route>
                         <Route path='/search' exact>
@@ -66,7 +63,7 @@ function App() {
                         <Route path='/login' exact>
                             <Login />
                         </Route>
-                        <Route path='/' exact>
+                        <Route path='/'>
                             <Homepage />
                         </Route>
                     </Switch>
