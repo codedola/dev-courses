@@ -2,11 +2,7 @@ import React from 'react'
 import { Space } from "antd";
 import "react-multi-carousel/lib/styles.css";
 import { TopCompaniesStyled } from "../Styled/Home.Styled"
-const listCompanies = [
-    "duke_updated_2020", "google", "ibm", "illinois",
-    "imperial", "penn", "stanford"
-]
-;
+import listCompanies from "../../assets/images/companies"
 export default function TopCompanies() {
     return (
         <TopCompaniesStyled>
@@ -18,12 +14,14 @@ export default function TopCompanies() {
                      {
                         listCompanies.map(function (company, index) {
                             return <img
-                                    src={`/images/companies/${company}.png`}
-                                alt={company} key={index} className="company"
+                                src={company}
+                                alt="company_" key={index} className="company"
                                 style={{height: 34}}
                                 />
                         })
                     }
+
+                  
                 </Space>
             </div>
         </TopCompaniesStyled>

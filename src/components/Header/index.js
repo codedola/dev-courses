@@ -14,6 +14,7 @@ import HeaderSearch from "./HeaderSearch";
 import HeaderUser from "./HeaderUser";
 import HeaderMyCourse from "./HeaderMyCourse";
 import { useRouteMatch } from "react-router-dom";
+import HeaderCategories from "./HeaderCategories";
 export default function Header() {
     const currentUser = useSelector((state) => state.Auths.currentUser);
     const isMatchDashboard = useRouteMatch("/dashboard");
@@ -24,6 +25,7 @@ export default function Header() {
                 <WapperHeaderTop>
                     <div className='headerTop__right'>
                         <HeaderLogo />
+                        <HeaderCategories />
                         {!isMatchDashboard ? <HeaderSearch /> : null}
                     </div>
 
